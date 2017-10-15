@@ -59,10 +59,11 @@ public class CombatUI : MonoBehaviour
             lockedEnemyHealth.enabled = false;
            // lockedEnemyHealth.color = Color.Lerp(lockedEnemyHealth.color, Color.red, Time.deltaTime);
 
-            if(BattleManagerScript.Instance.enemyList.Count <= 0)
-            {
-				SceneManager.LoadScene(sceneName);
-            }
+//			for enemies when reach 0 health
+//            if(BattleManagerScript.Instance.enemyList.Count <= 0)
+//            {
+//				SceneManager.LoadScene(sceneName);
+//            }
         }
     }
 
