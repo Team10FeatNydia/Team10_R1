@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: bc889c7844de44c4f96ff8292947fd2d
+timeCreated: 1506948707
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Cyrodiil
+  fontNames:
+  - Cyrodiil
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 45aa3b95bcb860e49b868228228bd158, type: 3}
+  - {fileID: 12800000, guid: 71cdc228a30fb084cb2fca4431475dcb, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1088466265865698}
+  m_IsPrefabParent: 1
+--- !u!1 &1088466265865698
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4070504406543472}
+  - component: {fileID: 114757985770218306}
+  m_Layer: 0
+  m_Name: SpellsManager
+  m_TagString: SpellsManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4070504406543472
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1088466265865698}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114757985770218306
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1088466265865698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f73f207e8967ca4ea28fd96c7d95add, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellsList:
+  - spellsType: 0
+    manaCost: 5
+    description: +1 Attack for every selected card
+    spellsImage: {fileID: 21300000, guid: c77c1767331971747be5b10a8f903a14, type: 3}
+    isSpawned: 0
+  - spellsType: 1
+    manaCost: 5
+    description: +1 Heal for every selected card
+    spellsImage: {fileID: 21300000, guid: f614349381d81b84a86e4020cf923386, type: 3}
+    isSpawned: 0
+  spellsPrefab: {fileID: 1201739924728978, guid: 303b622c73387b445b45aea59cf9ea05,
+    type: 2}

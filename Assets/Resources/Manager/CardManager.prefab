@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1922697052120150}
+  m_IsPrefabParent: 1
+--- !u!1 &1922697052120150
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4264140364306822}
+  - component: {fileID: 114782072120334932}
+  m_Layer: 0
+  m_Name: CardManager
+  m_TagString: CardManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4264140364306822
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1922697052120150}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114782072120334932
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1922697052120150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad10261b6cc45294c9fef9ebba10c16c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardList:
+  - cardType: 0
+    cardEffect: 1
+    manaCost: 1
+    description: Attack 1
+    cardImage: {fileID: 21300000, guid: 741b8a0e4b5cff1489c949555319324c, type: 3}
+    isSpawned: 0
+  - cardType: 0
+    cardEffect: 2
+    manaCost: 3
+    description: Attack 2
+    cardImage: {fileID: 21300000, guid: 0fff007a99ca98d4c91c9fe67cd51dfd, type: 3}
+    isSpawned: 0
+  - cardType: 0
+    cardEffect: 4
+    manaCost: 5
+    description: Attack 3
+    cardImage: {fileID: 21300000, guid: f0bab52d6fa20cf45bd0b47740a53ced, type: 3}
+    isSpawned: 0
+  - cardType: 1
+    cardEffect: 2
+    manaCost: 3
+    description: Attack 1
+    cardImage: {fileID: 21300000, guid: c32b4789f4503484cb1855426cda2e4e, type: 3}
+    isSpawned: 0
+  - cardType: 1
+    cardEffect: 4
+    manaCost: 4
+    description: Heal 2
+    cardImage: {fileID: 21300000, guid: c32b4789f4503484cb1855426cda2e4e, type: 3}
+    isSpawned: 0
+  cardPrefab: {fileID: 1459307599076486, guid: b7a3ae33cb938e9448597334c395fc37, type: 2}
