@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class EnemyHealthBar : MonoBehaviour 
 {
-
     private Image bar;
+
+	public EnemyStatusScript enemy;
 
     // Use this for initialization
     void Start () 
@@ -17,11 +18,7 @@ public class EnemyHealthBar : MonoBehaviour
     // Update is called once per frame
     void Update () 
 	{
-
-		if (BattleManagerScript.Instance.target != null) 
-		{
-			bar.fillAmount = (BattleManagerScript.Instance.target.health * 100f / BattleManagerScript.Instance.target.maxHealth) / 100;
-		}
+		bar.fillAmount = (enemy.health * 100f / enemy.maxHealth) / 100;
     }
 }
 

@@ -27,55 +27,97 @@ public class CardScript : MonoBehaviour, IPointerClickHandler {
 	public CardDescription myCard;
 	public CardPouchScript cardPouch;
 	public bool selected;
+	public bool interactable = false;
 
 	public Text myDmg;
 	public Text myManaCost;
     public Text myDescription;
+	public Image myImage;
+	public EnemyStatusScript target;
 
 	// Use this for initialization
 	void Start () {
-		
+		//myImage = this.GetComponent<Image>();
+		//interactable = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (selected)
-        {
-            GetComponent<Image>().color = Color.blue;
-        }
+		
+	}
 
-        else
-        {
-            GetComponent<Image>().color = Color.white;
-        }
+	public void HideSelf()
+	{
+		myImage.enabled = false;
+		interactable = false;
+		myDmg.enabled = false;
+		myManaCost.enabled = false;
+		myDescription.enabled = false;
 	}
 
 	public void UpdateStats()
 	{
+		myDmg.enabled = true;
+		myManaCost.enabled = true;
+		myDescription.enabled = true;
 		myDmg.text = myCard.cardEffect.ToString();
 		myManaCost.text = myCard.manaCost.ToString();
         myDescription.text = myCard.description.ToString();
-		GetComponent<Image>().sprite = myCard.cardImage;
+		myImage.enabled = true;
+		myImage.sprite = myCard.cardImage;
+		interactable = true;
 	}
 
 	public void OnPointerClick(PointerEventData eventData)
 	{
 		Debug.Log("Tap");
 
-		if(!selected)
+		if(interactable)
 		{
-			if(cardPouch.manaCheck - myCard.manaCost >= 0)
+			if(BattleManagerScript.Instance.currTurn == BattleStates.CHOOSE_CARDS)
 			{
-				cardPouch.manaCheck -= myCard.manaCost;
-				cardPouch.selectedCards.Add(this);
-				selected = true;
+				if(!selected)
+				{
+					if(cardPouch.manaCheck - myCard.manaCost >= 0)
+					{
+						cardPouch.manaCheck -= myCard.manaCost;
+						cardPouch.selectedCards.Add(this);
+						selected = true;
+						GetComponent<Image>().color = Color.blue;
+					}
+				}
+				else
+				{
+					cardPouch.manaCheck += myCard.manaCost;
+					cardPouch.selectedCards.Remove(this);
+					selected = false;
+					GetComponent<Image>().color = Color.white;
+				}
 			}
-		}
-		else
-		{
-			cardPouch.manaCheck += myCard.manaCost;
-			cardPouch.selectedCards.Remove(this);
-			selected = false;
+			else if(BattleManagerScript.Instance.currTurn == BattleStates.CHOOSE_ENEMIES)
+			{
+				if(myCard.cardType == CardType.ATTACK)
+				{
+					if(!selected)
+					{
+						if(BattleManagerScript.Instance.selectedCard != null)
+						{
+							if(BattleManagerScript.Instance.selectedCard.target == null)
+							{
+								BattleManagerScript.Instance.selectedCard.myImage.color = Color.blue;
+							}
+
+							BattleManagerScript.Instance.selectedCard.selected = false;
+						}
+
+						BattleManagerScript.Instance.selectedCard = this;
+						selected = true;
+						myImage.color = Color.red;
+					}
+				}
+
+			}
+
 		}
 	}
 }

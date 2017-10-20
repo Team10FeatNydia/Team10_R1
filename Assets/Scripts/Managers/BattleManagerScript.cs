@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public enum BattleStates
 {
 	PLAYER_TURN,
-	ENEMY_TURN
+	CHOOSE_CARDS,
+	CHOOSE_ENEMIES,
+	ENEMY_TURN,
 }
 
 public class BattleManagerScript : MonoBehaviour 
@@ -41,6 +43,7 @@ public class BattleManagerScript : MonoBehaviour
 	public PlayerStatusScript player;
 	public List<EnemyStatusScript> enemyList = new List<EnemyStatusScript>();
 	public EnemyStatusScript target;
+	public CardScript selectedCard;
     //public Button attackButton;
     public BattleStates currTurn;
 	public Canvas battleCanvas;
@@ -76,7 +79,7 @@ public class BattleManagerScript : MonoBehaviour
 
 		
 
-        if (currTurn != BattleStates.PLAYER_TURN)
+        if (currTurn == BattleStates.ENEMY_TURN)
         {
 			for(int i = 0; i < enemyList.Count; i++)
 			{
@@ -94,6 +97,14 @@ public class BattleManagerScript : MonoBehaviour
         {
 
         }
+		else if (currTurn == BattleStates.CHOOSE_CARDS)
+		{
+
+		}
+		else if (currTurn == BattleStates.CHOOSE_ENEMIES)
+		{
+
+		}
     }
 
 

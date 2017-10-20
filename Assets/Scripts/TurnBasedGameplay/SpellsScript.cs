@@ -28,9 +28,16 @@ public class SpellsScript : MonoBehaviour, IPointerClickHandler
     public SpellsDescription mySpells;
     public CardPouchScript cardPouch;
     public bool selected;
+	public bool interactable = false;
     public Text myManaCost;
     public Text myDescription;
+	public Image myImage;
 
+	void Start()
+	{
+		//myImage = this.GetComponent<Image>();
+		//interactable = false;
+	}
 
     void Update()
     {
@@ -44,31 +51,44 @@ public class SpellsScript : MonoBehaviour, IPointerClickHandler
             GetComponent<Image>().color = Color.white;
         }
     }
-        public void UpdateStats()
-        {
-            myManaCost.text = "Mana Cost: " + mySpells.manaCost.ToString();
-            myDescription.text =  mySpells.description.ToString();
-            GetComponent<Image>().sprite = mySpells.spellsImage;
-        }
 
-        public void OnPointerClick(PointerEventData eventData)
-        {
-            Debug.Log("Tap");
+	public void HideSelf()
+	{
+		myImage.enabled = false;
+		interactable = false;
+		myManaCost.enabled = false;
+		myDescription.enabled = false;
+	}
 
-            if (!selected)
+    public void UpdateStats()
+    {
+		myManaCost.enabled = true;
+		myDescription.enabled = true;
+        myManaCost.text = "Mana Cost: " + mySpells.manaCost.ToString();
+        myDescription.text =  mySpells.description.ToString();
+		myImage.enabled = true;
+		myImage.sprite = mySpells.spellsImage;
+		interactable = true;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Debug.Log("Tap");
+
+        if (!selected)
+        {
+            if (cardPouch.manaCheck - mySpells.manaCost >= 0)
             {
-                if (cardPouch.manaCheck - mySpells.manaCost >= 0)
-                {
-                    cardPouch.manaCheck -= mySpells.manaCost;
-                    cardPouch.selectedSpells.Add(this);
-                    selected = true;
-                }
-            }
-            else
-            {
-                cardPouch.manaCheck += mySpells.manaCost;
-                cardPouch.selectedSpells.Remove(this);
-                selected = false;
+                cardPouch.manaCheck -= mySpells.manaCost;
+                cardPouch.selectedSpells.Add(this);
+                selected = true;
             }
         }
+        else
+        {
+            cardPouch.manaCheck += mySpells.manaCost;
+            cardPouch.selectedSpells.Remove(this);
+            selected = false;
+        }
+    }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyStatusScript : MonoBehaviour 
+public class EnemyStatusScript : MonoBehaviour
 {
 	[HideInInspector]
 	public EnemyManager self;
@@ -51,6 +51,14 @@ public class EnemyStatusScript : MonoBehaviour
 		{
 			BattleManagerScript.Instance.target = this;
 			GetComponent<MeshRenderer>().material.color = Color.white;
+		}
+		else if(BattleManagerScript.Instance.currTurn == BattleStates.CHOOSE_ENEMIES)
+		{
+			if(BattleManagerScript.Instance.selectedCard != null)
+			{
+				BattleManagerScript.Instance.selectedCard.target = this;
+				BattleManagerScript.Instance.selectedCard.myImage.color = Color.white;
+			}
 		}
 	}
 

@@ -82,8 +82,10 @@ MonoBehaviour:
     isSpawned: 0
   cardPouch: {fileID: 0}
   selected: 0
+  interactable: 0
   myManaCost: {fileID: 114733538125890614}
   myDescription: {fileID: 114479035295861182}
+  myImage: {fileID: 114440260136670570}
 --- !u!114 &114440260136670570
 MonoBehaviour:
   m_ObjectHideFlags: 1
