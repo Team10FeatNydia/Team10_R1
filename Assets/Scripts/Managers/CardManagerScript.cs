@@ -25,7 +25,7 @@ public class CardManagerScript : MonoBehaviour
 		}
 	}
 
-	public static bool ChecInstanceExit()
+	public static bool CheckInstanceExist()
 	{
 		return mInstance;
 	}
@@ -36,7 +36,7 @@ public class CardManagerScript : MonoBehaviour
 
 	void Awake()
 	{
-		if(CardManagerScript.ChecInstanceExit())
+		if(CardManagerScript.CheckInstanceExist())
 		{
 			Destroy(this.gameObject);
 		}
