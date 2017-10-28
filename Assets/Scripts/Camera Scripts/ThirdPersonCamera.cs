@@ -13,6 +13,6 @@ public class ThirdPersonCamera : MonoBehaviour
 
 	private void LateUpdate ()
 	{
-		transform.position = Vector3.Lerp (transform.position, lookAt.position, Time.deltaTime);
+		transform.position = Vector3.LerpUnclamped (transform.position, lookAt.position, Time.deltaTime);
 	}
 }
