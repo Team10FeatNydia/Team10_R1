@@ -6,20 +6,25 @@ public enum EventListName
 {
     EVENT_1 = 0,
     EVENT_2 = 1,
+	EVENT_3 = 2,
 
-    TOTAL = 2
+    TOTAL = 3
 }
 
 [System.Serializable]
+
 public class EventListInfo
 {
     public EventListName eventListName;
     public GameObject eventPrefab;
+	public bool isCleared = false;
 }
 
 public class EventPopOutWindow : MonoBehaviour 
 {
-    public List<EventListInfo> eventListInfoList = new List<EventListInfo>();
+	public List<EventListInfo> eventListInfoList = new List<EventListInfo>();
+	
+	private GameObject player;
 
     //public GameObject eventCanvasObj;
 	//private Canvas eventCanvas;
@@ -28,7 +33,8 @@ public class EventPopOutWindow : MonoBehaviour
 	{
 		//eventCanvas = eventCanvasObj.GetComponent<Canvas> ();
 		//eventCanvas.enabled = false;
-		GameObject.Find ("Player").GetComponent<PlayerMovementScript> ().enabled = true;
+		player = GameObject.Find ("Player");
+		player.GetComponent<PlayerMovementScript> ().enabled = true;		
 	}
 
 	void OnTriggerEnter (Collider other)
@@ -41,16 +47,16 @@ public class EventPopOutWindow : MonoBehaviour
 
         if (other.gameObject.tag == "Player")
         {
-            Invoke("eventPop", 1);
+            Invoke("eventPop", 1); // Delay 1s before invoking method
 
-            GameObject.Find("Player").GetComponent<PlayerMovementScript>().enabled = false;
+            player.GetComponent<PlayerMovementScript>().enabled = false;
         }
     }
 
 	void OnTriggerExit (Collider other)
 	{
 		//eventCanvas.enabled = false;
-		GameObject.Find ("Player").GetComponent<PlayerMovementScript> ().enabled = true;
+		player.GetComponent<PlayerMovementScript> ().enabled = true;
         
 	}
 
@@ -63,17 +69,16 @@ public class EventPopOutWindow : MonoBehaviour
                 return eventListInfoList[i].eventPrefab;
             }
         }
-        Debug.LogError("Cant find event : " + eventListName);
 
+        Debug.LogError("Cant find event : " + eventListName);
         return null;
     }
 
     public void eventPop()
     {
-
-        GameObject Event = FindEventName((EventListName)Random.Range(0, (int)EventListName.TOTAL));
-        Instantiate(Event);
+        // GameObject eventObj = FindEventName((EventListName)Random.Range(0, (int)EventListName.TOTAL));
+		GameObject eventObj = FindEventName(EventListName.EVENT_1);
+		Instantiate(eventObj);
         CancelInvoke();
     }
-
 }
