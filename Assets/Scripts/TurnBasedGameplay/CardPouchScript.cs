@@ -96,6 +96,28 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 
             if (selectedCards[i].myCard.cardType == CardType.ATTACK)
             {
+				bool kingless = true;
+
+				if(selectedCards[i].target.myType == EnemyType.KING)
+				{
+					kingless = false;
+				}
+
+				if(!kingless)
+				{
+					for(int j = 0; j < battleManager.enemyList.Count; j++)
+					{
+						if(battleManager.enemyList[j] != null)
+						{
+							if(battleManager.enemyList[j].myType == EnemyType.KNIGHT)
+							{
+								selectedCards[i].target = battleManager.enemyList[j];
+							}
+						}
+					}
+				}
+
+
 				selectedCards[i].target.health -= selectedCards[i].myCard.cardEffect + spellsDmg;
 				battleManager.player.localPlayerData.health += spellsHeal;
 
@@ -124,6 +146,13 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 			{
 				selectedCards[i].target.CheckHealth();
 			}
+		}
+
+		for(int i = 0; i < battleManager.enemyList.Count; i++)
+		{
+			battleManager.enemyList[i].blueTarget.Stop();
+			battleManager.enemyList[i].redTarget.Stop();
+
 		}
 
         //battleManager.target.CheckHealth();

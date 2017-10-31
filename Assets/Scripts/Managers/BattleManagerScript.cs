@@ -44,10 +44,12 @@ public class BattleManagerScript : MonoBehaviour
 	public List<EnemyStatusScript> enemyList = new List<EnemyStatusScript>();
 	public EnemyStatusScript target;
 	public CardScript selectedCard;
-    //public Button attackButton;
+	public CardPouchScript cardPouch;
     public BattleStates currTurn;
 	public Canvas battleCanvas;
     int manaregen;
+	public int enemyTurn = 0;
+	public bool enemyAction = true;
 
 
     void Awake() 
@@ -81,17 +83,24 @@ public class BattleManagerScript : MonoBehaviour
 
         if (currTurn == BattleStates.ENEMY_TURN)
         {
-			for(int i = 0; i < enemyList.Count; i++)
+			if(enemyAction && enemyTurn < enemyList.Count)
 			{
-				enemyList[i].Attack();
-                
+				enemyAction = false;
+				enemyList[enemyTurn].CheckBehaviour();
+				enemyTurn++; 
 			}
-			player.localPlayerData.manaPoints += manaregen;
-			if (player.localPlayerData.manaPoints >= 15)
-            {
-				player.localPlayerData.manaPoints = 15;
-            }
-            currTurn = BattleStates.PLAYER_TURN;
+
+			if(enemyAction && enemyTurn >= enemyList.Count)
+			{
+				enemyAction = false;
+				enemyTurn = 0;
+				player.localPlayerData.manaPoints += manaregen;
+				if (player.localPlayerData.manaPoints >= 15)
+				{
+					player.localPlayerData.manaPoints = 15;
+				}
+				currTurn = BattleStates.PLAYER_TURN;
+			}
         }
         else if (currTurn == BattleStates.PLAYER_TURN)
         {

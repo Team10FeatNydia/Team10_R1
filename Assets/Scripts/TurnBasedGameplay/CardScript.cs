@@ -41,10 +41,10 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 	// Use this for initialization
 	void Start () 
 	{
-		redTargeted = gameObject.GetComponent<ParticleSystem>();
-		blueNotTargeted = gameObject.GetComponent<ParticleSystem>();
-
-		ActivateBlueNotTargeted();
+//		redTargeted = gameObject.GetComponent<ParticleSystem>();
+//		blueNotTargeted = gameObject.GetComponent<ParticleSystem>();
+//
+//		ActivateBlueNotTargeted();
 		//myImage = this.GetComponent<Image>();
 		//interactable = false;
 	}
@@ -158,11 +158,29 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 							if(BattleManagerScript.Instance.selectedCard.target == null)
 							{
 								BattleManagerScript.Instance.selectedCard.myImage.color = Color.blue;
-								DeactivateBlueNotTargeted();
-								ActivateRedTargeted();
+//								DeactivateBlueNotTargeted();
+//								ActivateRedTargeted();
+							}
+							else
+							{
+								BattleManagerScript.Instance.selectedCard.myImage.color = Color.white;
 							}
 
 							BattleManagerScript.Instance.selectedCard.selected = false;
+						}
+
+						for(int i = 0; i < BattleManagerScript.Instance.enemyList.Count; i++)
+						{
+							if(BattleManagerScript.Instance.enemyList[i] != null)
+							{
+								BattleManagerScript.Instance.enemyList[i].redTarget.Stop();
+								BattleManagerScript.Instance.enemyList[i].blueTarget.Play();
+							}
+						}
+
+						if(target != null)
+						{
+							target.redTarget.Play();
 						}
 
 						BattleManagerScript.Instance.selectedCard = this;
