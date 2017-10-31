@@ -22,8 +22,8 @@ public struct CardDescription
 	public bool isSpawned;
 }
 
-public class CardScript : MonoBehaviour, IPointerClickHandler {
-
+public class CardScript : MonoBehaviour, IPointerClickHandler 
+{
 	public CardDescription myCard;
 	public CardPouchScript cardPouch;
 	public bool selected;
@@ -35,15 +35,68 @@ public class CardScript : MonoBehaviour, IPointerClickHandler {
 	public Image myImage;
 	public EnemyStatusScript target;
 
+	public ParticleSystem redTargeted;
+	public ParticleSystem blueNotTargeted;
+
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
+		redTargeted = gameObject.GetComponent<ParticleSystem>();
+		blueNotTargeted = gameObject.GetComponent<ParticleSystem>();
+
+		ActivateBlueNotTargeted();
 		//myImage = this.GetComponent<Image>();
 		//interactable = false;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 		
+	}
+
+	void ActivateRedTargeted()
+	{
+		if(target)
+		{
+			if(redTargeted.isStopped)
+			{
+				redTargeted.Play();
+			}
+		}
+	}
+
+	void DeactivateRedTargeted()
+	{
+		if(!target)
+		{
+			if(redTargeted.isPlaying)
+			{
+				redTargeted.Stop();
+			}
+		}
+	}
+
+	void ActivateBlueNotTargeted()
+	{
+		if(!target)
+		{
+			if(blueNotTargeted.isStopped)
+			{
+				blueNotTargeted.Play();
+			}
+		}
+	}
+
+	void DeactivateBlueNotTargeted()
+	{
+		if(target)
+		{
+			if(blueNotTargeted.isPlaying)
+			{
+				blueNotTargeted.Stop();
+			}
+		}
 	}
 
 	public void HideSelf()
@@ -105,6 +158,8 @@ public class CardScript : MonoBehaviour, IPointerClickHandler {
 							if(BattleManagerScript.Instance.selectedCard.target == null)
 							{
 								BattleManagerScript.Instance.selectedCard.myImage.color = Color.blue;
+								DeactivateBlueNotTargeted();
+								ActivateRedTargeted();
 							}
 
 							BattleManagerScript.Instance.selectedCard.selected = false;

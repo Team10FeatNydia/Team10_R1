@@ -105,6 +105,11 @@ MonoBehaviour:
   myManaCost: {fileID: 114415619991571764}
   myDescription: {fileID: 114174901072854288}
   myImage: {fileID: 114432271069691768}
+  target: {fileID: 0}
+  redTargeted: {fileID: 198910000861803706, guid: e9a2a4870b09ae44da2fff039faf5dfc,
+    type: 2}
+  blueNotTargeted: {fileID: 198523908982586330, guid: 226ba37a8564b524aa90508fe6d29e9d,
+    type: 2}
 --- !u!114 &114174901072854288
 MonoBehaviour:
   m_ObjectHideFlags: 1
