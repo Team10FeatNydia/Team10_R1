@@ -8,10 +8,10 @@ public enum EventName
 	EVENT_2 = 1,
 	SUB_EVENT_1 = 2,
 	EVENT_3 = 3,
-	EVENT_4 = 4,
+	SUB_EVENT_2 = 4,
+	EVENT_4 = 5,
 
-
-	TOTAL = 5
+	TOTAL = 6
 }
 
 [System.Serializable]
@@ -26,10 +26,10 @@ public class EventInformation
 public class EventManager : MonoBehaviour
 {
 	public static EventManager instance;
+	public GameObject path;
 	public List<EventInformation> eventInformationList = new List<EventInformation>();
 
 	//private GameObject player;
-	public GameObject path;
 	private EventCollider curCollider;
 
 	private void Awake ()

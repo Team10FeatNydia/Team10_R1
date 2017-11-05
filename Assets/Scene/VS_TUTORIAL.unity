@@ -299,6 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79497f6506934024dbeeb6d1e8ae2306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: {fileID: 586267053}
   eventInformationList:
   - eventListName: 0
     eventPrefab: {fileID: 1651636970905968, guid: 60fe9972a69bb544aa6f1e8250179f29,
@@ -317,10 +318,13 @@ MonoBehaviour:
       type: 2}
     isCleared: 0
   - eventListName: 4
+    eventPrefab: {fileID: 1892071805908008, guid: c40ba7d37e93e5849a75aae091472d24,
+      type: 2}
+    isCleared: 0
+  - eventListName: 5
     eventPrefab: {fileID: 1229297147655564, guid: a65a85c8d86818e4baf9d5e3445669b8,
       type: 2}
     isCleared: 0
-  path: {fileID: 586267053}
 --- !u!1 &292957260
 GameObject:
   m_ObjectHideFlags: 0
@@ -1227,9 +1231,12 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1038394619}
+  - component: {fileID: 1038394623}
+  - component: {fileID: 1038394622}
   - component: {fileID: 1038394620}
+  - component: {fileID: 1038394621}
   m_Layer: 0
-  m_Name: Point (14)
+  m_Name: Sub Event B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1265,6 +1272,63 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStoppingPoint: 0
+--- !u!114 &1038394621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1038394618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32f4ae4814c5d774ea8e68d0eca43b3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: 4
+--- !u!61 &1038394622
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1038394618}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!50 &1038394623
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1038394618}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &1108254521
 GameObject:
   m_ObjectHideFlags: 0
@@ -2679,4 +2743,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32f4ae4814c5d774ea8e68d0eca43b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventName: 4
+  eventName: 5
