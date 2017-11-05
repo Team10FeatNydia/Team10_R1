@@ -5,17 +5,27 @@ using UnityEngine;
 public class EventCollider : MonoBehaviour
 {
 	public EventName eventName;
+	float timer = 0.0f;
 
-	void OnTriggerEnter(Collider other)
+	void Update ()
 	{
-		if (other.gameObject.tag == "Player")
+		if (timer >= 1.0f)
 		{
 			EventManager.instance.StartEvent (this);
+			timer = 0.0f;
 		}
 	}
 
-	public void SetColliderActive (bool _bool)
+	public void SetColliderActive (bool active)
 	{
-		GetComponent<BoxCollider> ().enabled = _bool;
+		GetComponent<BoxCollider2D> ().enabled = active;
+	}
+
+	void OnTriggerStay2D (Collider2D other)
+	{
+		if (other.gameObject.tag == "Player")
+		{
+			timer += Time.deltaTime;
+		}
 	}
 }

@@ -7,12 +7,11 @@ public class NodeButton : MonoBehaviour
 {
 	void Start ()
 	{
-		GetComponentInChildren<Button> ().onClick.AddListener (Clear);
+		GetComponent<Button> ().onClick.AddListener (Clear);
 	}
 
-	public void Clear()
+	public void Clear ()
 	{
-		GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerMovementScript> ().enabled = true;
 		EventManager.instance.ClearEvent ();
 		Destroy (transform.parent.parent.gameObject);
 	}

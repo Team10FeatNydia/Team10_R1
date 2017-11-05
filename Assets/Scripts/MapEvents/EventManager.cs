@@ -6,9 +6,10 @@ public enum EventName
 {
 	EVENT_1 = 0,
 	EVENT_2 = 1,
-	EVENT_3 = 2,
-	EVENT_4 = 3,
-	EVENT_5 = 4,
+	SUB_EVENT_1 = 2,
+	EVENT_3 = 3,
+	EVENT_4 = 4,
+
 
 	TOTAL = 5
 }
@@ -27,7 +28,8 @@ public class EventManager : MonoBehaviour
 	public static EventManager instance;
 	public List<EventInformation> eventInformationList = new List<EventInformation>();
 
-	private GameObject player;
+	//private GameObject player;
+	public GameObject path;
 	private EventCollider curCollider;
 
 	private void Awake ()
@@ -37,7 +39,7 @@ public class EventManager : MonoBehaviour
 
 	private void Start ()
 	{
-		player = GameObject.Find ("Player");
+		//player = GameObject.Find ("Player");
 	}
 
 	public void StartEvent (EventCollider collider)
@@ -49,16 +51,17 @@ public class EventManager : MonoBehaviour
 
 		curCollider = collider;
 		curCollider.SetColliderActive (false);
-		InitEvent (curCollider.eventName);
+		InitEvent ();
 	}
 
 	public void ClearEvent ()
 	{
 		eventInformationList [(int)curCollider.eventName].isCleared = true;
-		player.GetComponent<PlayerMovementScript> ().enabled = true;
+		//player.GetComponent<PlayerMovementScript> ().enabled = true;
+		path.GetComponent<MovementPath> ().enabled = true;
 		Debug.Log ("Event done!");
 		Invoke ("ResetTrigger", 3.0f);
-		curCollider.transform.parent.GetComponent<MeshRenderer> ().material.color = Color.gray;
+		//curCollider.transform.parent.GetComponent<MeshRenderer> ().material.color = Color.gray;
 	}
 
 	public void ResetTrigger ()
@@ -67,19 +70,20 @@ public class EventManager : MonoBehaviour
 		CancelInvoke ();
 	}
 
-	public void InitEvent (EventName name)
+	public void InitEvent ()
 	{
-		int index = (int)name;
+		int index = (int)curCollider.eventName;
 		if (eventInformationList [index].isCleared) 
 		{
 			Debug.Log ("This event has already cleared!");
 		}
 		else
 		{
-			if (index == 0 || (index > 0 && eventInformationList[index - 1].isCleared))
+			if (index == 0 || (index > 0 && eventInformationList [index - 1].isCleared))
 			{
-				player.GetComponent<PlayerMovementScript> ().enabled = false;
-				Instantiate(eventInformationList [index].eventPrefab);
+				//player.GetComponent<PlayerMovementScript> ().enabled = false;
+				path.GetComponent<MovementPath> ().enabled = false;
+				Instantiate (eventInformationList [index].eventPrefab);
 				return;
 			}
 			else

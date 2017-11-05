@@ -117,6 +117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5958370}
   - component: {fileID: 5958371}
+  - component: {fileID: 5958372}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -149,6 +150,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5958372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 5958369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32f4ae4814c5d774ea8e68d0eca43b3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: 3
 --- !u!1 &157564887
 GameObject:
   m_ObjectHideFlags: 0
@@ -621,7 +634,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventInformationList:
   - eventListName: 0
-    eventPrefab: {fileID: 1114905057048978, guid: 60fe9972a69bb544aa6f1e8250179f29,
+    eventPrefab: {fileID: 1651636970905968, guid: 60fe9972a69bb544aa6f1e8250179f29,
       type: 2}
     isCleared: 0
   - eventListName: 1
@@ -633,7 +646,7 @@ MonoBehaviour:
       type: 2}
     isCleared: 0
   - eventListName: 3
-    eventPrefab: {fileID: 1162402788976504, guid: 64967aceab72362459035fcdbac89f81,
+    eventPrefab: {fileID: 1229297147655564, guid: a65a85c8d86818e4baf9d5e3445669b8,
       type: 2}
     isCleared: 0
 --- !u!1 &773648606
