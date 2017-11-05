@@ -1,0 +1,784 @@
+fileFormatVersion: 2
+guid: 695e8dc945f505a4a81e4e7b2afaa29e
+timeCreated: 1509897048
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: Box005
+    100002: Box005 1
+    100004: Box006
+    100006: Box006 1
+    100008: Box007
+    100010: Box008
+    100012: Box009
+    100014: Box009 1
+    100016: Box010
+    100018: Box010 1
+    100020: Box011
+    100022: Box012
+    100024: Box016
+    100026: Box017
+    100028: Box018
+    100030: Box019
+    100032: Box020
+    100034: Box021
+    100036: Box022
+    100038: Box024
+    100040: Box025
+    100042: Box026
+    100044: Box027
+    100046: Box028
+    100048: Box029
+    100050: chair_stone
+    100052: chair_wood
+    100054: Cone001
+    100056: Cone001 1
+    100058: Cone002
+    100060: Cone003
+    100062: Cone003 1
+    100064: Cone004
+    100066: Cone004 1
+    100068: Cone005
+    100070: Cone006
+    100072: Cone007
+    100074: Cylinder002
+    100076: Cylinder003
+    100078: Cylinder003 1
+    100080: Cylinder003 2
+    100082: Cylinder003 3
+    100084: Cylinder003 4
+    100086: Cylinder004
+    100088: Cylinder004 1
+    100090: Cylinder004 2
+    100092: Cylinder007
+    100094: Cylinder008
+    100096: Cylinder022
+    100098: Cylinder032
+    100100: Cylinder039
+    100102: Cylinder040
+    100104: Cylinder041
+    100106: Cylinder042
+    100108: Cylinder056
+    100110: Cylinder057
+    100112: Cylinder060
+    100114: Cylinder062
+    100116: Cylinder063
+    100118: Cylinder064
+    100120: Cylinder065
+    100122: Cylinder066
+    100124: Cylinder067
+    100126: Cylinder068
+    100128: Cylinder069
+    100130: Cylinder072
+    100132: Cylinder073
+    100134: Cylinder074
+    100136: Cylinder075
+    100138: Cylinder076
+    100140: Cylinder077
+    100142: Cylinder078
+    100144: Cylinder079
+    100146: Cylinder080
+    100148: Cylinder081
+    100150: Cylinder082
+    100152: Cylinder083
+    100154: enemy01
+    100156: enemy02
+    100158: gravestone01
+    100160: gravestone01 1
+    100162: gravestone03
+    100164: gravestone04
+    100166: Group004
+    100168: Group005
+    100170: Group012
+    100172: Group015
+    100174: Group016
+    100176: Group017
+    100178: Group018
+    100180: Group019
+    100182: Group020
+    100184: Group021
+    100186: Group022
+    100188: Group023
+    100190: Group024
+    100192: Group028
+    100194: Group039
+    100196: Group040
+    100198: Group041
+    100200: Group042
+    100202: king
+    100204: Object001
+    100206: Object002
+    100208: Object002 1
+    100210: Object003
+    100212: Object003 1
+    100214: Object004
+    100216: Object004 1
+    100218: Object005
+    100220: Object006
+    100222: Object007
+    100224: Object008
+    100226: Object011
+    100228: pillar003
+    100230: pillar004
+    100232: pillar01
+    100234: pillar02
+    100236: Plane001
+    100238: Plane002
+    100240: Plane040
+    100242: Plane041
+    100244: Plane043
+    100246: Plane044
+    100248: Plane045
+    100250: Plane050
+    100252: Plane051
+    100254: player003
+    100256: player_sword
+    100258: queen
+    100260: Sphere001
+    100262: Sphere002
+    100264: Sphere003
+    100266: Sphere004
+    100268: Sphere005
+    100270: Sphere006
+    100272: Sphere009
+    100274: Sphere010
+    100276: Sphere011
+    100278: Sphere012
+    100280: Sphere013
+    100282: Sphere014
+    100284: Sphere015
+    100286: Sphere016
+    100288: Sphere017
+    100290: Sphere018
+    100292: Sphere019
+    100294: Sphere020
+    100296: Sphere021
+    100298: Sphere022
+    100300: Sphere023
+    100302: Sphere024
+    100304: Sphere025
+    100306: Sphere026
+    100308: Sphere027
+    100310: Sphere028
+    100312: Sphere029
+    100314: //RootNode
+    400000: Box005
+    400002: Box005 1
+    400004: Box006
+    400006: Box006 1
+    400008: Box007
+    400010: Box008
+    400012: Box009
+    400014: Box009 1
+    400016: Box010
+    400018: Box010 1
+    400020: Box011
+    400022: Box012
+    400024: Box016
+    400026: Box017
+    400028: Box018
+    400030: Box019
+    400032: Box020
+    400034: Box021
+    400036: Box022
+    400038: Box024
+    400040: Box025
+    400042: Box026
+    400044: Box027
+    400046: Box028
+    400048: Box029
+    400050: chair_stone
+    400052: chair_wood
+    400054: Cone001
+    400056: Cone001 1
+    400058: Cone002
+    400060: Cone003
+    400062: Cone003 1
+    400064: Cone004
+    400066: Cone004 1
+    400068: Cone005
+    400070: Cone006
+    400072: Cone007
+    400074: Cylinder002
+    400076: Cylinder003
+    400078: Cylinder003 1
+    400080: Cylinder003 2
+    400082: Cylinder003 3
+    400084: Cylinder003 4
+    400086: Cylinder004
+    400088: Cylinder004 1
+    400090: Cylinder004 2
+    400092: Cylinder007
+    400094: Cylinder008
+    400096: Cylinder022
+    400098: Cylinder032
+    400100: Cylinder039
+    400102: Cylinder040
+    400104: Cylinder041
+    400106: Cylinder042
+    400108: Cylinder056
+    400110: Cylinder057
+    400112: Cylinder060
+    400114: Cylinder062
+    400116: Cylinder063
+    400118: Cylinder064
+    400120: Cylinder065
+    400122: Cylinder066
+    400124: Cylinder067
+    400126: Cylinder068
+    400128: Cylinder069
+    400130: Cylinder072
+    400132: Cylinder073
+    400134: Cylinder074
+    400136: Cylinder075
+    400138: Cylinder076
+    400140: Cylinder077
+    400142: Cylinder078
+    400144: Cylinder079
+    400146: Cylinder080
+    400148: Cylinder081
+    400150: Cylinder082
+    400152: Cylinder083
+    400154: enemy01
+    400156: enemy02
+    400158: gravestone01
+    400160: gravestone01 1
+    400162: gravestone03
+    400164: gravestone04
+    400166: Group004
+    400168: Group005
+    400170: Group012
+    400172: Group015
+    400174: Group016
+    400176: Group017
+    400178: Group018
+    400180: Group019
+    400182: Group020
+    400184: Group021
+    400186: Group022
+    400188: Group023
+    400190: Group024
+    400192: Group028
+    400194: Group039
+    400196: Group040
+    400198: Group041
+    400200: Group042
+    400202: king
+    400204: Object001
+    400206: Object002
+    400208: Object002 1
+    400210: Object003
+    400212: Object003 1
+    400214: Object004
+    400216: Object004 1
+    400218: Object005
+    400220: Object006
+    400222: Object007
+    400224: Object008
+    400226: Object011
+    400228: pillar003
+    400230: pillar004
+    400232: pillar01
+    400234: pillar02
+    400236: Plane001
+    400238: Plane002
+    400240: Plane040
+    400242: Plane041
+    400244: Plane043
+    400246: Plane044
+    400248: Plane045
+    400250: Plane050
+    400252: Plane051
+    400254: player003
+    400256: player_sword
+    400258: queen
+    400260: Sphere001
+    400262: Sphere002
+    400264: Sphere003
+    400266: Sphere004
+    400268: Sphere005
+    400270: Sphere006
+    400272: Sphere009
+    400274: Sphere010
+    400276: Sphere011
+    400278: Sphere012
+    400280: Sphere013
+    400282: Sphere014
+    400284: Sphere015
+    400286: Sphere016
+    400288: Sphere017
+    400290: Sphere018
+    400292: Sphere019
+    400294: Sphere020
+    400296: Sphere021
+    400298: Sphere022
+    400300: Sphere023
+    400302: Sphere024
+    400304: Sphere025
+    400306: Sphere026
+    400308: Sphere027
+    400310: Sphere028
+    400312: Sphere029
+    400314: //RootNode
+    2300000: Box005
+    2300002: Box005 1
+    2300004: Box006
+    2300006: Box006 1
+    2300008: Box007
+    2300010: Box008
+    2300012: Box009
+    2300014: Box009 1
+    2300016: Box010
+    2300018: Box010 1
+    2300020: Box011
+    2300022: Box012
+    2300024: Box016
+    2300026: Box017
+    2300028: Box018
+    2300030: Box019
+    2300032: Box020
+    2300034: Box021
+    2300036: Box022
+    2300038: Box024
+    2300040: Box025
+    2300042: Box026
+    2300044: Box027
+    2300046: Box028
+    2300048: Box029
+    2300050: Cone001
+    2300052: Cone001 1
+    2300054: Cone002
+    2300056: Cone003
+    2300058: Cone003 1
+    2300060: Cone004
+    2300062: Cone004 1
+    2300064: Cone005
+    2300066: Cone006
+    2300068: Cone007
+    2300070: Cylinder002
+    2300072: Cylinder003
+    2300074: Cylinder003 1
+    2300076: Cylinder003 2
+    2300078: Cylinder003 3
+    2300080: Cylinder003 4
+    2300082: Cylinder007
+    2300084: Cylinder008
+    2300086: Cylinder022
+    2300088: Cylinder032
+    2300090: Cylinder039
+    2300092: Cylinder040
+    2300094: Cylinder041
+    2300096: Cylinder042
+    2300098: Cylinder056
+    2300100: Cylinder057
+    2300102: Cylinder060
+    2300104: Cylinder062
+    2300106: Cylinder063
+    2300108: Cylinder064
+    2300110: Cylinder065
+    2300112: Cylinder066
+    2300114: Cylinder067
+    2300116: Cylinder068
+    2300118: Cylinder069
+    2300120: Cylinder072
+    2300122: Cylinder073
+    2300124: Cylinder074
+    2300126: Cylinder075
+    2300128: Cylinder076
+    2300130: Cylinder077
+    2300132: Cylinder078
+    2300134: Cylinder079
+    2300136: Cylinder080
+    2300138: Cylinder081
+    2300140: Cylinder082
+    2300142: Cylinder083
+    2300144: gravestone01 1
+    2300146: gravestone03
+    2300148: gravestone04
+    2300150: Object001
+    2300152: Object002
+    2300154: Object002 1
+    2300156: Object003
+    2300158: Object003 1
+    2300160: Object004
+    2300162: Object004 1
+    2300164: Object005
+    2300166: Object006
+    2300168: Object007
+    2300170: Object008
+    2300172: Object011
+    2300174: pillar003
+    2300176: pillar004
+    2300178: pillar01
+    2300180: pillar02
+    2300182: Plane001
+    2300184: Plane002
+    2300186: Plane040
+    2300188: Plane041
+    2300190: Plane043
+    2300192: Plane044
+    2300194: Plane045
+    2300196: Plane050
+    2300198: Plane051
+    2300200: player003
+    2300202: Sphere001
+    2300204: Sphere002
+    2300206: Sphere003
+    2300208: Sphere004
+    2300210: Sphere005
+    2300212: Sphere006
+    2300214: Sphere009
+    2300216: Sphere010
+    2300218: Sphere011
+    2300220: Sphere012
+    2300222: Sphere013
+    2300224: Sphere014
+    2300226: Sphere015
+    2300228: Sphere016
+    2300230: Sphere017
+    2300232: Sphere018
+    2300234: Sphere019
+    2300236: Sphere020
+    2300238: Sphere021
+    2300240: Sphere022
+    2300242: Sphere023
+    2300244: Sphere024
+    2300246: Sphere025
+    2300248: Sphere026
+    2300250: Sphere027
+    2300252: Sphere028
+    2300254: Sphere029
+    3300000: Box005
+    3300002: Box005 1
+    3300004: Box006
+    3300006: Box006 1
+    3300008: Box007
+    3300010: Box008
+    3300012: Box009
+    3300014: Box009 1
+    3300016: Box010
+    3300018: Box010 1
+    3300020: Box011
+    3300022: Box012
+    3300024: Box016
+    3300026: Box017
+    3300028: Box018
+    3300030: Box019
+    3300032: Box020
+    3300034: Box021
+    3300036: Box022
+    3300038: Box024
+    3300040: Box025
+    3300042: Box026
+    3300044: Box027
+    3300046: Box028
+    3300048: Box029
+    3300050: Cone001
+    3300052: Cone001 1
+    3300054: Cone002
+    3300056: Cone003
+    3300058: Cone003 1
+    3300060: Cone004
+    3300062: Cone004 1
+    3300064: Cone005
+    3300066: Cone006
+    3300068: Cone007
+    3300070: Cylinder002
+    3300072: Cylinder003
+    3300074: Cylinder003 1
+    3300076: Cylinder003 2
+    3300078: Cylinder003 3
+    3300080: Cylinder003 4
+    3300082: Cylinder007
+    3300084: Cylinder008
+    3300086: Cylinder022
+    3300088: Cylinder032
+    3300090: Cylinder039
+    3300092: Cylinder040
+    3300094: Cylinder041
+    3300096: Cylinder042
+    3300098: Cylinder056
+    3300100: Cylinder057
+    3300102: Cylinder060
+    3300104: Cylinder062
+    3300106: Cylinder063
+    3300108: Cylinder064
+    3300110: Cylinder065
+    3300112: Cylinder066
+    3300114: Cylinder067
+    3300116: Cylinder068
+    3300118: Cylinder069
+    3300120: Cylinder072
+    3300122: Cylinder073
+    3300124: Cylinder074
+    3300126: Cylinder075
+    3300128: Cylinder076
+    3300130: Cylinder077
+    3300132: Cylinder078
+    3300134: Cylinder079
+    3300136: Cylinder080
+    3300138: Cylinder081
+    3300140: Cylinder082
+    3300142: Cylinder083
+    3300144: gravestone01 1
+    3300146: gravestone03
+    3300148: gravestone04
+    3300150: Object001
+    3300152: Object002
+    3300154: Object002 1
+    3300156: Object003
+    3300158: Object003 1
+    3300160: Object004
+    3300162: Object004 1
+    3300164: Object005
+    3300166: Object006
+    3300168: Object007
+    3300170: Object008
+    3300172: Object011
+    3300174: pillar003
+    3300176: pillar004
+    3300178: pillar01
+    3300180: pillar02
+    3300182: Plane001
+    3300184: Plane002
+    3300186: Plane040
+    3300188: Plane041
+    3300190: Plane043
+    3300192: Plane044
+    3300194: Plane045
+    3300196: Plane050
+    3300198: Plane051
+    3300200: player003
+    3300202: Sphere001
+    3300204: Sphere002
+    3300206: Sphere003
+    3300208: Sphere004
+    3300210: Sphere005
+    3300212: Sphere006
+    3300214: Sphere009
+    3300216: Sphere010
+    3300218: Sphere011
+    3300220: Sphere012
+    3300222: Sphere013
+    3300224: Sphere014
+    3300226: Sphere015
+    3300228: Sphere016
+    3300230: Sphere017
+    3300232: Sphere018
+    3300234: Sphere019
+    3300236: Sphere020
+    3300238: Sphere021
+    3300240: Sphere022
+    3300242: Sphere023
+    3300244: Sphere024
+    3300246: Sphere025
+    3300248: Sphere026
+    3300250: Sphere027
+    3300252: Sphere028
+    3300254: Sphere029
+    4300000: Plane001
+    4300002: Cone001
+    4300004: Object002
+    4300006: Sphere005
+    4300008: Sphere002
+    4300010: Box006
+    4300012: Cylinder003
+    4300014: Object002
+    4300016: Box005
+    4300018: Sphere001
+    4300020: Plane041
+    4300022: Plane043
+    4300024: Sphere014
+    4300026: Box017
+    4300028: Sphere012
+    4300030: Box018
+    4300032: Sphere013
+    4300034: Box016
+    4300036: Sphere011
+    4300038: Box019
+    4300040: Box020
+    4300042: Object004
+    4300044: Cylinder063
+    4300046: Object005
+    4300048: Cylinder062
+    4300050: Object004
+    4300052: Cylinder065
+    4300054: Object003
+    4300056: Cylinder066
+    4300058: Cylinder064
+    4300060: Object003
+    4300062: Cylinder067
+    4300064: Object006
+    4300066: Cylinder068
+    4300068: Object007
+    4300070: Cylinder069
+    4300072: Object008
+    4300074: Box024
+    4300076: Plane050
+    4300078: Box025
+    4300080: Plane051
+    4300082: Sphere021
+    4300084: Sphere022
+    4300086: Sphere023
+    4300088: Sphere024
+    4300090: Sphere025
+    4300092: Sphere026
+    4300094: player003
+    4300096: pillar01
+    4300098: pillar02
+    4300100: pillar003
+    4300102: pillar004
+    4300104: gravestone04
+    4300106: gravestone03
+    4300108: gravestone01
+    4300110: Object001
+    4300112: Cylinder002
+    4300114: Cone005
+    4300116: Sphere009
+    4300118: Cylinder003
+    4300120: Cone006
+    4300122: Cylinder056
+    4300124: Cylinder057
+    4300126: Plane040
+    4300128: Sphere029
+    4300130: Sphere010
+    4300132: Cylinder060
+    4300134: Cylinder082
+    4300136: Box029
+    4300138: Cylinder079
+    4300140: Cylinder080
+    4300142: Cylinder081
+    4300144: Box028
+    4300146: Cone007
+    4300148: Cylinder040
+    4300150: Cylinder032
+    4300152: Cylinder039
+    4300154: Cylinder078
+    4300156: Cone003
+    4300158: Plane002
+    4300160: Cylinder042
+    4300162: Cylinder041
+    4300164: Sphere028
+    4300166: Cone004
+    4300168: Cylinder077
+    4300170: Cylinder083
+    4300172: Cylinder003
+    4300174: Box012
+    4300176: Box011
+    4300178: Box009
+    4300180: Box010
+    4300182: Box006
+    4300184: Box005
+    4300186: Cylinder003
+    4300188: Cone001
+    4300190: Cylinder022
+    4300192: Box010
+    4300194: Cone003
+    4300196: Cylinder008
+    4300198: Cylinder072
+    4300200: Sphere006
+    4300202: Box009
+    4300204: Cylinder007
+    4300206: Box026
+    4300208: Sphere027
+    4300210: Object011
+    4300212: Cylinder073
+    4300214: Cone004
+    4300216: Box027
+    4300218: Cylinder074
+    4300220: Cylinder075
+    4300222: Cylinder076
+    4300224: Cone002
+    4300226: Cylinder003
+    4300228: Sphere004
+    4300230: Box007
+    4300232: Box008
+    4300234: Sphere003
+    4300236: Sphere020
+    4300238: Sphere017
+    4300240: Sphere015
+    4300242: Sphere018
+    4300244: Sphere016
+    4300246: Sphere019
+    4300248: Box022
+    4300250: Plane045
+    4300252: Plane044
+    4300254: Box021
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
