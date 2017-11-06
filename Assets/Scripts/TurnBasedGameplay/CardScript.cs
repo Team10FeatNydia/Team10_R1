@@ -8,6 +8,7 @@ public enum CardType
 {
 	ATTACK,
 	HEAL,
+	STUN,
 	TOTAL,
 }
 
@@ -173,8 +174,11 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 						{
 							if(BattleManagerScript.Instance.enemyList[i] != null)
 							{
-								BattleManagerScript.Instance.enemyList[i].redTarget.Stop();
-								BattleManagerScript.Instance.enemyList[i].blueTarget.Play();
+								if(interactable)
+								{
+									BattleManagerScript.Instance.enemyList[i].redTarget.Stop();
+									BattleManagerScript.Instance.enemyList[i].blueTarget.Play();
+								}
 							}
 						}
 

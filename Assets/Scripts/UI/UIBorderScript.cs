@@ -18,6 +18,6 @@ public class UIBorderScript : MonoBehaviour {
 
 	void ManaActive()
 	{
-		transform.GetChild (5).gameObject.SetActive (true);
+		transform.GetChild (4).gameObject.SetActive (true);
 	}
 }
