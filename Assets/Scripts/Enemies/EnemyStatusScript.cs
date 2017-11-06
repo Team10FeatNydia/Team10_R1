@@ -38,6 +38,9 @@ public class EnemyStatusScript : MonoBehaviour
 	public float easeTime; 
 	public ParticleSystem blueTarget;
 	public ParticleSystem redTarget;
+	public ParticleSystem swordAttackPlayer;
+	//public ParticleSystem gotHitEnemy;
+	public ParticleSystem deathEffectEnemy;
 
 	void Start()
 	{
@@ -101,8 +104,9 @@ public class EnemyStatusScript : MonoBehaviour
 	{
 		if (health <= 0)
 		{
+			deathEffectEnemy.Play();
 			BattleManagerScript.Instance.enemyList.Remove(this);
-			Destroy(this.gameObject);
+			Destroy(this.gameObject, 2);
 		}
 	}
 

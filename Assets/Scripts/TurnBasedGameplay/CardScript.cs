@@ -36,9 +36,6 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 	public Image myImage;
 	public EnemyStatusScript target;
 
-	public ParticleSystem redTargeted;
-	public ParticleSystem blueNotTargeted;
-
 	// Use this for initialization
 	void Start () 
 	{
@@ -54,50 +51,6 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 	void Update () 
 	{
 		
-	}
-
-	void ActivateRedTargeted()
-	{
-		if(target)
-		{
-			if(redTargeted.isStopped)
-			{
-				redTargeted.Play();
-			}
-		}
-	}
-
-	void DeactivateRedTargeted()
-	{
-		if(!target)
-		{
-			if(redTargeted.isPlaying)
-			{
-				redTargeted.Stop();
-			}
-		}
-	}
-
-	void ActivateBlueNotTargeted()
-	{
-		if(!target)
-		{
-			if(blueNotTargeted.isStopped)
-			{
-				blueNotTargeted.Play();
-			}
-		}
-	}
-
-	void DeactivateBlueNotTargeted()
-	{
-		if(target)
-		{
-			if(blueNotTargeted.isPlaying)
-			{
-				blueNotTargeted.Stop();
-			}
-		}
 	}
 
 	public void HideSelf()

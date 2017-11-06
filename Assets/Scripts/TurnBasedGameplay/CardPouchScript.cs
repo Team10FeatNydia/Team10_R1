@@ -120,6 +120,7 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 				}
 
 
+				selectedCards[i].target.swordAttackPlayer.Play();
 				selectedCards[i].target.health -= selectedCards[i].myCard.cardEffect + spellsDmg;
 				battleManager.player.localPlayerData.health += spellsHeal;
 
