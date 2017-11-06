@@ -35,7 +35,7 @@ public class PlayerMovementScript : MonoBehaviour
 
 			ray = Camera.main.ScreenPointToRay (Input.GetTouch(0).position);
 
-			if(Physics.Raycast(ray, out hit))
+			if (Physics.Raycast(ray, out hit))
 			{
 				isTap = true;
 				endPoint = hit.point;
@@ -43,11 +43,11 @@ public class PlayerMovementScript : MonoBehaviour
 			}
 		}
 
-		if(isTap && !Mathf.Approximately(gameObject.transform.position.magnitude, endPoint.magnitude))
+		if (isTap && !Mathf.Approximately(gameObject.transform.position.magnitude, endPoint.magnitude))
 		{
 			gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, endPoint, 1 / (duration * (Vector3.Distance(gameObject.transform.position, endPoint))));
 		}
-		else if(isTap && Mathf.Approximately(gameObject.transform.position.magnitude, endPoint.magnitude))
+		else if (isTap && Mathf.Approximately(gameObject.transform.position.magnitude, endPoint.magnitude))
 		{
 			isTap = false;
 		}
@@ -55,9 +55,9 @@ public class PlayerMovementScript : MonoBehaviour
 	#endregion Movement
 
 	#region ChangeScenePlayer
-	public void ArenaScene()
+	public void ArenaScene ()
 	{
-		SceneManager.LoadScene(2);
+		SceneManager.LoadScene (2);
 	}
 	#endregion ChangeScenePlayer
 }

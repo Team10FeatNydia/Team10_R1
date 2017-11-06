@@ -10,8 +10,8 @@ public class PlayerStatusScript : MonoBehaviour
 
 	[Header("Stats")]
 	public PlayerStatistics localPlayerData = new PlayerStatistics();
-//    public int maxHealth = 100;
-//	public int health;
+    // public int MaxHP = 100;
+    public float HP;
 //	public int manaPoints;
 
 
@@ -34,6 +34,7 @@ public class PlayerStatusScript : MonoBehaviour
     void Start()
     {
         //health = maxHealth ;
+        LoadData();
     }
 
 	void Update()
@@ -52,6 +53,8 @@ public class PlayerStatusScript : MonoBehaviour
 				isHit = false;
 			}
 		}
+
+        SaveData();
 	}
 
 	public void Respawn()
@@ -61,8 +64,15 @@ public class PlayerStatusScript : MonoBehaviour
 
 	public void SaveData()
 	{
-		GameManagerScript.Instance.savedPlayerData = localPlayerData;
+        PlayerStatSaver.mInstance.HP = HP;
+        //PlayerStatSaver.mInstance.MaxHP = MaxHP;
 	}
+
+    public void LoadData()
+    {
+        HP = PlayerStatSaver.mInstance.HP;
+        //MaxHP = PlayerStatSaver.mInstance.MaxHP;
+    }
 
 	public void Quit()
 	{
