@@ -28,6 +28,7 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
     public bool cardAction;
     public bool spellsAction;
     public int manaCheck;
+	public Animator UIBorderBar;
 
 	bool cardsLayedout = false;
 	bool spellsLayedout = false;
@@ -44,6 +45,7 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
     {
         battleManager = BattleManagerScript.Instance;
         GetComponent<Image>().sprite = defaultEye;
+//		UIBorderBar.SetBool("PlaySlideIn", false);
     }
 
     // Update is called once per frame
@@ -122,7 +124,6 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 				battleManager.player.localPlayerData.health += spellsHeal;
 
             }
-
             else if (selectedCards[i].myCard.cardType == CardType.HEAL)
             {
 				battleManager.player.localPlayerData.health += selectedCards[i].myCard.cardEffect + spellsHeal;
@@ -131,6 +132,32 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 					battleManager.enemyList[j].health -= spellsDmg;
 				}
             }
+			else if(selectedCards[i].myCard.cardType == CardType.STUN)
+			{
+				
+				bool kingless = true;
+
+				if(selectedCards[i].target.myType == EnemyType.KING)
+				{
+					kingless = false;
+				}
+
+				if(!kingless)
+				{
+					for(int j = 0; j < battleManager.enemyList.Count; j++)
+					{
+						if(battleManager.enemyList[j] != null)
+						{
+							if(battleManager.enemyList[j].myType == EnemyType.KNIGHT)
+							{
+								selectedCards[i].target = battleManager.enemyList[j];
+							}
+						}
+					}
+				}
+
+				if(!selectedCards[i].target.stunned) selectedCards[i].target.stunned = true;
+			}
 
 			battleManager.player.localPlayerData.manaPoints -= selectedCards[i].myCard.manaCost;
         }
@@ -233,7 +260,7 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
             cardScript.myCard = CardManagerScript.Instance.cardList[randNum];
             cardScript.cardPouch = this;
 
-            newCard.GetComponent<RectTransform>().localPosition = new Vector3(-135f * i - 150f, 0f, 0f);
+            newCard.GetComponent<RectTransform>().localPosition = new Vector3(-180f * i - 220f, 0f, 0f);
             newCard.transform.SetParent(this.transform.parent, true);
 
             displayedCards[i] = newCard;
@@ -289,7 +316,7 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 				spellsScript.mySpells = SpellsManagerScript.Instance.spellsList[randNum];
 				spellsScript.cardPouch = this;
 
-				newSpells.GetComponent<RectTransform>().localPosition = new Vector3(-135f * i - 150f, 0f, 0f);
+				newSpells.GetComponent<RectTransform>().localPosition = new Vector3(-180f * i - 220f, 0f, 0f);
 				newSpells.transform.SetParent(this.transform.parent, true);
 
 				displayedSpells[i] = newSpells;
@@ -352,6 +379,8 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 										DestroyCards();
 										battleManager.currTurn = BattleStates.PLAYER_TURN;
 										GetComponent<Image>().sprite = defaultEye;
+
+										UIBorderBar.Play("BorderSlideOut");
 									}
 									else
 									{
@@ -460,7 +489,7 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 				selectedCards[i].GetComponent<Image>().color = Color.white;
 			}
 
-			selectedCards[i].GetComponent<RectTransform>().localPosition = new Vector3(-135f * i + 300f, 0f, 0f);
+			selectedCards[i].GetComponent<RectTransform>().localPosition = new Vector3(-180f * i - 220f, 0f, 0f);
 			selectedCards[i].UpdateStats();
 			selectedCards[i].selected = false;
 		}
@@ -518,13 +547,45 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 			LayOutCards();
 			currState = PouchStates.ACTION_CARDS;
 			battleManager.currTurn = BattleStates.CHOOSE_CARDS;
+			UIBorderBar.Play("BorderSlideIn");
 		}
 		else if (battleManager.currTurn == BattleStates.CHOOSE_CARDS)
 		{
+
 			if(selectedCards.Count > 0 && currState == PouchStates.ACTION_CARDS)
 			{
 				DisplaySelectedCards();
 				battleManager.currTurn = BattleStates.CHOOSE_ENEMIES;
+
+				bool knightless = true;
+
+				for(int i = 0; i < battleManager.enemyList.Count; i++)
+				{
+					if(battleManager.enemyList[i].myType == EnemyType.KNIGHT)
+					{
+						knightless = false;
+					}
+				}
+
+				for(int i = 0; i < battleManager.enemyList.Count; i++)
+				{
+					if(!knightless)
+					{
+						if(battleManager.enemyList[i].myType == EnemyType.KING || battleManager.enemyList[i].myType == EnemyType.QUEEN)
+						{
+							battleManager.enemyList[i].interactable = false;
+						}
+						else
+						{
+							battleManager.enemyList[i].interactable = true;
+						}
+					}
+					else
+					{
+						battleManager.enemyList[i].interactable = true;
+
+					}
+				}
 			}
 		}
 		else if (battleManager.currTurn == BattleStates.CHOOSE_ENEMIES)

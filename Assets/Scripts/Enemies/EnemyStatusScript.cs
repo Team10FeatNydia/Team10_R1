@@ -23,6 +23,8 @@ public class EnemyStatusScript : MonoBehaviour
 	public int attack;
 	float posX;
 	float posY;
+	public bool stunned;
+	public bool interactable;
 
 	[Header("Combat")]
 	public bool targeted;
@@ -71,23 +73,26 @@ public class EnemyStatusScript : MonoBehaviour
 		}
 		else if(BattleManagerScript.Instance.currTurn == BattleStates.CHOOSE_ENEMIES)
 		{
-			if(BattleManagerScript.Instance.selectedCard != null)
+			if(interactable)
 			{
-				if(BattleManagerScript.Instance.selectedCard.target != null)
+				if(BattleManagerScript.Instance.selectedCard != null)
 				{
-					BattleManagerScript.Instance.selectedCard.target.redTarget.Stop();
-					BattleManagerScript.Instance.selectedCard.target.blueTarget.Play();
+					if(BattleManagerScript.Instance.selectedCard.target != null)
+					{
+						BattleManagerScript.Instance.selectedCard.target.redTarget.Stop();
+						BattleManagerScript.Instance.selectedCard.target.blueTarget.Play();
+					}
+
+					BattleManagerScript.Instance.selectedCard.target = this;
+					BattleManagerScript.Instance.selectedCard.myImage.color = Color.white;
+
+					//				for(int i = 0; i < BattleManagerScript.Instance.enemyList.Count; i++)
+					//				{
+					//					BattleManagerScript.Instance.enemyList[i].redTarget.Stop();
+					//				}
+
+					redTarget.Play();
 				}
-
-				BattleManagerScript.Instance.selectedCard.target = this;
-				BattleManagerScript.Instance.selectedCard.myImage.color = Color.white;
-
-//				for(int i = 0; i < BattleManagerScript.Instance.enemyList.Count; i++)
-//				{
-//					BattleManagerScript.Instance.enemyList[i].redTarget.Stop();
-//				}
-				
-				redTarget.Play();
 			}
 		}
 	}
@@ -109,160 +114,161 @@ public class EnemyStatusScript : MonoBehaviour
 
 	IEnumerator PerformBehaviour()
 	{
-		if(myType == EnemyType.NORMAL)
+		if(!stunned)
 		{
-			int rand = Random.Range(1, attack + 1);
-
-			Attack(rand);
-
-			yield return new WaitForSeconds(2f);
-
-			BattleManagerScript.Instance.enemyAction = true;
-		}
-		else if(myType == EnemyType.KNIGHT)
-		{
-			int rand;
-			bool kingless = true;
-
-			for(int i = 0; i < BattleManagerScript.Instance.enemyList.Count; i++)
+			if(myType == EnemyType.NORMAL)
 			{
-				if(BattleManagerScript.Instance.enemyList[i] != null)
-				{
-					if(BattleManagerScript.Instance.enemyList[i].myType == EnemyType.KING)
-					{
-						if(BattleManagerScript.Instance.enemyList[i].health < (20/100*(BattleManagerScript.Instance.enemyList[i].maxHealth)))
-						{
-							kingless = false;
-							rand = Random.Range(attack, (int)(attack * 1.5));
-							HeavyAttack(rand);
-							break;
-						}
-					}
-				}
-			}
+				int rand = Random.Range(1, attack + 1);
 
-			if(kingless)
-			{
-				rand = Random.Range(1, attack + 1);
 				Attack(rand);
+
+				yield return new WaitForSeconds(2f);
+
+				BattleManagerScript.Instance.enemyAction = true;
 			}
-
-			yield return new WaitForSeconds(2f);
-
-			BattleManagerScript.Instance.enemyAction = true;
-
-
-		}
-		else if(myType == EnemyType.QUEEN)
-		{
-			List<EnemyStatusScript> enemy = new List<EnemyStatusScript>();
-
-			for(int i = 0; i < BattleManagerScript.Instance.enemyList.Count; i++)
+			else if(myType == EnemyType.KNIGHT)
 			{
-				if(BattleManagerScript.Instance.enemyList[i] != null)
+				int rand;
+				bool kingless = true;
+
+				for(int i = 0; i < BattleManagerScript.Instance.enemyList.Count; i++)
 				{
-					if(BattleManagerScript.Instance.enemyList[i].health < (50 / 100 * (BattleManagerScript.Instance.enemyList[i].maxHealth)))
+					if(BattleManagerScript.Instance.enemyList[i] != null)
 					{
-						enemy.Add(BattleManagerScript.Instance.enemyList[i]);
-					}
-				}
-			}
-
-			bool kingless = true;
-			int heal = Random.Range(attack, (int)(attack * 1.5));
-
-			if(enemy.Count > 2)
-			{
-				HealTeam(heal + 2);
-			}
-			else if(enemy.Count > 0)
-			{
-				for(int i = 0; i < enemy.Count; i++)
-				{
-					if(enemy[i] != null)
-					{
-						if(enemy[i].myType == EnemyType.KING)
+						if(BattleManagerScript.Instance.enemyList[i].myType == EnemyType.KING)
 						{
-							kingless = false;
-							Heal(enemy[i], heal);
+							if(BattleManagerScript.Instance.enemyList[i].health < (20/100*(BattleManagerScript.Instance.enemyList[i].maxHealth)))
+							{
+								kingless = false;
+								rand = Random.Range(attack, (int)(attack * 1.5));
+								HeavyAttack(rand);
+								break;
+							}
 						}
 					}
 				}
 
 				if(kingless)
 				{
-					int rand = Random.Range(0, enemy.Count);
-
-					Heal(enemy[rand], heal);
+					rand = Random.Range(1, attack + 1);
+					Attack(rand);
 				}
+
+				yield return new WaitForSeconds(2f);
+
+				BattleManagerScript.Instance.enemyAction = true;
+
+
 			}
-			else
+			else if(myType == EnemyType.QUEEN)
 			{
-				int rand = Random.Range(1, attack + 1);
+				List<EnemyStatusScript> enemy = new List<EnemyStatusScript>();
 
-				Attack(rand);
-			}
-
-			yield return new WaitForSeconds(2f);
-
-			BattleManagerScript.Instance.enemyAction = true;
-
-
-		}
-		else if(myType == EnemyType.KING)
-		{
-			if(health < (40/100 * maxHealth))
-			{
-				bool knightless = true;
-
-				if(BattleManagerScript.Instance.enemyList.Count < 5)
+				for(int i = 0; i < BattleManagerScript.Instance.enemyList.Count; i++)
 				{
-					for(int i = 0; i < BattleManagerScript.Instance.enemyList.Count; i++)
+					if(BattleManagerScript.Instance.enemyList[i] != null)
 					{
-						if(BattleManagerScript.Instance.enemyList[i].myType == EnemyType.KNIGHT)
+						if(BattleManagerScript.Instance.enemyList[i].health < (50 / 100 * (BattleManagerScript.Instance.enemyList[i].maxHealth)))
 						{
-							knightless = false;
+							enemy.Add(BattleManagerScript.Instance.enemyList[i]);
 						}
 					}
 				}
 
-				if(knightless)
+				bool kingless = true;
+				int heal = Random.Range(attack, (int)(attack * 1.5));
+
+				if(enemy.Count > 2)
 				{
-					int rand = Random.Range(0, 4);
-
-					if(rand > 2)
+					HealTeam(heal + 2);
+				}
+				else if(enemy.Count > 0)
+				{
+					for(int i = 0; i < enemy.Count; i++)
 					{
-						GameObject newSpawn = Resources.Load("Prefabs/Enemies/Knight") as GameObject;
-						EnemyStatusScript spawnScript = newSpawn.GetComponent<EnemyStatusScript>();
-						BattleManagerScript.Instance.enemyList.Add(spawnScript);
-						BattleManagerScript.Instance.enemyAction = true;
+						if(enemy[i] != null)
+						{
+							if(enemy[i].myType == EnemyType.KING)
+							{
+								kingless = false;
+								Heal(enemy[i], heal);
+							}
+						}
 					}
-					else if(rand > 0)
-					{
-						GameObject newSpawn = Resources.Load("Prefabs/Enemies/Normal") as GameObject;
-						EnemyStatusScript spawnScript = newSpawn.GetComponent<EnemyStatusScript>();
-						BattleManagerScript.Instance.enemyList.Add(spawnScript);
-						BattleManagerScript.Instance.enemyAction = true;
-					}
-					else
-					{
-						rand = Random.Range(attack, (int)(attack * 1.5));
 
-						HeavyAttack(rand);
+					if(kingless)
+					{
+						int rand = Random.Range(0, enemy.Count);
+
+						Heal(enemy[rand], heal);
 					}
 				}
+				else
+				{
+					int rand = Random.Range(1, attack + 1);
+
+					Attack(rand);
+				}
+
+				yield return new WaitForSeconds(2f);
+
+				BattleManagerScript.Instance.enemyAction = true;
+
 			}
-			else
+			else if(myType == EnemyType.KING)
 			{
-				int rand = Random.Range(1, attack + 1);
+				if(health < (40/100 * maxHealth))
+				{
+					bool knightless = true;
 
-				Attack(rand);
+					if(BattleManagerScript.Instance.enemyList.Count < 5)
+					{
+						for(int i = 0; i < BattleManagerScript.Instance.enemyList.Count; i++)
+						{
+							if(BattleManagerScript.Instance.enemyList[i].myType == EnemyType.KNIGHT)
+							{
+								knightless = false;
+							}
+						}
+					}
+
+					if(knightless)
+					{
+						int rand = Random.Range(0, 4);
+
+						if(rand > 2)
+						{
+							GameObject newSpawn = Resources.Load("Prefabs/Enemies/Knight") as GameObject;
+							EnemyStatusScript spawnScript = newSpawn.GetComponent<EnemyStatusScript>();
+							BattleManagerScript.Instance.enemyList.Add(spawnScript);
+							BattleManagerScript.Instance.enemyAction = true;
+						}
+						else if(rand > 0)
+						{
+							GameObject newSpawn = Resources.Load("Prefabs/Enemies/Normal") as GameObject;
+							EnemyStatusScript spawnScript = newSpawn.GetComponent<EnemyStatusScript>();
+							BattleManagerScript.Instance.enemyList.Add(spawnScript);
+							BattleManagerScript.Instance.enemyAction = true;
+						}
+						else
+						{
+							rand = Random.Range(attack, (int)(attack * 1.5));
+
+							HeavyAttack(rand);
+						}
+					}
+				}
+				else
+				{
+					int rand = Random.Range(1, attack + 1);
+
+					Attack(rand);
+				}
+
+				yield return new WaitForSeconds(2f);
+
+				BattleManagerScript.Instance.enemyAction = true;
 			}
-
-			yield return new WaitForSeconds(2f);
-
-			BattleManagerScript.Instance.enemyAction = true;
-
 		}
 	}
 
