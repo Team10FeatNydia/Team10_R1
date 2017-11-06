@@ -56,30 +56,30 @@ MonoBehaviour:
     cardEffect: 1
     manaCost: 1
     description: Attack 1
-    cardImage: {fileID: 21300000, guid: 741b8a0e4b5cff1489c949555319324c, type: 3}
+    cardImage: {fileID: 21300000, guid: 58d380ec67c9f794ab560d5ddb4da33a, type: 3}
     isSpawned: 0
   - cardType: 0
     cardEffect: 2
     manaCost: 3
     description: Attack 2
-    cardImage: {fileID: 21300000, guid: 0fff007a99ca98d4c91c9fe67cd51dfd, type: 3}
+    cardImage: {fileID: 21300000, guid: 553a75c1939d700418f29fbf6d575908, type: 3}
     isSpawned: 0
   - cardType: 0
     cardEffect: 4
     manaCost: 5
     description: Attack 3
-    cardImage: {fileID: 21300000, guid: f0bab52d6fa20cf45bd0b47740a53ced, type: 3}
+    cardImage: {fileID: 21300000, guid: e35b14a888a6149488d8173e32f333c5, type: 3}
     isSpawned: 0
   - cardType: 1
     cardEffect: 2
     manaCost: 3
     description: Attack 1
-    cardImage: {fileID: 21300000, guid: c32b4789f4503484cb1855426cda2e4e, type: 3}
+    cardImage: {fileID: 21300000, guid: cfa2deb9d9034ee42a4d58a75c61b278, type: 3}
     isSpawned: 0
   - cardType: 1
     cardEffect: 4
     manaCost: 4
     description: Heal 2
-    cardImage: {fileID: 21300000, guid: c32b4789f4503484cb1855426cda2e4e, type: 3}
+    cardImage: {fileID: 21300000, guid: e9c9cf5cce0314e4cb163d54e437ea99, type: 3}
     isSpawned: 0
   cardPrefab: {fileID: 1459307599076486, guid: b7a3ae33cb938e9448597334c395fc37, type: 2}
