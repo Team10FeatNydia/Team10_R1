@@ -127,6 +127,7 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
             }
             else if (selectedCards[i].myCard.cardType == CardType.HEAL)
             {
+				battleManager.player.healingPlayer.Play();
 				battleManager.player.localPlayerData.health += selectedCards[i].myCard.cardEffect + spellsHeal;
 				for(int j = 0; j < battleManager.enemyList.Count; j++)
 				{
@@ -180,7 +181,6 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 		{
 			battleManager.enemyList[i].blueTarget.Stop();
 			battleManager.enemyList[i].redTarget.Stop();
-
 		}
 
         //battleManager.target.CheckHealth();

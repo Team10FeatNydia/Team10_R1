@@ -57,12 +57,14 @@ public class EnemyStatusScript : MonoBehaviour
 
 	public void Attack(int damage)
 	{
+		player.enemyAttack.Play();
 		player.localPlayerData.health -= damage;
 
 	}
 
 	public void HeavyAttack(int damage)
 	{
+		player.enemyHeavyAttack.Play();
 		player.localPlayerData.health -= damage;
 	}
 

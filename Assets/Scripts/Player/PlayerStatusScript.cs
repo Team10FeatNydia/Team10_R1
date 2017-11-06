@@ -25,6 +25,11 @@ public class PlayerStatusScript : MonoBehaviour
 	public float invincibleTimer;
 	public float invincibleDuration;
 
+	[Header("Particle System Effect")]
+	public ParticleSystem enemyAttack;
+	public ParticleSystem enemyHeavyAttack;
+	public ParticleSystem healingPlayer;
+
 
     void Start()
     {
