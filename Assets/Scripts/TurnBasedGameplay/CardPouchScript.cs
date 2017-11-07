@@ -23,6 +23,7 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
     public Sprite defaultEye;
     public Vector2 fingerStartPos = Vector2.zero;
     public float minSwipeDist = 10.0f;
+	public float delay = 0.0f;
     public bool isSwipe = false;
     public bool opened = false;
     public bool cardAction;
@@ -34,7 +35,6 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 	bool spellsLayedout = false;
 	PouchStates currState;
     private int spellsAttack = 0;
-    //private int spellsHeal = 0;
     private bool spellsAttackbool = false;
     private bool spellsHealbool = false;
     private float touch1;
@@ -45,7 +45,6 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
     {
         battleManager = BattleManagerScript.Instance;
         GetComponent<Image>().sprite = defaultEye;
-//		UIBorderBar.SetBool("PlaySlideIn", false);
     }
 
     // Update is called once per frame
@@ -71,31 +70,16 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 		{
 			if(selectedSpells[i].mySpells.spellsType == SpellsType.HEAL_SPELL)
 			{
-				//spellsHeal = selectedSpells[i].mySpells.
 				spellsHeal += 1;
 			}
 			else if(selectedSpells[i].mySpells.spellsType == SpellsType.HEAL_SPELL)
 			{
-				//spellsHeal = selectedSpells[i].mySpells.
 				spellsDmg += 1;
 			}
 		}
 
         for (int i = 0; i < selectedCards.Count; i++)
         {
-//            if (spellsAttackbool == true)
-//            {
-//                spellsAttack = 1;
-//                Debug.Log("spellsattack");
-//                Debug.Log(spellsAttack);
-//            }
-//            else if (spellsHealbool == true)
-//            {
-//                spellsHeal = 1;
-//                Debug.Log("spellsheal");
-//                Debug.Log(spellsHeal);
-//            }
-
             if (selectedCards[i].myCard.cardType == CardType.ATTACK)
             {
 				bool kingless = true;
@@ -166,9 +150,6 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 
         Debug.Log("Attack");
 
-        //battleManager.target.health -= battleManager.player.attack;
-        //battleManager.target.GetComponent<MeshRenderer>().material.color = Color.red;
-
 		for(int i = 0; i < selectedCards.Count; i++)
 		{
 			if(selectedCards[i].target != null)
@@ -182,42 +163,13 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 			battleManager.enemyList[i].blueTarget.Stop();
 			battleManager.enemyList[i].redTarget.Stop();
 		}
-
-        //battleManager.target.CheckHealth();
-
-        //battleManager.target = null;
         battleManager.currTurn = BattleStates.ENEMY_TURN;
 		GetComponent<Image>().sprite = defaultEye;
 
 		DestroyCards();
     }
 
-//    void Spells()
-//    {
-//        for (int i = 0; i < selectedSpells.Count; i++)
-//        {
-//            if (selectedSpells[i].mySpells.spellsType == SpellsType.ATTACK_SPELL)
-//            {
-//                spellsHealbool = false;
-//                spellsAttackbool = true;
-//            }
-//            else if (selectedSpells[i].mySpells.spellsType == SpellsType.HEAL_SPELL)
-//            {
-//                spellsHealbool = true;
-//                spellsAttackbool = false;
-//            }
-//			battleManager.player.localPlayerData.manaPoints -= selectedSpells[i].mySpells.manaCost;
-//        }
-//
-//        for (int i = 0; i < displayedSpells.Length; i++)
-//        {
-//            Destroy(displayedSpells[i].gameObject);
-//        }
-//
-//       
-//    }
-
-    void LayOutCards()
+	void LayOutCards()
     {
 		manaCheck = battleManager.player.localPlayerData.manaPoints;
         selectedCards.Clear();
@@ -330,9 +282,11 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 
     }
 
+
     void Swipe()
     {
-
+		
+		
         if (Input.touchCount > 0)
         {
 
@@ -383,6 +337,10 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 										GetComponent<Image>().sprite = defaultEye;
 
 										UIBorderBar.Play("BorderSlideOut");
+										GetComponent<Animator>().Play("StartEyeAnimation");
+										transform.GetChild (0).gameObject.SetActive (true);
+										
+										
 									}
 									else
 									{
@@ -439,31 +397,8 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 												currState = PouchStates.ACTION_CARDS;
 											}
 										}
-
 									}
                                 }
-
-//                                if (swipeType.y != 0.0f)
-//                                {
-//									if(direction.x > 0)
-//									{
-//										DestroyCards();
-//										battleManager.currTurn = BattleStates.PLAYER_TURN;
-//										GetComponent<Image>().sprite = defaultEye;
-//									}
-//									else
-//									{
-//										if(battleManager.currTurn == BattleStates.CHOOSE_CARDS)
-//										{
-//											if(currState == PouchStates.SPELL_CARDS)
-//											{
-//												
-//											}
-//										}
-//									}
-//									
-//                                }
-
                             }
                         }
 
@@ -539,6 +474,11 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 		spellsLayedout = false;
 	}
 
+	void manaActive()
+	{
+		transform.GetChild (0).gameObject.SetActive (true);
+	}
+
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log("Click");
@@ -547,10 +487,13 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 		{
 			opened = true;
 			GetComponent<Image>().sprite = cardEye;
-			LayOutCards();
+			Invoke("LayOutCards" , delay);
+			Invoke("manaActive" , delay);
 			currState = PouchStates.ACTION_CARDS;
 			battleManager.currTurn = BattleStates.CHOOSE_CARDS;
 			UIBorderBar.Play("BorderSlideIn");
+			GetComponent<Animator>().Play("StartEyeAnimation");
+
 		}
 		else if (battleManager.currTurn == BattleStates.CHOOSE_CARDS)
 		{
@@ -606,40 +549,5 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 
 			Attack();
 		}
-
-//        if (opened && cardAction)
-//        {
-//            if (battleManager.target != null && selectedCards.Count > 0)
-//            {
-//                Attack();
-//                opened = false;
-//
-//            }
-//        }
-//
-//        else if (opened && spellsAction)
-//        {
-//            if (selectedSpells.Count == 1)
-//            {
-//                Spells();
-//                opened = false;
-//
-//            }
-//        }
-//        else if (cardAction)
-//        {
-//            opened = true;
-//            LayOutCards();
-//            GetComponent<Image>().sprite = cardEye;
-//
-//        }
-//
-//        else if (spellsAction)
-//        {
-//            opened = true;
-//            LayoutSpells();
-//            GetComponent<Image>().sprite = spellsEye;
-//        }
-
     }
 }

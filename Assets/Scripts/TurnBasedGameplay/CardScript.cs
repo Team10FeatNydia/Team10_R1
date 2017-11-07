@@ -39,12 +39,7 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 	// Use this for initialization
 	void Start () 
 	{
-//		redTargeted = gameObject.GetComponent<ParticleSystem>();
-//		blueNotTargeted = gameObject.GetComponent<ParticleSystem>();
-//
-//		ActivateBlueNotTargeted();
-		//myImage = this.GetComponent<Image>();
-		//interactable = false;
+		
 	}
 	
 	// Update is called once per frame
@@ -112,8 +107,6 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 							if(BattleManagerScript.Instance.selectedCard.target == null)
 							{
 								BattleManagerScript.Instance.selectedCard.myImage.color = Color.blue;
-//								DeactivateBlueNotTargeted();
-//								ActivateRedTargeted();
 							}
 							else
 							{
@@ -145,9 +138,7 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 						myImage.color = Color.red;
 					}
 				}
-
 			}
-
 		}
 	}
 
