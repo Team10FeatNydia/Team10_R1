@@ -21,6 +21,7 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
     public Sprite cardEye;
     public Sprite spellsEye;
     public Sprite defaultEye;
+    public GameObject manaIcon;
     public Vector2 fingerStartPos = Vector2.zero;
     public float minSwipeDist = 10.0f;
 	public float delay = 0.0f;
@@ -476,7 +477,8 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 
 	void manaActive()
 	{
-		transform.GetChild (0).gameObject.SetActive (true);
+        //transform.GetChild (0).gameObject.SetActive (true);
+        manaIcon.SetActive(true);
 	}
 
     public void OnPointerClick(PointerEventData eventData)

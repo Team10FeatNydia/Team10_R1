@@ -31,6 +31,5 @@ public class AmuletStatSaver : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
     }
 }

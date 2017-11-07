@@ -497,7 +497,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: The skeletons found you, survive by fighting them!
+  m_Text: 'The skeletons found you, survive by fighting them!
+
+    (Tap on at least 5 cards to bring them
+
+    with you and tap on the eye to confirm!)'
 --- !u!114 &114987738830466974
 MonoBehaviour:
   m_ObjectHideFlags: 1

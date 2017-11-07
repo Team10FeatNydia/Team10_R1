@@ -140,8 +140,7 @@ public class CardManagerScript : MonoBehaviour
 				PlayerStatSaver.mInstance.cardHandList.Add(handList[i]);
 			}
 
-
-			GameManagerInstance.instance.ChangeScene (2);
+            GameManagerInstance.instance.ChangeScene (3);
 		}
 			
 	}

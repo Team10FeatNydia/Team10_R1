@@ -1,0 +1,250 @@
+fileFormatVersion: 2
+guid: 743619ad96b6a7f4fa5629de8c015747
+timeCreated: 1510088494
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: Cylinder002
+    100002: gravestone01
+    100004: gravestone01 1
+    100006: gravestone03
+    100008: gravestone04
+    100010: Group015
+    100012: Group016
+    100014: Group017
+    100016: Group018
+    100018: Group019
+    100020: Group020
+    100022: Group021
+    100024: Group022
+    100026: Group023
+    100028: Group030
+    100030: Group031
+    100032: Group032
+    100034: Group034
+    100036: miAreaLight006
+    100038: miAreaLight006.Target
+    100040: miAreaLight009
+    100042: miAreaLight009.Target
+    100044: miAreaLight010
+    100046: miAreaLight010.Target
+    100048: miAreaLight011
+    100050: miAreaLight011.Target
+    100052: //RootNode
+    100054: Object001
+    100056: pillar003
+    100058: pillar004
+    100060: pillar01
+    100062: pillar02
+    100064: Plane001
+    100066: Plane041
+    100068: Sky001
+    100070: Table
+    100072: table
+    100074: Torch
+    100076: Torch001
+    100078: torch_fire
+    100080: torch_hand
+    100082: torch_wall
+    100084: TorchStool_1
+    100086: WallTorch
+    100088: WallTorch001
+    100090: WallTorch002
+    100092: WallTorch003
+    100094: WoodenChair
+    100096: WoodenChair001
+    400000: Cylinder002
+    400002: gravestone01
+    400004: gravestone01 1
+    400006: gravestone03
+    400008: gravestone04
+    400010: Group015
+    400012: Group016
+    400014: Group017
+    400016: Group018
+    400018: Group019
+    400020: Group020
+    400022: Group021
+    400024: Group022
+    400026: Group023
+    400028: Group030
+    400030: Group031
+    400032: Group032
+    400034: Group034
+    400036: miAreaLight006
+    400038: miAreaLight006.Target
+    400040: miAreaLight009
+    400042: miAreaLight009.Target
+    400044: miAreaLight010
+    400046: miAreaLight010.Target
+    400048: miAreaLight011
+    400050: miAreaLight011.Target
+    400052: //RootNode
+    400054: Object001
+    400056: pillar003
+    400058: pillar004
+    400060: pillar01
+    400062: pillar02
+    400064: Plane001
+    400066: Plane041
+    400068: Sky001
+    400070: Table
+    400072: table
+    400074: Torch
+    400076: Torch001
+    400078: torch_fire
+    400080: torch_hand
+    400082: torch_wall
+    400084: TorchStool_1
+    400086: WallTorch
+    400088: WallTorch001
+    400090: WallTorch002
+    400092: WallTorch003
+    400094: WoodenChair
+    400096: WoodenChair001
+    2300000: Cylinder002
+    2300002: gravestone01
+    2300004: gravestone03
+    2300006: gravestone04
+    2300008: Object001
+    2300010: pillar003
+    2300012: pillar004
+    2300014: pillar01
+    2300016: pillar02
+    2300018: Plane001
+    2300020: Plane041
+    2300022: Table
+    2300024: Torch
+    2300026: Torch001
+    2300028: TorchStool_1
+    2300030: WallTorch
+    2300032: WallTorch001
+    2300034: WallTorch002
+    2300036: WallTorch003
+    2300038: WoodenChair
+    2300040: WoodenChair001
+    3300000: Cylinder002
+    3300002: gravestone01
+    3300004: gravestone03
+    3300006: gravestone04
+    3300008: Object001
+    3300010: pillar003
+    3300012: pillar004
+    3300014: pillar01
+    3300016: pillar02
+    3300018: Plane001
+    3300020: Plane041
+    3300022: Table
+    3300024: Torch
+    3300026: Torch001
+    3300028: TorchStool_1
+    3300030: WallTorch
+    3300032: WallTorch001
+    3300034: WallTorch002
+    3300036: WallTorch003
+    3300038: WoodenChair
+    3300040: WoodenChair001
+    4300000: Plane001
+    4300002: Plane041
+    4300004: pillar01
+    4300006: pillar02
+    4300008: pillar003
+    4300010: pillar004
+    4300012: gravestone04
+    4300014: gravestone03
+    4300016: gravestone01
+    4300018: Object001
+    4300020: Cylinder002
+    4300022: Table
+    4300024: TorchStool_1
+    4300026: Torch
+    4300028: Torch001
+    4300030: WallTorch
+    4300032: WallTorch001
+    4300034: WallTorch002
+    4300036: WallTorch003
+    4300038: WoodenChair
+    4300040: WoodenChair001
+    7400000: Take 001
+    9500000: //RootNode
+    10800000: miAreaLight006
+    10800002: miAreaLight009
+    10800004: miAreaLight010
+    10800006: miAreaLight011
+    10800008: Sky001
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

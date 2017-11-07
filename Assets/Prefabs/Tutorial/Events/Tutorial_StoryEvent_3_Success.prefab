@@ -290,7 +290,9 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'The amulet appears to hold an enourmous
 
-    power, the Eye reacted and absorbed it.'
+    power, the Eye reacted and absorbed it.
+
+    (You now deal 15% of the enemy''s health at the start of battle)'
 --- !u!114 &114566670892238956
 MonoBehaviour:
   m_ObjectHideFlags: 1

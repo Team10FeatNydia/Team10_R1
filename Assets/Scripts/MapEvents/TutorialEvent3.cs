@@ -15,7 +15,7 @@ public class TutorialEvent3 : MonoBehaviour
 	void GainAmulet ()
 	{
 		Instantiate (choiceSuccess);
-		// TODO::Gain amulet
-		Destroy (transform.parent.gameObject);
+        AmuletStatSaver.mInstance.combatAmuletActive = true;
+        Destroy (transform.parent.gameObject);
 	}
 }

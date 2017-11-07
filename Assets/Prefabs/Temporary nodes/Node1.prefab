@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 222543514124247544}
   - component: {fileID: 114603981708949080}
   - component: {fileID: 114925856237239588}
+  - component: {fileID: 114966695698591168}
   m_Layer: 5
   m_Name: Button Panel
   m_TagString: Untagged
@@ -503,6 +504,17 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
   m_ChildControlHeight: 0
+--- !u!114 &114966695698591168
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1664115926757794}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9444ae3dea1517b4e8dcf0e3caa11196, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &222091593790358570
 CanvasRenderer:
   m_ObjectHideFlags: 1

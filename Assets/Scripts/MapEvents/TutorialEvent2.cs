@@ -19,6 +19,6 @@ public class TutorialEvent2 : MonoBehaviour
 	//Change Scene function changed to CardManagerScript.ChangeScene()
 	public void ArenaScene ()
 	{
-		GameManagerInstance.instance.ChangeScene (2);
+		//GameManagerInstance.instance.ChangeScene (4);
 	}
 }
