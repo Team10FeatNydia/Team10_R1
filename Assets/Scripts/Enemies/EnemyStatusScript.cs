@@ -59,12 +59,14 @@ public class EnemyStatusScript : MonoBehaviour
 	public void Attack(int damage)
 	{
 		player.enemyAttack.Play();
+		SoundManagerScript.Instance.PlaySFX(AudioClipID.SFX_ATTACK7);
 		player.localPlayerData.health -= damage;
 
 	}
 
 	public void HeavyAttack(int damage)
 	{
+		SoundManagerScript.Instance.PlaySFX(AudioClipID.SFX_ATTACK7);
 		player.enemyHeavyAttack.Play();
 		player.localPlayerData.health -= damage;
 	}

@@ -102,9 +102,10 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 						}
 					}
 				}
-
-
+					
 				selectedCards[i].target.swordAttackPlayer.Play();
+				// Attacking Script
+				SoundManagerScript.Instance.PlaySFX(AudioClipID.SFX_ATTACK2);
 				selectedCards[i].target.health -= selectedCards[i].myCard.cardEffect + spellsDmg;
 				battleManager.player.localPlayerData.health += spellsHeal;
 
@@ -120,7 +121,6 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
             }
 			else if(selectedCards[i].myCard.cardType == CardType.STUN)
 			{
-				
 				bool kingless = true;
 
 				if(selectedCards[i].target.myType == EnemyType.KING)

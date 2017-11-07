@@ -19,16 +19,25 @@ public enum AudioClipID
 	BGM_LEVEL4 = 6,
 	BGM_LEVEL5 = 7,
 
-	//UI
-	SFX_UI_BUTTON = 8,
+	// Map
+    BGM_MAP = 8,
 
-    //Map
-    BGM_MAP = 100,
+    // Battle
+    BGM_BATTLE_1 = 9,
 
-    //Battle
-    BGM_BATTLE_1 = 300,
+    SFX_BATTLE_TRANSACTION = 100,
 
-    SFX_BATTLE_TRANSACTION = 350,
+	// UI
+	SFX_UI_BUTTON = 101,
+
+	// Attack
+	SFX_ATTACK1 = 102,
+	SFX_ATTACK2 = 103,
+	SFX_ATTACK3 = 104,
+	SFX_ATTACK4 = 105,
+	SFX_ATTACK5 = 106,
+	SFX_ATTACK6 = 107,
+	SFX_ATTACK7 = 108,
 
 	TOTAL = 9001
 }
