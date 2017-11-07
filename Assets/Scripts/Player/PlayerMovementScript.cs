@@ -21,8 +21,6 @@ public class PlayerMovementScript : MonoBehaviour
 	void Start () 
 	{
 		startYPos = self.transform.position.y;
-		//startPos = self.transform.position;
-		//endPos = self.transform.position + Vector3.forward * distance;
 	}
 
 	// Update is called once per frame
@@ -61,4 +59,3 @@ public class PlayerMovementScript : MonoBehaviour
 	}
 	#endregion ChangeScenePlayer
 }
-

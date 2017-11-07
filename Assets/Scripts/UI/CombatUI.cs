@@ -13,32 +13,23 @@ public class CombatUI : MonoBehaviour
     public Text lockedEnemyHealth;
     public Text playerHealthText;
 	public string sceneName;
-   // public Image bar;
-
-
 
 	// Use this for initialization
-	void Start () {
-        
-     
-        //bar = GetComponent<Image>();
+	void Start () 
+	{
 
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        
+	void Update () 
+	{
         UpdateBattleUI();
-
-       // bar.fillAmount = ( player.health * 100f / player.maxHealth ) / 100;
-
 	}
 
    
 
     void UpdateBattleUI()
     {
-        
         playerManaCount.text = player.localPlayerData.manaPoints.ToString();
 
 		playerHealthText.text = player.localPlayerData.health + "/" + player.localPlayerData.maxHealth.ToString();
@@ -57,14 +48,6 @@ public class CombatUI : MonoBehaviour
             lockedEnemyState.text = "Please select an enemy";
 
             lockedEnemyHealth.enabled = false;
-           // lockedEnemyHealth.color = Color.Lerp(lockedEnemyHealth.color, Color.red, Time.deltaTime);
-
-//			for enemies when reach 0 health
-//            if(BattleManagerScript.Instance.enemyList.Count <= 0)
-//            {
-//				SceneManager.LoadScene(sceneName);
-//            }
         }
     }
-
 }

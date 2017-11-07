@@ -91,12 +91,6 @@ public class EnemyStatusScript : MonoBehaviour
 
 					BattleManagerScript.Instance.selectedCard.target = this;
 					BattleManagerScript.Instance.selectedCard.myImage.color = Color.white;
-
-					//				for(int i = 0; i < BattleManagerScript.Instance.enemyList.Count; i++)
-					//				{
-					//					BattleManagerScript.Instance.enemyList[i].redTarget.Stop();
-					//				}
-
 					redTarget.Play();
 				}
 			}

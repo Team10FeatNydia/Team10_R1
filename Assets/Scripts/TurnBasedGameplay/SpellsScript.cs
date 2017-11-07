@@ -16,7 +16,6 @@ public enum SpellsType
 public struct SpellsDescription
 {
     public SpellsType spellsType;
-    //public int spellsUsageAmount;
     public int manaCost;
     public string description;
     public Sprite spellsImage;
@@ -35,8 +34,7 @@ public class SpellsScript : MonoBehaviour, IPointerClickHandler
 
 	void Start()
 	{
-		//myImage = this.GetComponent<Image>();
-		//interactable = false;
+		
 	}
 
     void Update()
