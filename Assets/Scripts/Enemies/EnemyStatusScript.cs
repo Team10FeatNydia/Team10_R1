@@ -285,6 +285,12 @@ public class EnemyStatusScript : MonoBehaviour
 				BattleManagerScript.Instance.enemyAction = true;
 			}
 		}
+		else
+		{
+			yield return new WaitForSeconds(2f);
+
+			BattleManagerScript.Instance.enemyAction = true;
+		}
 	}
 
 	public void Heal(EnemyStatusScript healee, int regen)

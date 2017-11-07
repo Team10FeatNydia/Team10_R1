@@ -227,12 +227,12 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 			if(displayedSpells[i] != null) displayedSpells[i].GetComponent<SpellsScript>().HideSelf();
 		}
 
-        for (int i = 0; i < CardManagerScript.Instance.cardList.Count; i++)
+		for (int i = 0; i < CardManagerScript.Instance.handList.Count; i++)
         {
             CardDescription tempCard;
-            tempCard = CardManagerScript.Instance.cardList[i];
+			tempCard = CardManagerScript.Instance.handList[i];
             tempCard.isSpawned = false;
-            CardManagerScript.Instance.cardList[i] = tempCard;
+			CardManagerScript.Instance.handList[i] = tempCard;
         }
 
         for (int i = 0; i < 5; i++)
@@ -244,21 +244,22 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 
             do
             {
-                randNum = Random.Range(0, CardManagerScript.Instance.cardList.Count);
+				randNum = Random.Range(0, CardManagerScript.Instance.handList.Count);
 
-                if (!CardManagerScript.Instance.cardList[randNum].isSpawned)
+				if (!CardManagerScript.Instance.handList[randNum].isSpawned)
                 {
-                    tempCard = CardManagerScript.Instance.cardList[randNum];
+					tempCard = CardManagerScript.Instance.handList[randNum];
                     tempCard.isSpawned = true;
-                    CardManagerScript.Instance.cardList[randNum] = tempCard;
+					CardManagerScript.Instance.handList[randNum] = tempCard;
                     exitLoop = true;
                 }
+				exitLoop = true;
             } while (!exitLoop);
 
             GameObject newCard = Instantiate(CardManagerScript.Instance.cardPrefab, this.transform) as GameObject;
 
             CardScript cardScript = newCard.GetComponent<CardScript>();
-            cardScript.myCard = CardManagerScript.Instance.cardList[randNum];
+			cardScript.myCard = CardManagerScript.Instance.handList[randNum];
             cardScript.cardPouch = this;
 
             newCard.GetComponent<RectTransform>().localPosition = new Vector3(-180f * i - 220f, 0f, 0f);
@@ -485,12 +486,13 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 
 		for(int i = 0; i < selectedCards.Count; i++)
 		{
-			if(selectedCards[i].myCard.cardType != CardType.ATTACK)
+			if(selectedCards[i].myCard.cardType != CardType.ATTACK && selectedCards[i].myCard.cardType != CardType.STUN)
 			{
 				selectedCards[i].GetComponent<Image>().color = Color.white;
 			}
 
-			selectedCards[i].GetComponent<RectTransform>().localPosition = new Vector3(-180f * i - 220f, 0f, 0f);
+			//Needs to be checked
+			selectedCards[i].GetComponent<RectTransform>().localPosition = new Vector3(-180f * i - 220f - 104f, 113.75f, 0f);
 			selectedCards[i].UpdateStats();
 			selectedCards[i].selected = false;
 		}

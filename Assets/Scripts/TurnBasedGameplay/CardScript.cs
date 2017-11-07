@@ -57,19 +57,19 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 	{
 		myImage.enabled = false;
 		interactable = false;
-		myDmg.enabled = false;
-		myManaCost.enabled = false;
-		myDescription.enabled = false;
+//		myDmg.enabled = false;
+//		myManaCost.enabled = false;
+//		myDescription.enabled = false;
 	}
 
 	public void UpdateStats()
 	{
-		myDmg.enabled = true;
-		myManaCost.enabled = true;
-		myDescription.enabled = true;
-		myDmg.text = myCard.cardEffect.ToString();
-		myManaCost.text = myCard.manaCost.ToString();
-        myDescription.text = myCard.description.ToString();
+//		myDmg.enabled = true;
+//		myManaCost.enabled = true;
+//		myDescription.enabled = true;
+//		myDmg.text = myCard.cardEffect.ToString();
+//		myManaCost.text = myCard.manaCost.ToString();
+//      myDescription.text = myCard.description.ToString();
 		myImage.enabled = true;
 		myImage.sprite = myCard.cardImage;
 		interactable = true;
@@ -103,7 +103,7 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 			}
 			else if(BattleManagerScript.Instance.currTurn == BattleStates.CHOOSE_ENEMIES)
 			{
-				if(myCard.cardType == CardType.ATTACK)
+				if(myCard.cardType == CardType.ATTACK || myCard.cardType == CardType.STUN)
 				{
 					if(!selected)
 					{
@@ -148,6 +148,24 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 
 			}
 
+		}
+	}
+
+	public void SwitchParents()
+	{
+		if(transform.parent.name.Contains("Hand"))
+		{
+			transform.SetParent(CardManagerScript.Instance.cardDeckPanel);
+			//transform.parent = CardManagerScript.Instance.cardHandPanel.transform;
+			CardManagerScript.Instance.cardList.Add(myCard);
+			CardManagerScript.Instance.handList.Remove(myCard);
+		}
+		else if(transform.parent.name.Contains("Deck"))
+		{
+			transform.SetParent(CardManagerScript.Instance.cardHandPanel);
+			//transform.parent = CardManagerScript.Instance.cardDeckPanel.transform;
+			CardManagerScript.Instance.handList.Add(myCard);
+			CardManagerScript.Instance.cardList.Remove(myCard);
 		}
 	}
 }
