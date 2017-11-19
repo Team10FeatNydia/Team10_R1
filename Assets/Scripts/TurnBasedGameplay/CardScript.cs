@@ -29,6 +29,11 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 	public CardPouchScript cardPouch;
 	public bool selected;
 	public bool interactable = false;
+	public RectTransform rectTransform;
+	float rotate = 1f;
+	bool canShake = false;
+	public float shakeTime = 20.0f;
+	public Vector3 origin;
 
 	public Text myDmg;
 	public Text myManaCost;
@@ -39,13 +44,42 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 	// Use this for initialization
 	void Start () 
 	{
-		
+		rectTransform = GetComponent<RectTransform>();
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		
+		if(interactable)
+		{
+			if(!canShake)
+			{
+				shakeTime -= Time.deltaTime * 10f;
+				if(shakeTime <= 0f) canShake = true;
+			}
+			else
+			{
+				Quaternion shakePos = rectTransform.rotation;
+				if(shakePos.z > 0.05f) 
+				{
+					rotate = -1f;
+					//Debug.Log("Front");
+				}
+				else if (shakePos.z < -0.05f) 
+				{
+					canShake = false;
+					rotate = 1f;
+					shakeTime = 20.0f;
+					rectTransform.rotation = Quaternion.identity;
+					return;
+					////Debug.Log("Back");
+
+				}
+				//rectTransform.rotation = Quaternion.Euler(0f, 0f, shakePos.z);
+				rectTransform.Rotate(new Vector3 (0, 0, rotate));
+				//Debug.Log(shakePos.z);
+			}
+		}
 	}
 
 	public void HideSelf()
@@ -72,7 +106,7 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 
 	public void OnPointerClick(PointerEventData eventData)
 	{
-		Debug.Log("Tap");
+		//Debug.Log("Tap");
 
 		if(interactable)
 		{
@@ -83,17 +117,23 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 					if(cardPouch.manaCheck - myCard.manaCost >= 0)
 					{
 						cardPouch.manaCheck -= myCard.manaCost;
+						BattleManagerScript.Instance.manaText.text = cardPouch.manaCheck.ToString();
+						//Debug.Log(cardPouch.manaCheck);
 						cardPouch.selectedCards.Add(this);
 						selected = true;
 						GetComponent<Image>().color = Color.blue;
+						rectTransform.localPosition += new Vector3(0f, 30f, 0f);
 					}
 				}
 				else
 				{
 					cardPouch.manaCheck += myCard.manaCost;
+					BattleManagerScript.Instance.manaText.text = cardPouch.manaCheck.ToString();
+					//Debug.Log(cardPouch.manaCheck);
 					cardPouch.selectedCards.Remove(this);
 					selected = false;
 					GetComponent<Image>().color = Color.white;
+					rectTransform.localPosition -= new Vector3(0f, 30f, 0f);
 				}
 			}
 			else if(BattleManagerScript.Instance.currTurn == BattleStates.CHOOSE_ENEMIES)

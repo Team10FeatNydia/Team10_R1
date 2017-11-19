@@ -19,6 +19,6 @@ public class Temp_OtherAmuletScript : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         AmuletStatSaver.mInstance.combatAmuletActive = false;
-        Debug.Log("deactive");
+        //Debug.Log("deactive");
     }
 }

@@ -71,7 +71,7 @@ public class SpellsScript : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Tap");
+        //Debug.Log("Tap");
 
         if (!selected)
         {
