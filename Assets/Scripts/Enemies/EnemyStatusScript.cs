@@ -48,7 +48,8 @@ public class EnemyStatusScript : MonoBehaviour
 		targeted = false;
 		posX = this.gameObject.transform.position.x;
 		posY = this.gameObject.transform.position.y;
-	}
+        CheckAmulet();
+    }
 
 	void Update()
 	{
@@ -58,12 +59,14 @@ public class EnemyStatusScript : MonoBehaviour
 	public void Attack(int damage)
 	{
 		player.enemyAttack.Play();
+		SoundManagerScript.Instance.PlaySFX(AudioClipID.SFX_ATTACK7);
 		player.localPlayerData.health -= damage;
 
 	}
 
 	public void HeavyAttack(int damage)
 	{
+		SoundManagerScript.Instance.PlaySFX(AudioClipID.SFX_ATTACK7);
 		player.enemyHeavyAttack.Play();
 		player.localPlayerData.health -= damage;
 	}
@@ -90,17 +93,19 @@ public class EnemyStatusScript : MonoBehaviour
 
 					BattleManagerScript.Instance.selectedCard.target = this;
 					BattleManagerScript.Instance.selectedCard.myImage.color = Color.white;
-
-					//				for(int i = 0; i < BattleManagerScript.Instance.enemyList.Count; i++)
-					//				{
-					//					BattleManagerScript.Instance.enemyList[i].redTarget.Stop();
-					//				}
-
 					redTarget.Play();
 				}
 			}
 		}
 	}
+
+    void CheckAmulet()
+    {
+        if (AmuletStatSaver.mInstance.combatAmuletActive)
+        {
+            health -= (maxHealth * 15 / 100);
+        }
+    }
 
 	public void CheckHealth()
 	{
@@ -275,6 +280,12 @@ public class EnemyStatusScript : MonoBehaviour
 
 				BattleManagerScript.Instance.enemyAction = true;
 			}
+		}
+		else
+		{
+			yield return new WaitForSeconds(2f);
+
+			BattleManagerScript.Instance.enemyAction = true;
 		}
 	}
 

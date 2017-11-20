@@ -11,6 +11,7 @@ TagManager:
   - CardManager
   - PauseMenuManager
   - SpellsManager
+  - CombatAmulet
   layers:
   - Default
   - TransparentFX

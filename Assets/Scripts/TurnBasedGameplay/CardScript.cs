@@ -39,12 +39,7 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 	// Use this for initialization
 	void Start () 
 	{
-//		redTargeted = gameObject.GetComponent<ParticleSystem>();
-//		blueNotTargeted = gameObject.GetComponent<ParticleSystem>();
-//
-//		ActivateBlueNotTargeted();
-		//myImage = this.GetComponent<Image>();
-		//interactable = false;
+		
 	}
 	
 	// Update is called once per frame
@@ -57,19 +52,19 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 	{
 		myImage.enabled = false;
 		interactable = false;
-		myDmg.enabled = false;
-		myManaCost.enabled = false;
-		myDescription.enabled = false;
+//		myDmg.enabled = false;
+//		myManaCost.enabled = false;
+//		myDescription.enabled = false;
 	}
 
 	public void UpdateStats()
 	{
-		myDmg.enabled = true;
-		myManaCost.enabled = true;
-		myDescription.enabled = true;
-		myDmg.text = myCard.cardEffect.ToString();
-		myManaCost.text = myCard.manaCost.ToString();
-        myDescription.text = myCard.description.ToString();
+//		myDmg.enabled = true;
+//		myManaCost.enabled = true;
+//		myDescription.enabled = true;
+//		myDmg.text = myCard.cardEffect.ToString();
+//		myManaCost.text = myCard.manaCost.ToString();
+//      myDescription.text = myCard.description.ToString();
 		myImage.enabled = true;
 		myImage.sprite = myCard.cardImage;
 		interactable = true;
@@ -103,7 +98,7 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 			}
 			else if(BattleManagerScript.Instance.currTurn == BattleStates.CHOOSE_ENEMIES)
 			{
-				if(myCard.cardType == CardType.ATTACK)
+				if(myCard.cardType == CardType.ATTACK || myCard.cardType == CardType.STUN)
 				{
 					if(!selected)
 					{
@@ -112,8 +107,6 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 							if(BattleManagerScript.Instance.selectedCard.target == null)
 							{
 								BattleManagerScript.Instance.selectedCard.myImage.color = Color.blue;
-//								DeactivateBlueNotTargeted();
-//								ActivateRedTargeted();
 							}
 							else
 							{
@@ -145,9 +138,25 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 						myImage.color = Color.red;
 					}
 				}
-
 			}
+		}
+	}
 
+	public void SwitchParents()
+	{
+		if(transform.parent.name.Contains("Hand"))
+		{
+			transform.SetParent(CardManagerScript.Instance.cardDeckPanel);
+			//transform.parent = CardManagerScript.Instance.cardHandPanel.transform;
+			CardManagerScript.Instance.cardList.Add(myCard);
+			CardManagerScript.Instance.handList.Remove(myCard);
+		}
+		else if(transform.parent.name.Contains("Deck"))
+		{
+			transform.SetParent(CardManagerScript.Instance.cardHandPanel);
+			//transform.parent = CardManagerScript.Instance.cardDeckPanel.transform;
+			CardManagerScript.Instance.handList.Add(myCard);
+			CardManagerScript.Instance.cardList.Remove(myCard);
 		}
 	}
 }

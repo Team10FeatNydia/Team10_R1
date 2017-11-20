@@ -277,28 +277,34 @@ MonoBehaviour:
   audioClipInfoList:
   - audioClipID: 0
     audioClip: {fileID: 8300000, guid: 42f003412893a6c49a9086a0f8d23141, type: 3}
-  - audioClipID: 1
-    audioClip: {fileID: 0}
-  - audioClipID: 2
-    audioClip: {fileID: 0}
   - audioClipID: 3
     audioClip: {fileID: 8300000, guid: 7e334fc82c4e4d449999248e90b301c9, type: 3}
   - audioClipID: 4
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 016a915fa718fda41b9fb48858f57bdc, type: 3}
   - audioClipID: 5
-    audioClip: {fileID: 0}
-  - audioClipID: 6
-    audioClip: {fileID: 0}
-  - audioClipID: 7
-    audioClip: {fileID: 0}
-  - audioClipID: 8
-    audioClip: {fileID: 8300000, guid: d02ae83790537ed4889a79605e5afcc4, type: 3}
-  - audioClipID: 300
     audioClip: {fileID: 8300000, guid: e49a54d94a0b4d34796c0e7f487aa579, type: 3}
-  - audioClipID: 350
-    audioClip: {fileID: 8300000, guid: dcbeae9fbe6089241aa8c48d76089b3f, type: 3}
+  - audioClipID: 8
+    audioClip: {fileID: 8300000, guid: f36cb5fb72bd98b4c95c7d7920af92c7, type: 3}
+  - audioClipID: 9
+    audioClip: {fileID: 0}
   - audioClipID: 100
-    audioClip: {fileID: 8300000, guid: 435fd46bda1081343834cf9b78f9962b, type: 3}
+    audioClip: {fileID: 8300000, guid: dcbeae9fbe6089241aa8c48d76089b3f, type: 3}
+  - audioClipID: 101
+    audioClip: {fileID: 8300000, guid: d02ae83790537ed4889a79605e5afcc4, type: 3}
+  - audioClipID: 102
+    audioClip: {fileID: 8300000, guid: 95b6df9e8e7a28145a66097c876f9e7b, type: 3}
+  - audioClipID: 103
+    audioClip: {fileID: 8300000, guid: 87ad0bff0cb1e274eb6e622f2b1b773e, type: 3}
+  - audioClipID: 104
+    audioClip: {fileID: 8300000, guid: 078004a1ba10d264c891cbdce4c822f0, type: 3}
+  - audioClipID: 105
+    audioClip: {fileID: 8300000, guid: 298f56a1ff0b9f0408b5047fdc21c159, type: 3}
+  - audioClipID: 106
+    audioClip: {fileID: 8300000, guid: b862308ea94056543befdd6b893738e6, type: 3}
+  - audioClipID: 107
+    audioClip: {fileID: 8300000, guid: 5221b501391962d4b8d79f31bb257c7a, type: 3}
+  - audioClipID: 108
+    audioClip: {fileID: 8300000, guid: 62d78a79e7458a64b9b2717fbb3e66b8, type: 3}
   bgmAudioSource: {fileID: 82079899537893518}
   sfxAudioSource: {fileID: 82626725019222596}
   brightnessMask: {fileID: 0}

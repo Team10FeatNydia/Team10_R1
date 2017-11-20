@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class VictoryScene : MonoBehaviour 
 {
-	public void Quit()
+	public void MainMenu()
 	{
-		Application.Quit();
-	}
+        GameManagerInstance.instance.ChangeScene(0);
+    }
 
 	public void PlayButtonSound()
 	{

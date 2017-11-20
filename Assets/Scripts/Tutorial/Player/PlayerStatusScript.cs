@@ -85,8 +85,6 @@ public class PlayerStatusScript : MonoBehaviour
 		{
 			isHit = true;
 			invincibleTimer = 0.0f;
-			//Player receive damage sound script
-			//SoundManagerScript.Instance.PlaySFX(AudioClipID.SFX_PL_RECEIVEDMG);
 		}
 	}
 }

@@ -507,7 +507,7 @@ MonoBehaviour:
   blueTarget: {fileID: 198756477087278432}
   redTarget: {fileID: 198621051600592666}
   swordAttackPlayer: {fileID: 0}
-  deathEffectEnemy: {fileID: 0}
+  deathEffectEnemy: {fileID: 198360013667210676}
 --- !u!198 &198360013667210676
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -568,7 +568,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 2004006398
+  randomSeed: 614500587
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4531,8 +4531,8 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 15
-        minScalar: 15
+        scalar: 30
+        minScalar: 30
         maxCurve:
           serializedVersion: 2
           m_Curve:
@@ -7893,8 +7893,8 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 15
-        minScalar: 15
+        scalar: 30
+        minScalar: 30
         maxCurve:
           serializedVersion: 2
           m_Curve:
@@ -10568,7 +10568,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 1
+    scalar: 1.5
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -10609,7 +10609,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 989588756
+  randomSeed: 1930647835
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -14617,8 +14617,8 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 1
-        minScalar: 1
+        scalar: 30
+        minScalar: 30
         maxCurve:
           serializedVersion: 2
           m_Curve:
@@ -17979,8 +17979,8 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 1
-        minScalar: 1
+        scalar: 30
+        minScalar: 30
         maxCurve:
           serializedVersion: 2
           m_Curve:
@@ -21341,8 +21341,8 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 1
-        minScalar: 1
+        scalar: 30
+        minScalar: 30
         maxCurve:
           serializedVersion: 2
           m_Curve:
@@ -24016,7 +24016,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0.5
+    scalar: 1.2
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -24057,7 +24057,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 287442672
+  randomSeed: 1406428250
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -28065,8 +28065,8 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 1
-        minScalar: 1
+        scalar: 30
+        minScalar: 30
         maxCurve:
           serializedVersion: 2
           m_Curve:

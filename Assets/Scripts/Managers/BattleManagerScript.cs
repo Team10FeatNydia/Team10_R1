@@ -50,6 +50,7 @@ public class BattleManagerScript : MonoBehaviour
     int manaregen;
 	public int enemyTurn = 0;
 	public bool enemyAction = true;
+   
 
 
     void Awake() 
@@ -63,9 +64,9 @@ public class BattleManagerScript : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		manaregen = player.localPlayerData.manaPoints;
-		GameObject[] enemies;
-		enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] enemies;
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        manaregen = player.localPlayerData.manaPoints;
         currTurn = BattleStates.PLAYER_TURN;
 
 		for(int i = 0; i < enemies.Length; i++)
@@ -77,9 +78,11 @@ public class BattleManagerScript : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		//if(PauseMenuManagerScript.Instance.paused) return;
-
-		
+        //if(PauseMenuManagerScript.Instance.paused) return;
+        if (enemyList.Count == 0)
+        {
+            GameManagerInstance.instance.ChangeScene(0);
+        }
 
         if (currTurn == BattleStates.ENEMY_TURN)
         {

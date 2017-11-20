@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1384952098174418}
+  m_IsPrefabParent: 1
+--- !u!1 &1384952098174418
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4928971317185480}
+  - component: {fileID: 114718060861544884}
+  m_Layer: 0
+  m_Name: PlayerStatSaver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4928971317185480
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1384952098174418}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -15.273065, y: -14.801834, z: 18.042439}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114718060861544884
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1384952098174418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dce4c34c9b1bea419a1cea8935ef1cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 0
+  cardHandList: []
+  cardDeckList:
+  - cardType: 0
+    cardEffect: 4
+    manaCost: 2
+    description: 
+    cardImage: {fileID: 21300000, guid: 58d380ec67c9f794ab560d5ddb4da33a, type: 3}
+    isSpawned: 0
+  - cardType: 0
+    cardEffect: 2
+    manaCost: 1
+    description: 
+    cardImage: {fileID: 21300000, guid: e9c9cf5cce0314e4cb163d54e437ea99, type: 3}
+    isSpawned: 0
+  - cardType: 0
+    cardEffect: 7
+    manaCost: 4
+    description: 
+    cardImage: {fileID: 21300000, guid: 553a75c1939d700418f29fbf6d575908, type: 3}
+    isSpawned: 0
+  - cardType: 0
+    cardEffect: 2
+    manaCost: 1
+    description: 
+    cardImage: {fileID: 21300000, guid: e35b14a888a6149488d8173e32f333c5, type: 3}
+    isSpawned: 0
+  - cardType: 2
+    cardEffect: 0
+    manaCost: 3
+    description: 
+    cardImage: {fileID: 21300000, guid: 9bf5c62f86d0b2d42a5b26a506702838, type: 3}
+    isSpawned: 0
+  - cardType: 1
+    cardEffect: 6
+    manaCost: 4
+    description: 
+    cardImage: {fileID: 21300000, guid: cfa2deb9d9034ee42a4d58a75c61b278, type: 3}
+    isSpawned: 0

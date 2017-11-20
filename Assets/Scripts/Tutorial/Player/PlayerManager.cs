@@ -64,19 +64,4 @@ public class PlayerManager : MonoBehaviour
 		if(status 		!= null) status.self 		= this;
 		if(ui			!= null) ui.self			= this;
 	}
-
-	/*
-	public void EnableControls()
-	{
-		controls.enabled = true;
-	}
-
-	public void DisableControls()
-	{
-		controls.enabled = false;
-		controls.moveSpeedFactor = 0.0f;
-		// SoundScript here
-		animator
-	}
-	*/
 }
