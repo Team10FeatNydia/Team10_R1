@@ -3,34 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerStatSaver : MonoBehaviour {
+	
+	public static PlayerStatSaver mInstance;
+	public float HP;
 
-    public static PlayerStatSaver mInstance;
+	void Awake () 
+	{
+		if (mInstance == null)
+		{
+			mInstance = this;
+		}
+		else if (mInstance != this)
+		{
+			Destroy(gameObject);
+		}
 
-    public float HP;
-    //public float MaxHP;
+		DontDestroyOnLoad (this);
+	}
 
-    void Awake()
-    {
-        if (mInstance == null)
-        {
-            DontDestroyOnLoad(gameObject);
-            mInstance = this;
-        }
-        else if (mInstance != this)
-        {
-            Destroy(gameObject);
-        }
-
-
-    }
-
-    private void Start()
-    {
-        HP = 100;
-    }
-
-    // Update is called once per frame
-    void Update () {
+	void Start ()
+	{
+		HP = 100;
+	}
+	
+	// Update is called once per frame
+	void Update () {
 		
 	}
 }
