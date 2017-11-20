@@ -49,7 +49,7 @@ public class GameManagerInstance : MonoBehaviour
                 levelOne[i].gameObject.SetActive(false);
             }
             SceneManager.LoadScene(0);
-            Debug.Log(SceneManager.GetActiveScene().buildIndex);
+            //Debug.Log(SceneManager.GetActiveScene().buildIndex);
         }
 
         else if (index == 1)
@@ -59,7 +59,7 @@ public class GameManagerInstance : MonoBehaviour
                 levelOne[i].gameObject.SetActive(false);
             }
             SceneManager.LoadScene(1);
-            Debug.Log(SceneManager.GetActiveScene().buildIndex);
+            //Debug.Log(SceneManager.GetActiveScene().buildIndex);
         }
 
         else if (index == 2)
@@ -69,7 +69,7 @@ public class GameManagerInstance : MonoBehaviour
 				levelOne [i].gameObject.SetActive (false);
 			}
 			SceneManager.LoadScene (2);
-			Debug.Log (SceneManager.GetActiveScene ().buildIndex);
+			//Debug.Log (SceneManager.GetActiveScene ().buildIndex);
 		}
 
         else if (index == 3)
@@ -79,7 +79,7 @@ public class GameManagerInstance : MonoBehaviour
                 levelOne[i].gameObject.SetActive(false);
             }
             SceneManager.LoadScene(3);
-            Debug.Log(SceneManager.GetActiveScene().buildIndex);
+            //Debug.Log(SceneManager.GetActiveScene().buildIndex);
         }
 
         else if (index == 4)
@@ -89,7 +89,7 @@ public class GameManagerInstance : MonoBehaviour
                 levelOne[i].gameObject.SetActive(false);
             }
             SceneManager.LoadScene(4);
-            Debug.Log(SceneManager.GetActiveScene().buildIndex);
+            //Debug.Log(SceneManager.GetActiveScene().buildIndex);
         }
 
         else if (index == 5)
@@ -99,7 +99,7 @@ public class GameManagerInstance : MonoBehaviour
                 levelOne[i].gameObject.SetActive(false);
             }
             SceneManager.LoadScene(5);
-            Debug.Log(SceneManager.GetActiveScene().buildIndex);
+            //Debug.Log(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

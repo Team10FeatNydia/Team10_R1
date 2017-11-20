@@ -30,7 +30,7 @@ public class CombatUI : MonoBehaviour
 
     void UpdateBattleUI()
     {
-        playerManaCount.text = player.localPlayerData.manaPoints.ToString();
+        //playerManaCount.text = player.localPlayerData.manaPoints.ToString();
 
 		playerHealthText.text = player.localPlayerData.health + "/" + player.localPlayerData.maxHealth.ToString();
 

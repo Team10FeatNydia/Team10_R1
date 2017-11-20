@@ -142,8 +142,12 @@ PlayerSettings:
       depthFormat: 1
   protectGraphicsMemory: 0
   useHDRDisplay: 0
+<<<<<<< HEAD
   m_ColorGamuts: 00000000
   targetPixelDensity: 0
+=======
+  targetPixelDensity: 200
+>>>>>>> ResolutionFix
   resolutionScalingMode: 0
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
