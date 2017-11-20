@@ -7,6 +7,7 @@ public class PlayerStatusScript : MonoBehaviour
 {
 	[HideInInspector]
 	public PlayerManager self;
+    Animator animator;
 
 	[Header("Stats")]
 	public PlayerStatistics localPlayerData = new PlayerStatistics();
@@ -21,9 +22,8 @@ public class PlayerStatusScript : MonoBehaviour
 
 	[Header("Combat")]
 	public bool isHit;
+    public bool isAttacking;
 	public int attack;
-	public float invincibleTimer;
-	public float invincibleDuration;
 
 	[Header("Particle System Effect")]
 	public ParticleSystem enemyAttack;
@@ -35,6 +35,7 @@ public class PlayerStatusScript : MonoBehaviour
     {
         //health = maxHealth ;
         LoadData();
+        animator = GetComponent<Animator>();
     }
 
 	void Update()
@@ -43,16 +44,18 @@ public class PlayerStatusScript : MonoBehaviour
 
 		if(isHit)
 		{
-			if(invincibleTimer < invincibleDuration)
-			{
-				invincibleTimer += Time.deltaTime;
-			}
-			else
-			{
-				invincibleTimer = 0;
-				isHit = false;
-			}
+            animator.SetTrigger("damaged");
 		}
+
+        if (isAttacking)
+        {
+            animator.SetTrigger("attack");
+        }
+
+        if (HP <= 0)
+        {
+            animator.SetTrigger("death");
+        }
 
         SaveData();
 	}
@@ -77,14 +80,5 @@ public class PlayerStatusScript : MonoBehaviour
 	public void Quit()
 	{
 		SceneManager.LoadScene(self.quitScene);
-	}
-
-	public void ApplyInvicibility()
-	{
-		if(!isHit)
-		{
-			isHit = true;
-			invincibleTimer = 0.0f;
-		}
 	}
 }
