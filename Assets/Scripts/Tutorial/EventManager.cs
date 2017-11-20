@@ -61,7 +61,6 @@ public class EventManager : MonoBehaviour
 		eventInformationList [index].isCleared = true;
 		Invoke ("ResetTrigger", 3.0f);
 		path.GetComponent<MovementPath> ().enabled = true;
-<<<<<<< HEAD:Assets/Scripts/Tutorial/EventManager.cs
 		Debug.Log ("Event done!");
 
 		if (index <= 2) // amulet2 doesnt have to change the position of the arrow anymore
@@ -69,11 +68,6 @@ public class EventManager : MonoBehaviour
 			arrow.index = index;
 			arrow.hide = false; // show the arrow 
 		}
-=======
-		//Debug.Log ("Event done!");
-		Invoke ("ResetTrigger", 3.0f);
-		//curCollider.transform.parent.GetComponent<MeshRenderer> ().material.color = Color.gray;
->>>>>>> ResolutionFix:Assets/Scripts/MapEvents/EventManager.cs
 	}
 
 	public void ResetTrigger ()
@@ -87,7 +81,7 @@ public class EventManager : MonoBehaviour
 		int index = (int)curCollider.eventName;
 		if (eventInformationList [index].isCleared) 
 		{
-			//Debug.Log ("This event has already cleared!");
+			Debug.Log ("This event has already cleared!");
 		}
 		else
 		{
@@ -101,7 +95,7 @@ public class EventManager : MonoBehaviour
 			}
 			else // if previous events not done
 			{
-				//Debug.Log ("Previous event has not done yet.");
+				Debug.Log ("Previous event has not done yet.");
 			}
 		}
 
