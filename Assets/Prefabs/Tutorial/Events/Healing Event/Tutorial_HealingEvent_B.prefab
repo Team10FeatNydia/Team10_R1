@@ -290,17 +290,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-<<<<<<< HEAD:Assets/Prefabs/Tutorial/Events/Healing Event/Tutorial_HealingEvent_B.prefab
   m_Text: Okay
 --- !u!114 &114336187904032668
-=======
-  m_Text: 'The amulet appears to hold an enourmous
-
-    power, the Eye reacted and absorbed it.
-
-    (You now deal 15% of the enemy''s health at the start of battle)'
---- !u!114 &114566670892238956
->>>>>>> 8a9401ff761d541b7d98dc56506e7996a2d238e5:Assets/Prefabs/Tutorial/Events/Tutorial_StoryEvent_3_Success.prefab
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
