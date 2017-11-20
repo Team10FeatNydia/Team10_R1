@@ -73,7 +73,7 @@ public class EnemyStatusScript : MonoBehaviour
 
 	public void OnMouseDown()
 	{
-		Debug.Log("Click");
+		//Debug.Log("Click");
 		if(BattleManagerScript.Instance.currTurn == BattleStates.PLAYER_TURN)
 		{
 			BattleManagerScript.Instance.target = this;
@@ -111,6 +111,7 @@ public class EnemyStatusScript : MonoBehaviour
 	{
 		if (health <= 0)
 		{
+			health = 0;
 			deathEffectEnemy.Play();
 			BattleManagerScript.Instance.enemyList.Remove(this);
 			Destroy(this.gameObject, 2);

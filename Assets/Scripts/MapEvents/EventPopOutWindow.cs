@@ -70,7 +70,7 @@ public class EventPopOutWindow : MonoBehaviour
             }
         }
 
-        Debug.LogError("Cant find event : " + eventListName);
+        //Debug.LogError("Cant find event : " + eventListName);
         return null;
     }
 

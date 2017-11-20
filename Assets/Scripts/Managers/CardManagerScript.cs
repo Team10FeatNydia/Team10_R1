@@ -82,7 +82,7 @@ public class CardManagerScript : MonoBehaviour
 		}
 
 
-		Debug.Log("A");
+		//Debug.Log("A");
 
 		for(int i = 0; i < PlayerStatSaver.mInstance.cardHandList.Count; i++)
 		{
@@ -92,7 +92,7 @@ public class CardManagerScript : MonoBehaviour
 
 		if(cardDeckPanel != null)
 		{
-			Debug.Log("B");
+			//Debug.Log("B");
 
 			if(!cardDeckPanel.gameObject.activeSelf)
 			{

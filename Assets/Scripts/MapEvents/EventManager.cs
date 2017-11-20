@@ -61,7 +61,7 @@ public class EventManager : MonoBehaviour
 		eventInformationList [(int)curCollider.eventName].isCleared = true;
 		//player.GetComponent<PlayerMovementScript> ().enabled = true;
 		path.GetComponent<MovementPath> ().enabled = true;
-		Debug.Log ("Event done!");
+		//Debug.Log ("Event done!");
 		Invoke ("ResetTrigger", 3.0f);
 		//curCollider.transform.parent.GetComponent<MeshRenderer> ().material.color = Color.gray;
 	}
@@ -77,7 +77,7 @@ public class EventManager : MonoBehaviour
 		int index = (int)curCollider.eventName;
 		if (eventInformationList [index].isCleared) 
 		{
-			Debug.Log ("This event has already cleared!");
+			//Debug.Log ("This event has already cleared!");
 		}
 		else
 		{
@@ -90,7 +90,7 @@ public class EventManager : MonoBehaviour
 			}
 			else
 			{
-				Debug.Log ("Previous event has not done yet.");
+				//Debug.Log ("Previous event has not done yet.");
 			}
 		}
 

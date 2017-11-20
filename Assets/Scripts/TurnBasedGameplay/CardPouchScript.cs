@@ -18,9 +18,11 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
     public GameObject[] displayedSpells = new GameObject[2];
     public List<CardScript> selectedCards = new List<CardScript>();
     public List<SpellsScript> selectedSpells = new List<SpellsScript>();
+	Image myEye;
     public Sprite cardEye;
     public Sprite spellsEye;
     public Sprite defaultEye;
+	public GameObject arrowButton;
     public GameObject manaIcon;
     public Vector2 fingerStartPos = Vector2.zero;
     public float minSwipeDist = 10.0f;
@@ -44,6 +46,7 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
     // Use this for initialization
     void Start()
     {
+		myEye = GetComponent<Image>();
         battleManager = BattleManagerScript.Instance;
         GetComponent<Image>().sprite = defaultEye;
     }
@@ -115,6 +118,10 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
             {
 				battleManager.player.healingPlayer.Play();
 				battleManager.player.localPlayerData.health += selectedCards[i].myCard.cardEffect + spellsHeal;
+				if(battleManager.player.localPlayerData.health > battleManager.player.localPlayerData.maxHealth)
+				{
+					battleManager.player.localPlayerData.health = battleManager.player.localPlayerData.maxHealth;
+				}
 				for(int j = 0; j < battleManager.enemyList.Count; j++)
 				{
 					battleManager.enemyList[j].health -= spellsDmg;
@@ -149,7 +156,7 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 			battleManager.player.localPlayerData.manaPoints -= selectedCards[i].myCard.manaCost;
         }
 
-        Debug.Log("Attack");
+        //Debug.Log("Attack");
 
 		for(int i = 0; i < selectedCards.Count; i++)
 		{
@@ -165,9 +172,16 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 			battleManager.enemyList[i].redTarget.Stop();
 		}
         battleManager.currTurn = BattleStates.ENEMY_TURN;
-		GetComponent<Image>().sprite = defaultEye;
+		battleManager.enemyAction = true;
+		myEye.sprite = defaultEye;
+
+		UIBorderBar.Play("BorderSlideOut");
+		//GetComponent<Animator>().Play("StartEyeAnimation");
+		arrowButton.SetActive(false);
 
 		DestroyCards();
+
+		Debug.Log("Player's Turn End");
     }
 
 	void LayOutCards()
@@ -206,7 +220,6 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 					CardManagerScript.Instance.handList[randNum] = tempCard;
                     exitLoop = true;
                 }
-				exitLoop = true;
             } while (!exitLoop);
 
             GameObject newCard = Instantiate(CardManagerScript.Instance.cardPrefab, this.transform) as GameObject;
@@ -216,6 +229,7 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
             cardScript.cardPouch = this;
 
             newCard.GetComponent<RectTransform>().localPosition = new Vector3(-180f * i - 220f, 0f, 0f);
+			cardScript.origin = newCard.GetComponent<RectTransform>().localPosition;
             newCard.transform.SetParent(this.transform.parent, true);
 
             displayedCards[i] = newCard;
@@ -308,8 +322,8 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
                     case TouchPhase.Ended:
 
                         float swipeDist = (touch.position - fingerStartPos).magnitude;
-                        Debug.Log("swipedist    " + swipeDist);
-                        Debug.Log("touch1   " + touch1);
+                        //Debug.Log("swipedist    " + swipeDist);
+                        //Debug.Log("touch1   " + touch1);
 
                         if (touch1 < 250)
                         {
@@ -333,71 +347,71 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
                                 {
 									if(direction.x > 0)
 									{
-										DestroyCards();
-										battleManager.currTurn = BattleStates.PLAYER_TURN;
-										GetComponent<Image>().sprite = defaultEye;
-
-										UIBorderBar.Play("BorderSlideOut");
-										GetComponent<Animator>().Play("StartEyeAnimation");
-										transform.GetChild (0).gameObject.SetActive (true);
+//										DestroyCards();
+//										battleManager.currTurn = BattleStates.PLAYER_TURN;
+//										myEye.sprite = defaultEye;
+//
+//										UIBorderBar.Play("BorderSlideOut");
+//										GetComponent<Animator>().Play("StartEyeAnimation");
+//										//transform.GetChild (0).gameObject.SetActive (true);
 										
 										
 									}
 									else
 									{
-										if(battleManager.currTurn == BattleStates.CHOOSE_CARDS)
-										{
-											if(currState == PouchStates.ACTION_CARDS)
-											{
-												Debug.Log("swiped");
-												GetComponent<Image>().sprite = spellsEye;
-
-												for(int i = 0; i < displayedCards.Length; i++)
-												{
-													displayedCards[i].GetComponent<CardScript>().HideSelf();
-												}	
-
-												if(!spellsLayedout) 
-												{
-													LayoutSpells();
-												}
-												else 
-												{
-													for(int i = 0; i < displayedSpells.Length; i++)
-													{
-														displayedSpells[i].GetComponent<SpellsScript>().UpdateStats();
-													}
-												}
-												cardAction = false;
-												spellsAction = true;
-												currState = PouchStates.SPELL_CARDS;
-											}
-											else if(currState == PouchStates.SPELL_CARDS)
-											{
-												Debug.Log("swiped");
-												GetComponent<Image>().sprite = cardEye;
-												
-												for(int i = 0; i < displayedSpells.Length; i++)
-												{
-													displayedSpells[i].GetComponent<SpellsScript>().HideSelf();
-												}	
-
-												if(!cardsLayedout) 
-												{
-													LayOutCards();
-												}
-												else 
-												{
-													for(int i = 0; i < displayedCards.Length; i++)
-													{
-														displayedCards[i].GetComponent<CardScript>().UpdateStats();
-													}
-												}
-												cardAction = true;
-												spellsAction = false;
-												currState = PouchStates.ACTION_CARDS;
-											}
-										}
+//										if(battleManager.currTurn == BattleStates.CHOOSE_CARDS)
+//										{
+//											if(currState == PouchStates.ACTION_CARDS)
+//											{
+//												//Debug.Log("swiped");
+//												myEye.sprite = spellsEye;
+//
+//												for(int i = 0; i < displayedCards.Length; i++)
+//												{
+//													displayedCards[i].GetComponent<CardScript>().HideSelf();
+//												}	
+//
+//												if(!spellsLayedout) 
+//												{
+//													LayoutSpells();
+//												}
+//												else 
+//												{
+//													for(int i = 0; i < displayedSpells.Length; i++)
+//													{
+//														displayedSpells[i].GetComponent<SpellsScript>().UpdateStats();
+//													}
+//												}
+//												cardAction = false;
+//												spellsAction = true;
+//												currState = PouchStates.SPELL_CARDS;
+//											}
+//											else if(currState == PouchStates.SPELL_CARDS)
+//											{
+//												//Debug.Log("swiped");
+//												myEye.sprite = cardEye;
+//												
+//												for(int i = 0; i < displayedSpells.Length; i++)
+//												{
+//													displayedSpells[i].GetComponent<SpellsScript>().HideSelf();
+//												}	
+//
+//												if(!cardsLayedout) 
+//												{
+//													LayOutCards();
+//												}
+//												else 
+//												{
+//													for(int i = 0; i < displayedCards.Length; i++)
+//													{
+//														displayedCards[i].GetComponent<CardScript>().UpdateStats();
+//													}
+//												}
+//												cardAction = true;
+//												spellsAction = false;
+//												currState = PouchStates.ACTION_CARDS;
+//											}
+//										}
 									}
                                 }
                             }
@@ -420,18 +434,55 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 			}
 		}
 
+		List<CardScript> targetCards = new List<CardScript>();
+		List<CardScript> nontargetCards = new List<CardScript>();
+
 		for(int i = 0; i < selectedCards.Count; i++)
 		{
 			if(selectedCards[i].myCard.cardType != CardType.ATTACK && selectedCards[i].myCard.cardType != CardType.STUN)
 			{
-				selectedCards[i].GetComponent<Image>().color = Color.white;
+				nontargetCards.Add(selectedCards[i]);
+			}
+			else
+			{
+				targetCards.Add(selectedCards[i]);
 			}
 
 			//Needs to be checked
-			selectedCards[i].GetComponent<RectTransform>().localPosition = new Vector3(-180f * i - 220f - 104f, 113.75f, 0f);
-			selectedCards[i].UpdateStats();
+			selectedCards[i].rectTransform.rotation = Quaternion.identity;
+			//selectedCards[i].UpdateStats();
 			selectedCards[i].selected = false;
 		}
+
+		for(int i = 0; i < targetCards.Count; i++)
+		{
+			targetCards[i].GetComponent<RectTransform>().localPosition = new Vector3(-180f * i - 220f - 104f, 113.75f, 0f);
+
+		}
+
+		for(int i = 0; i < nontargetCards.Count; i++)
+		{
+			nontargetCards[i].interactable = false;
+			nontargetCards[i].GetComponent<Image>().color = Color.white;
+			nontargetCards[i].rectTransform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+			nontargetCards[i].GetComponent<RectTransform>().localPosition = new Vector3(-180f * (i+targetCards.Count) - 220f - 104f, 113.75f, 0f);
+		}
+
+//		for(int i = 0; i < selectedCards.Count; i++)
+//		{
+//			if(selectedCards[i].myCard.cardType != CardType.ATTACK && selectedCards[i].myCard.cardType != CardType.STUN)
+//			{
+//				selectedCards[i].interactable = false;
+//				selectedCards[i].GetComponent<Image>().color = Color.white;
+//				selectedCards[i].rectTransform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+//			}
+//
+//			//Needs to be checked
+//			selectedCards[i].GetComponent<RectTransform>().localPosition = new Vector3(-180f * i - 220f - 104f, 113.75f, 0f);
+//			selectedCards[i].rectTransform.rotation = Quaternion.identity;
+//			//selectedCards[i].UpdateStats();
+//			selectedCards[i].selected = false;
+//		}
 	}
 
 	public void DestroyCards()
@@ -481,19 +532,38 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
         manaIcon.SetActive(true);
 	}
 
+	public void SlideInCards()
+	{
+		for(int i = 0; i < battleManager.enemyList.Count; i++)
+		{
+			battleManager.enemyList[i].blueTarget.Stop();
+			battleManager.enemyList[i].redTarget.Stop();
+		}
+
+		battleManager.manaText.text = battleManager.player.localPlayerData.manaPoints.ToString();
+		DestroyCards();
+		battleManager.currTurn = BattleStates.PLAYER_TURN;
+		myEye.sprite = defaultEye;
+
+		UIBorderBar.Play("BorderSlideOut");
+		//GetComponent<Animator>().Play("StartEyeAnimation");
+		arrowButton.SetActive(false);
+	}
+
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Click");
+        //Debug.Log("Click");
 
 		if(battleManager.currTurn == BattleStates.PLAYER_TURN)
 		{
 			opened = true;
-			GetComponent<Image>().sprite = cardEye;
+			currentEye = cardEye;
 			Invoke("LayOutCards" , delay);
 			Invoke("manaActive" , delay);
 			currState = PouchStates.ACTION_CARDS;
 			battleManager.currTurn = BattleStates.CHOOSE_CARDS;
 			UIBorderBar.Play("BorderSlideIn");
+			arrowButton.SetActive(true);
 			GetComponent<Animator>().Play("StartEyeAnimation");
 
 		}
