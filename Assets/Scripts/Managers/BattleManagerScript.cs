@@ -198,7 +198,7 @@ public class BattleManagerScript : MonoBehaviour
 		}
 		else if (currTurn == BattleStates.CHOOSE_ENEMIES)
 		{
-
+            player.isHit = false;
 		}
     }
 

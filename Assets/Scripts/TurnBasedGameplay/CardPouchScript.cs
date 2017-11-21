@@ -154,6 +154,7 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 			}
 
 			battleManager.player.localPlayerData.manaPoints -= selectedCards[i].myCard.manaCost;
+
         }
 
         //Debug.Log("Attack");

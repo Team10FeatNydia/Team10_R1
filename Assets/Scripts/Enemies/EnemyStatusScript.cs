@@ -15,6 +15,8 @@ public class EnemyStatusScript : MonoBehaviour
 {
 	[HideInInspector]
 	public EnemyManager self;
+    Animator animator;
+    bool isDead;
 
 	[Header("Stats")]
 	public EnemyType myType;
@@ -35,7 +37,8 @@ public class EnemyStatusScript : MonoBehaviour
 	public Text hpText;
 	public Text onTarget;
 
-	public float easeTime; 
+	public float easeTime;
+    public GameObject deathModel;
 	public ParticleSystem blueTarget;
 	public ParticleSystem redTarget;
 	public ParticleSystem swordAttackPlayer;
@@ -44,6 +47,7 @@ public class EnemyStatusScript : MonoBehaviour
 
 	void Start()
 	{
+        animator = GetComponent<Animator>();
 		player = BattleManagerScript.Instance.player;
 		targeted = false;
 		posX = this.gameObject.transform.position.x;
@@ -54,6 +58,16 @@ public class EnemyStatusScript : MonoBehaviour
 	void Update()
 	{
 		if(PauseMenuManagerScript.Instance.paused) return;
+        if (!isDead)
+        {
+            deathModel.SetActive(false);
+        }
+        else if (isDead)
+        {
+            this.gameObject.SetActive(false);
+            deathModel.SetActive(true);
+            animator.SetTrigger("death");
+        }
 	}
 
 	public void Attack(int damage)
@@ -61,6 +75,7 @@ public class EnemyStatusScript : MonoBehaviour
 		player.enemyAttack.Play();
 		SoundManagerScript.Instance.PlaySFX(AudioClipID.SFX_ATTACK7);
 		player.localPlayerData.health -= damage;
+        player.isHit = true;
 
 	}
 
@@ -69,7 +84,8 @@ public class EnemyStatusScript : MonoBehaviour
 		SoundManagerScript.Instance.PlaySFX(AudioClipID.SFX_ATTACK7);
 		player.enemyHeavyAttack.Play();
 		player.localPlayerData.health -= damage;
-	}
+        player.isHit = true;
+    }
 
 	public void OnMouseDown()
 	{
@@ -109,11 +125,18 @@ public class EnemyStatusScript : MonoBehaviour
 
 	public void CheckHealth()
 	{
+        if (myType == EnemyType.NORMAL)
+        {
+            animator.SetTrigger("damaged");
+        }
+
 		if (health <= 0)
 		{
-			health = 0;
-			deathEffectEnemy.Play();
+            isDead = true;
+            health = 0;
+            deathEffectEnemy.Play();
 			BattleManagerScript.Instance.enemyList.Remove(this);
+            
 			Destroy(this.gameObject, 2);
 		}
 	}
@@ -133,7 +156,7 @@ public class EnemyStatusScript : MonoBehaviour
 				int rand = Random.Range(1, attack + 1);
 
 				Attack(rand);
-
+                animator.SetTrigger("attack");
 				yield return new WaitForSeconds(2f);
 
 				BattleManagerScript.Instance.enemyAction = true;

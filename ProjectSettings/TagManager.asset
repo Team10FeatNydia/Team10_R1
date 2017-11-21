@@ -12,6 +12,8 @@ TagManager:
   - PauseMenuManager
   - SpellsManager
   - CombatAmulet
+  - EnemySkeletonDeath
+  - EnemySkeleton
   layers:
   - Default
   - TransparentFX
