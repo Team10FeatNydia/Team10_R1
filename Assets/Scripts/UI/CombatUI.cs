@@ -32,7 +32,8 @@ public class CombatUI : MonoBehaviour
     {
         //playerManaCount.text = player.localPlayerData.manaPoints.ToString();
 
-		playerHealthText.text = player.localPlayerData.health + "/" + player.localPlayerData.maxHealth.ToString();
+        //playerHealthText.text = player.localPlayerData.health.ToString();
+        playerHealthText.text = PlayerStatSaver.mInstance.HP.ToString();
 
 
 
@@ -40,7 +41,7 @@ public class CombatUI : MonoBehaviour
 
             lockedEnemyHealth.enabled = true;
             lockedEnemyState.text = "Enemy Locked On";
-            lockedEnemyHealth.text = BattleManagerScript.Instance.target.health + "/" + BattleManagerScript.Instance.target.maxHealth.ToString ();
+            lockedEnemyHealth.text = BattleManagerScript.Instance.target.health.ToString ();
       
         } 
         else 

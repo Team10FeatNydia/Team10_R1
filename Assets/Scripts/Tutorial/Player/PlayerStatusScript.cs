@@ -7,10 +7,10 @@ public class PlayerStatusScript : MonoBehaviour
 {
 	[HideInInspector]
 	public PlayerManager self;
-    Animator animator;
 
 	[Header("Stats")]
-	public PlayerStatistics localPlayerData = new PlayerStatistics();
+   
+    public PlayerStatistics localPlayerData = new PlayerStatistics();
     // public int MaxHP = 100;
     public float HP;
 //	public int manaPoints;
@@ -29,13 +29,14 @@ public class PlayerStatusScript : MonoBehaviour
 	public ParticleSystem enemyAttack;
 	public ParticleSystem enemyHeavyAttack;
 	public ParticleSystem healingPlayer;
-
+    
+    [Header("Animation")]
+    public PlayerModelAnimationScript playerAnim;
 
     void Start()
     {
         //health = maxHealth ;
         LoadData();
-        animator = GetComponent<Animator>();
     }
 
 	void Update()
@@ -44,17 +45,17 @@ public class PlayerStatusScript : MonoBehaviour
 
 		if(isHit)
 		{
-            animator.SetTrigger("damaged");
+            playerAnim.Damaged();
 		}
 
         if (isAttacking)
         {
-            animator.SetTrigger("attack");
+            playerAnim.Attack();
         }
 
         if (HP <= 0)
         {
-            animator.SetTrigger("death");
+            playerAnim.Death();
         }
 
         SaveData();

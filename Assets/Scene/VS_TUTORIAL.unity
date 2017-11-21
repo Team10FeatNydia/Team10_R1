@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -687,6 +687,20 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -731,12 +745,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf8676472d1983640b53a150d85bb9d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 0
+  HP: 2
+  maxHP: 0
   posX: 0
   posY: 0
   BGposX: 0
   BGposY: 0
-  cardHandList: []
   cardDeckList:
   - cardType: 0
     cardEffect: 4
@@ -1746,7 +1760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd82e118cb380e428cb1a8cb5302269, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMaxHP: 100
+  playerMaxHP: 10
   playerHP: 0
 --- !u!1 &1190266253
 GameObject:

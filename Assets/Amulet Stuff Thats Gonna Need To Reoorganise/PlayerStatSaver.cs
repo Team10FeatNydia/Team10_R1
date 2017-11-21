@@ -7,6 +7,7 @@ public class PlayerStatSaver : MonoBehaviour {
     public static PlayerStatSaver mInstance;
 
     public float HP;
+    public float maxHP;
     public float posX;
     public float posY;
     public float BGposX;
@@ -31,8 +32,7 @@ public class PlayerStatSaver : MonoBehaviour {
 
     private void Start()
     {
-        HP = 100;
         player = GameObject.FindGameObjectWithTag("Player");
-       
+        maxHP = HP;  
     }
 }
