@@ -13,7 +13,6 @@ public class PlayerStatSaver : MonoBehaviour {
     public float BGposY;
     GameObject player;
 
-	public List<CardDescription> cardHandList = new List<CardDescription>();
 	public List<CardDescription> cardDeckList = new List<CardDescription>();
     //public float MaxHP;
 

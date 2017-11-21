@@ -194,12 +194,12 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 			if(displayedSpells[i] != null) displayedSpells[i].GetComponent<SpellsScript>().HideSelf();
 		}
 
-		for (int i = 0; i < CardManagerScript.Instance.handList.Count; i++)
+		for (int i = 0; i < PlayerStatSaver.mInstance.cardDeckList.Count; i++)
         {
             CardDescription tempCard;
-			tempCard = CardManagerScript.Instance.handList[i];
+			tempCard = PlayerStatSaver.mInstance.cardDeckList[i];
             tempCard.isSpawned = false;
-			CardManagerScript.Instance.handList[i] = tempCard;
+			PlayerStatSaver.mInstance.cardDeckList[i] = tempCard;
         }
 
         for (int i = 0; i < 5; i++)
@@ -211,13 +211,13 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 
             do
             {
-				randNum = Random.Range(0, CardManagerScript.Instance.handList.Count);
+				randNum = Random.Range(0, PlayerStatSaver.mInstance.cardDeckList.Count);
 
-				if (!CardManagerScript.Instance.handList[randNum].isSpawned)
+				if (!PlayerStatSaver.mInstance.cardDeckList[randNum].isSpawned)
                 {
-					tempCard = CardManagerScript.Instance.handList[randNum];
+					tempCard = PlayerStatSaver.mInstance.cardDeckList[randNum];
                     tempCard.isSpawned = true;
-					CardManagerScript.Instance.handList[randNum] = tempCard;
+					PlayerStatSaver.mInstance.cardDeckList[randNum] = tempCard;
                     exitLoop = true;
                 }
             } while (!exitLoop);
@@ -225,7 +225,7 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
             GameObject newCard = Instantiate(CardManagerScript.Instance.cardPrefab, this.transform) as GameObject;
 
             CardScript cardScript = newCard.GetComponent<CardScript>();
-			cardScript.myCard = CardManagerScript.Instance.handList[randNum];
+			cardScript.myCard = PlayerStatSaver.mInstance.cardDeckList[randNum];
             cardScript.cardPouch = this;
 
             newCard.GetComponent<RectTransform>().localPosition = new Vector3(-180f * i - 220f, 0f, 0f);

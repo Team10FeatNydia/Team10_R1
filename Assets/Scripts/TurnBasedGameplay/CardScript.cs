@@ -182,21 +182,21 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 		}
 	}
 
-	public void SwitchParents()
-	{
-		if(transform.parent.name.Contains("Hand"))
-		{
-			transform.SetParent(CardManagerScript.Instance.cardDeckPanel);
-			//transform.parent = CardManagerScript.Instance.cardHandPanel.transform;
-			CardManagerScript.Instance.cardList.Add(myCard);
-			CardManagerScript.Instance.handList.Remove(myCard);
-		}
-		else if(transform.parent.name.Contains("Deck"))
-		{
-			transform.SetParent(CardManagerScript.Instance.cardHandPanel);
-			//transform.parent = CardManagerScript.Instance.cardDeckPanel.transform;
-			CardManagerScript.Instance.handList.Add(myCard);
-			CardManagerScript.Instance.cardList.Remove(myCard);
-		}
-	}
+//	public void SwitchParents()
+//	{
+//		if(transform.parent.name.Contains("Hand"))
+//		{
+//			transform.SetParent(CardManagerScript.Instance.cardDeckPanel);
+//			//transform.parent = CardManagerScript.Instance.cardHandPanel.transform;
+//			CardManagerScript.Instance.cardList.Add(myCard);
+//			CardManagerScript.Instance.handList.Remove(myCard);
+//		}
+//		else if(transform.parent.name.Contains("Deck"))
+//		{
+//			transform.SetParent(CardManagerScript.Instance.cardHandPanel);
+//			//transform.parent = CardManagerScript.Instance.cardDeckPanel.transform;
+//			CardManagerScript.Instance.handList.Add(myCard);
+//			CardManagerScript.Instance.cardList.Remove(myCard);
+//		}
+//	}
 }
