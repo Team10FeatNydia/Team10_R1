@@ -19,7 +19,7 @@ public class EventCollider : MonoBehaviour
 
 	void Update ()
 	{
-		if (timer >= 1.0f) // start event only after player collide with the collider for 1s
+		if (timer >= 0.2f) // start event only after player collide with the collider for 1s
 		{
 			EventManager.instance.StartEvent (this); 
 			timer = 0.0f;
