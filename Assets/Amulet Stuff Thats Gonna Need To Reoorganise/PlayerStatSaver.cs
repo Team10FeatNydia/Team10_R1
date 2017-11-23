@@ -12,6 +12,8 @@ public class PlayerStatSaver : MonoBehaviour {
     public float posY;
     public float BGposX;
     public float BGposY;
+    public int eventCleared;
+    public int playerPoint;
     GameObject player;
 
 	public List<CardDescription> cardDeckList = new List<CardDescription>();

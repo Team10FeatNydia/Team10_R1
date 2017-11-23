@@ -41,7 +41,9 @@ public class EventManager : MonoBehaviour
 	{
 		//player = GameObject.Find ("Player");
 		arrow = arrowObject.GetComponent<Arrow> ();
-	}
+        SetClearedEventNumber(PlayerStatSaver.mInstance.eventCleared);
+
+    }
 
 	public void StartEvent (EventCollider collider)
 	{
@@ -59,6 +61,7 @@ public class EventManager : MonoBehaviour
 	{
 		int index = (int)curCollider.eventName;
 		eventInformationList [index].isCleared = true;
+        GetClearedEventNumber();
 		Invoke ("ResetTrigger", 3.0f);
 		path.GetComponent<MovementPath> ().enabled = true;
 		Debug.Log ("Event done!");
@@ -101,4 +104,25 @@ public class EventManager : MonoBehaviour
 
 		Invoke ("ResetTrigger", 3.0f);
 	}
+
+    public int GetClearedEventNumber()
+    {
+        int counter = 0;
+        for (int i = 0; i < eventInformationList.Count; i++)
+        {
+            if (eventInformationList[i].isCleared)
+            {
+                counter++;
+            }
+        }
+        return PlayerStatSaver.mInstance.eventCleared = counter;
+    }
+
+    public void SetClearedEventNumber(int n)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            eventInformationList[i].isCleared = true;
+        }
+    }
 }

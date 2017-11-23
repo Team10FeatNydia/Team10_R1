@@ -22,6 +22,7 @@ public class MovementPath : MonoBehaviour
 		{
 			points.Add (transform.GetChild (i).GetComponent<PathPoint> ()); // assign all the children to the list (according to order)
 		}
+        SetPoint();
 	}
 
 	void Update ()
@@ -48,6 +49,8 @@ public class MovementPath : MonoBehaviour
 				StartPath (Input.mousePosition);
 			}
 		}
+
+        PlayerStatSaver.mInstance.playerPoint = playerPointIndex;
 	}
 
 	void StartPath (Vector3 position)
@@ -109,6 +112,11 @@ public class MovementPath : MonoBehaviour
 			}
 		}
 	}
+
+    void SetPoint()
+    {
+        playerPointIndex = PlayerStatSaver.mInstance.playerPoint;
+    }
 
 	public void MoveToAmuletPlace () // Special function for the last event
 	{

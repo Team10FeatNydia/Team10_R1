@@ -204,6 +204,6 @@ public class BattleManagerScript : MonoBehaviour
 
 	public void EndCombatScene()
 	{
-		GameManagerInstance.instance.ChangeScene(0);
+		GameManagerInstance.instance.ChangeScene(1);
 	}
 }
