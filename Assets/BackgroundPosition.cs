@@ -22,26 +22,20 @@ public class BackgroundPosition : MonoBehaviour {
 
     void saveData()
     {
-<<<<<<< HEAD
 		PlayerStatSaver.mInstance.playerBGposY = posY - 1188;
-=======
        // PlayerStatSaver.mInstance.BGposY = player.posY;
-        PlayerStatSaver.mInstance.BGposY = posY;
+		PlayerStatSaver.mInstance.playerBGposY = posY;
         //PlayerStatSaver.mInstance.BGposY = posY - 1188;
->>>>>>> origin/ResolutionFixLevel
     }
 
     void loadData()
     {
-<<<<<<< HEAD
 		posY = PlayerStatSaver.mInstance.playerBGposY + 1188;
         transform.position = new Vector3(640f, posY, 0f);
-=======
         // posY = player.posY;
-        posX = PlayerStatSaver.mInstance.BGposX;
-        posY = PlayerStatSaver.mInstance.BGposY;
+        posX = PlayerStatSaver.mInstance.playerBGposX;
+		posY = PlayerStatSaver.mInstance.playerBGposY;
         //posY = PlayerStatSaver.mInstance.BGposY + 1188;
         transform.position = new Vector3(posX, posY, 0f);
->>>>>>> origin/ResolutionFixLevel
     }
 }

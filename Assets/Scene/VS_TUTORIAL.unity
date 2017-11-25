@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -854,108 +854,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &372381632
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 372381634}
-  - component: {fileID: 372381633}
-  - component: {fileID: 372381635}
-  m_Layer: 0
-<<<<<<< HEAD:Assets/Scene/LevelScene.unity
-  m_Name: PlayerStatSaver
-=======
-  m_Name: StatSaver
->>>>>>> origin/ResolutionFixLevel:Assets/Scene/VS_TUTORIAL.unity
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &372381633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 372381632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf8676472d1983640b53a150d85bb9d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHP: 10
-  playerMaxHP: 0
-  playerPosX: 0
-  playerPosY: 0
-  playerBGposX: 0
-  playerBGposY: 0
-  playerEventCleared: 0
-  playerPoint: 0
-  cardDeckList:
-  - cardType: 0
-    cardEffect: 4
-    manaCost: 2
-    description: 
-    cardImage: {fileID: 21300000, guid: 58d380ec67c9f794ab560d5ddb4da33a, type: 3}
-    isSpawned: 0
-  - cardType: 0
-    cardEffect: 2
-    manaCost: 1
-    description: 
-    cardImage: {fileID: 21300000, guid: e9c9cf5cce0314e4cb163d54e437ea99, type: 3}
-    isSpawned: 0
-  - cardType: 0
-    cardEffect: 7
-    manaCost: 4
-    description: 
-    cardImage: {fileID: 21300000, guid: 553a75c1939d700418f29fbf6d575908, type: 3}
-    isSpawned: 0
-  - cardType: 0
-    cardEffect: 2
-    manaCost: 1
-    description: 
-    cardImage: {fileID: 21300000, guid: e35b14a888a6149488d8173e32f333c5, type: 3}
-    isSpawned: 0
-  - cardType: 1
-    cardEffect: 6
-    manaCost: 4
-    description: 
-    cardImage: {fileID: 21300000, guid: cfa2deb9d9034ee42a4d58a75c61b278, type: 3}
-    isSpawned: 0
-  - cardType: 2
-    cardEffect: 2
-    manaCost: 3
-    description: 
-    cardImage: {fileID: 21300000, guid: 9bf5c62f86d0b2d42a5b26a506702838, type: 3}
-    isSpawned: 0
---- !u!4 &372381634
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 372381632}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 702.2482, y: 1466.1176, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &372381635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 372381632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be7948bd58b15844fb6fabcb83605b79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  combatAmuletActive: 0
 --- !u!1 &438968133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1455,7 +1353,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4022851571779986, guid: 0e224331da9a958459534f8abb44bd42, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 114188000209654124, guid: 0e224331da9a958459534f8abb44bd42,
         type: 2}
@@ -2004,6 +1902,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1147537715}
   - component: {fileID: 1147537714}
+  - component: {fileID: 1147537717}
+  - component: {fileID: 1147537716}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2043,6 +1943,74 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1147537716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1147537713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be7948bd58b15844fb6fabcb83605b79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combatAmuletActive: 0
+--- !u!114 &1147537717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1147537713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf8676472d1983640b53a150d85bb9d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHP: 10
+  playerMaxHP: 0
+  playerPosX: 0
+  playerPosY: 0
+  playerBGposX: 0
+  playerBGposY: 0
+  playerEventCleared: 0
+  playerPoint: 0
+  cardDeckList:
+  - cardType: 0
+    cardEffect: 4
+    manaCost: 2
+    description: 
+    cardImage: {fileID: 21300000, guid: 58d380ec67c9f794ab560d5ddb4da33a, type: 3}
+    isSpawned: 0
+  - cardType: 0
+    cardEffect: 2
+    manaCost: 1
+    description: 
+    cardImage: {fileID: 21300000, guid: e9c9cf5cce0314e4cb163d54e437ea99, type: 3}
+    isSpawned: 0
+  - cardType: 0
+    cardEffect: 7
+    manaCost: 4
+    description: 
+    cardImage: {fileID: 21300000, guid: 553a75c1939d700418f29fbf6d575908, type: 3}
+    isSpawned: 0
+  - cardType: 0
+    cardEffect: 2
+    manaCost: 1
+    description: 
+    cardImage: {fileID: 21300000, guid: e35b14a888a6149488d8173e32f333c5, type: 3}
+    isSpawned: 0
+  - cardType: 1
+    cardEffect: 6
+    manaCost: 4
+    description: 
+    cardImage: {fileID: 21300000, guid: cfa2deb9d9034ee42a4d58a75c61b278, type: 3}
+    isSpawned: 0
+  - cardType: 2
+    cardEffect: 2
+    manaCost: 3
+    description: 
+    cardImage: {fileID: 21300000, guid: 9bf5c62f86d0b2d42a5b26a506702838, type: 3}
+    isSpawned: 0
 --- !u!1 &1190266253
 GameObject:
   m_ObjectHideFlags: 0
@@ -2985,60 +2953,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 224355454761696940, guid: dd47058f487c8fd45b7f04dc3f5fc679,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 224355454761696940, guid: dd47058f487c8fd45b7f04dc3f5fc679,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224498420020705562, guid: dd47058f487c8fd45b7f04dc3f5fc679,
-        type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 224498420020705562, guid: dd47058f487c8fd45b7f04dc3f5fc679,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 224498420020705562, guid: dd47058f487c8fd45b7f04dc3f5fc679,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224460885851347108, guid: dd47058f487c8fd45b7f04dc3f5fc679,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 224460885851347108, guid: dd47058f487c8fd45b7f04dc3f5fc679,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224490876010151970, guid: dd47058f487c8fd45b7f04dc3f5fc679,
-        type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 224490876010151970, guid: dd47058f487c8fd45b7f04dc3f5fc679,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 224490876010151970, guid: dd47058f487c8fd45b7f04dc3f5fc679,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1323817007636052, guid: dd47058f487c8fd45b7f04dc3f5fc679, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd47058f487c8fd45b7f04dc3f5fc679, type: 2}
   m_IsPrefabParent: 0
@@ -3623,7 +3537,6 @@ GameObject:
   - component: {fileID: 2077862463}
   - component: {fileID: 2077862465}
   - component: {fileID: 2077862464}
-  - component: {fileID: 2077862466}
   m_Layer: 0
   m_Name: End Point
   m_TagString: Untagged
@@ -3706,19 +3619,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!114 &2077862466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2077862461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32f4ae4814c5d774ea8e68d0eca43b3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventName: 6
-  activeAtStart: 0
 --- !u!1 &2143238562
 GameObject:
   m_ObjectHideFlags: 0
