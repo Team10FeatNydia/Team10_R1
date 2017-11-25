@@ -134,7 +134,12 @@ public class EnemyStatusScript : MonoBehaviour
         {
             enemyModelAnim.Damaged();
         }
-		if (health <= 0)
+
+        if (myType == EnemyType.KING)
+        {
+            enemyModelAnim.Damaged();
+        }
+        if (health <= 0)
 		{
             isDead = true;
             health = 0;
@@ -301,8 +306,8 @@ public class EnemyStatusScript : MonoBehaviour
 
 					Attack(rand);
 				}
-
-				yield return new WaitForSeconds(2f);
+                enemyModelAnim.Attack();
+                yield return new WaitForSeconds(2f);
 
 				BattleManagerScript.Instance.enemyAction = true;
 			}

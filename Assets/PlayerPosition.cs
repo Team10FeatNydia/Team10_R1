@@ -21,14 +21,23 @@ public class PlayerPosition : MonoBehaviour {
 
     void saveData()
     {
-        PlayerStatSaver.mInstance.posX = posX - 640;
-        PlayerStatSaver.mInstance.posY = posY - 480;
+        PlayerStatSaver.mInstance.posX = posX;
+        PlayerStatSaver.mInstance.posY = posY;
+       // PlayerStatSaver.mInstance.posX = posX - 640;
+       //PlayerStatSaver.mInstance.posY = posY - 480;
     }
 
     void loadData()
     {
-        posX = PlayerStatSaver.mInstance.posX  +640;
-        posY = PlayerStatSaver.mInstance.posY + 480;
+        if (posX == 0)
+        {
+            posX = 40;
+            posY = 193;
+        }
+        posX = PlayerStatSaver.mInstance.posX;
+        posY = PlayerStatSaver.mInstance.posY;
+        //posX = PlayerStatSaver.mInstance.posX  +640;
+        //posY = PlayerStatSaver.mInstance.posY + 480;
         transform.position = new Vector3(posX , posY , 0f);
     }
 }
