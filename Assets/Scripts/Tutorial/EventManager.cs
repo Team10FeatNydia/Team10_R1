@@ -92,6 +92,7 @@ public class EventManager : MonoBehaviour
 			{
 				path.GetComponent<MovementPath> ().enabled = false;
 				GameManagerInstance.instance.ChangeScene(3);
+				Destroy(PlayerStatSaver.mInstance.gameObject);
 				return;
 			}
 			else if (index == 0 || (index > 0 && eventInformationList [index - 1].isCleared)) // first event doesnt have to check if previous event is done || if index > 0 then need to check if prev event (index-1) cleared

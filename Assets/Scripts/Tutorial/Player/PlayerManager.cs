@@ -35,15 +35,11 @@ public class SceneList
 public class PlayerManager : MonoBehaviour 
 {
 	[Header("System")]
-	public new CapsuleCollider collider;
-	public new Rigidbody rigidbody;
-	public new SpriteRenderer renderer;
 	public Animator animator;
 
 	[Header("Developer")]
-	public PlayerMovementScript movement;
 	public PlayerStatusScript status;
-	public PlayerUIScript ui;
+	public PlayerUIScript UI;
 
 	[Header("Respawn")]
 	public string respawnScene;
@@ -51,17 +47,12 @@ public class PlayerManager : MonoBehaviour
 
 	void Awake()
 	{
-		collider = GetComponent<CapsuleCollider>();
-		rigidbody = GetComponent<Rigidbody>();
-		renderer = GetComponentInChildren<SpriteRenderer>();
 		animator = GetComponentInChildren<Animator>();
 
-		movement = GetComponent<PlayerMovementScript>();
 		status = GetComponent<PlayerStatusScript>();
-		ui = GetComponentInChildren<PlayerUIScript>();
+		UI = GetComponentInChildren<PlayerUIScript>();
 
-		if(movement 	!= null) movement.self 		= this;
 		if(status 		!= null) status.self 		= this;
-		if(ui			!= null) ui.self			= this;
+		if(UI			!= null) UI.self			= this;
 	}
 }

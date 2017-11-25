@@ -9,16 +9,8 @@ public class PlayerStatusScript : MonoBehaviour
 	public PlayerManager self;
 
 	[Header("Stats")]
-   
     public PlayerStatistics localPlayerData = new PlayerStatistics();
-    // public int MaxHP = 100;
     public float HP;
-//	public int manaPoints;
-
-
-//	[Header("Movement")]
-//	public float movementSpeed;
-//	public float jumpHeight;
 
 	[Header("Combat")]
 	public bool isHit;
@@ -35,7 +27,6 @@ public class PlayerStatusScript : MonoBehaviour
 
     void Start()
     {
-        //health = maxHealth ;
         LoadData();
     }
 
@@ -58,7 +49,8 @@ public class PlayerStatusScript : MonoBehaviour
             playerAnim.Death();
         }
 
-        SaveData();
+		LoadData();
+        //SaveData();
 	}
 
 	public void Respawn()
@@ -69,13 +61,11 @@ public class PlayerStatusScript : MonoBehaviour
 	public void SaveData()
 	{
 		PlayerStatSaver.mInstance.playerHP = HP;
-        //PlayerStatSaver.mInstance.MaxHP = MaxHP;
 	}
 
     public void LoadData()
     {
 		HP = PlayerStatSaver.mInstance.playerHP;
-        //MaxHP = PlayerStatSaver.mInstance.MaxHP;
     }
 
 	public void Quit()

@@ -23,7 +23,7 @@ public class GameManagerInstance : MonoBehaviour
 			Destroy(gameObject);
 		}
 
-		playerStatSaver = GetComponent<PlayerStatSaver>();
+		playerStatSaver = PlayerStatSaver.mInstance;
 		DontDestroyOnLoad(this);
 	}
 

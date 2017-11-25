@@ -14,6 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/CombatScene 3.unity
     guid: ea5621debe1614e4c8f898578ae0195a
-  - enabled: 0
-    path: Assets/Scene/VictoryScene.unity
-    guid: a13e7f1d1d7ba454ba336ccabccc87b5
+  - enabled: 1
+    path: Assets/Scene/EndGame.unity
+    guid: a05c621f2f91c10449db6362dd6b4aa6

@@ -125,7 +125,7 @@ public class BattleManagerScript : MonoBehaviour
 			}
             //GameManagerInstance.instance.ChangeScene(0);
         }
-		else if(player.localPlayerData.health <= 0)
+		else if(PlayerStatSaver.mInstance.playerHP <= 0)
 		{
 			if(!WinLoseGOSpawned)
 			{

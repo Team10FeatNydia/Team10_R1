@@ -150,6 +150,9 @@ MonoBehaviour:
   cardPouch: {fileID: 0}
   selected: 0
   interactable: 0
+  rectTransform: {fileID: 0}
+  shakeTime: 20
+  origin: {x: 0, y: 0, z: 0}
   myDmg: {fileID: 0}
   myManaCost: {fileID: 0}
   myDescription: {fileID: 0}

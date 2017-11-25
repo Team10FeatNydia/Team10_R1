@@ -7608,64 +7608,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 224355454761696940, guid: dd47058f487c8fd45b7f04dc3f5fc679,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 224355454761696940, guid: dd47058f487c8fd45b7f04dc3f5fc679,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224498420020705562, guid: dd47058f487c8fd45b7f04dc3f5fc679,
-        type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 224498420020705562, guid: dd47058f487c8fd45b7f04dc3f5fc679,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 224498420020705562, guid: dd47058f487c8fd45b7f04dc3f5fc679,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224460885851347108, guid: dd47058f487c8fd45b7f04dc3f5fc679,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 224460885851347108, guid: dd47058f487c8fd45b7f04dc3f5fc679,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224490876010151970, guid: dd47058f487c8fd45b7f04dc3f5fc679,
-        type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 224490876010151970, guid: dd47058f487c8fd45b7f04dc3f5fc679,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 224490876010151970, guid: dd47058f487c8fd45b7f04dc3f5fc679,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1405268816325394, guid: dd47058f487c8fd45b7f04dc3f5fc679, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1502134764922370, guid: dd47058f487c8fd45b7f04dc3f5fc679, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd47058f487c8fd45b7f04dc3f5fc679, type: 2}
   m_IsPrefabParent: 0
@@ -28852,7 +28794,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &552880385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28865,13 +28807,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf8676472d1983640b53a150d85bb9d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 1
-  maxHP: 0
-  posX: 0
-  posY: 0
-  BGposX: 0
-  BGposY: 0
-  eventCleared: 0
+  playerHP: 0
+  playerMaxHP: 0
+  playerPosX: 0
+  playerPosY: 0
+  playerBGposX: 0
+  playerBGposY: 0
+  playerEventCleared: 0
   playerPoint: 0
   cardDeckList: []
 --- !u!4 &552880386
@@ -60472,6 +60414,20 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -95386,13 +95342,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7213a8dc494ff142840dd961264a182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider: {fileID: 0}
-  rigidbody: {fileID: 0}
-  renderer: {fileID: 0}
   animator: {fileID: 0}
-  movement: {fileID: 0}
   status: {fileID: 0}
-  ui: {fileID: 0}
+  UI: {fileID: 0}
   respawnScene: 
   quitScene: 
 --- !u!1 &1730342910

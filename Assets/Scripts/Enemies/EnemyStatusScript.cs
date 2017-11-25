@@ -81,6 +81,7 @@ public class EnemyStatusScript : MonoBehaviour
 		PlayerStatSaver.mInstance.playerHP -= damage * 1.0f;
         player.isHit = true;
 
+		Debug.Log("PlayerHP : " + PlayerStatSaver.mInstance.playerHP);
 	}
 
 	public void HeavyAttack(int damage)
