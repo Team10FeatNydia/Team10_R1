@@ -14,6 +14,8 @@ public class AmuletEvent : MonoBehaviour
 
 	void GainAmulet ()
 	{
+		Debug.Log("Got Amulet");
+
 		// Instantiate (choiceSuccess);
 		// TODO::Gain amulet
 		EventManager.instance.ClearEvent ();
