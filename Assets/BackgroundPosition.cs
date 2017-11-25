@@ -22,12 +22,12 @@ public class BackgroundPosition : MonoBehaviour {
 
     void saveData()
     {
-        PlayerStatSaver.mInstance.BGposY = posY - 1188;
+		PlayerStatSaver.mInstance.playerBGposY = posY - 1188;
     }
 
     void loadData()
     {
-        posY = PlayerStatSaver.mInstance.BGposY + 1188;
+		posY = PlayerStatSaver.mInstance.playerBGposY + 1188;
         transform.position = new Vector3(640f, posY, 0f);
     }
 }

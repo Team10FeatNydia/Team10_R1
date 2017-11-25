@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerLevelScript : MonoBehaviour {
-
+public class PlayerLevelScript : MonoBehaviour 
+{
     public static PlayerLevelScript instance;
 
     public float posX;
@@ -23,12 +23,14 @@ public class PlayerLevelScript : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
+    void Start () 
+	{
         LoadData();
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
         SaveData();
         posX = GetComponent<RectTransform>().position.x;
         posY = GetComponent<RectTransform>().position.y;
@@ -36,13 +38,13 @@ public class PlayerLevelScript : MonoBehaviour {
 
     public void SaveData()
     {
-        PlayerStatSaver.mInstance.posX = posX;
-        PlayerStatSaver.mInstance.posY = posY;
+		PlayerStatSaver.mInstance.playerPosX = posX;
+		PlayerStatSaver.mInstance.playerPosY = posY;
     }
 
     public void LoadData()
     {
-        posX = PlayerStatSaver.mInstance.posX;
-        posY = PlayerStatSaver.mInstance.posY;
+		posX = PlayerStatSaver.mInstance.playerPosX;
+		posY = PlayerStatSaver.mInstance.playerPosY;
     }
 }

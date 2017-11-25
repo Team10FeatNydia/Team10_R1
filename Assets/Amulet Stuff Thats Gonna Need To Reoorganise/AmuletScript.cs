@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 
 public class AmuletScript : MonoBehaviour, IPointerClickHandler
 {
-
     // Use this for initialization
     void Start()
     {

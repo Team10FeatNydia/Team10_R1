@@ -536,6 +536,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &640469257 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114209975537365766, guid: 9c539b8e47a22064c95e9047440ec12d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1097559520}
+  m_Script: {fileID: 11500000, guid: a702b86028d5855428ef37012191283f, type: 3}
 --- !u!1 &847953573
 GameObject:
   m_ObjectHideFlags: 0
@@ -928,6 +934,20 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -945,6 +965,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1723584132 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114961069056724414, guid: 276debccf76b31c47b2c3f1b33bbe080,
+    type: 2}
+  m_PrefabInternal: {fileID: 1736756203}
+  m_Script: {fileID: 11500000, guid: 72c1506e78ccbae4e8185e37ce74062c, type: 3}
 --- !u!1001 &1736756203
 Prefab:
   m_ObjectHideFlags: 0
@@ -1227,9 +1253,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114616366910370784, guid: bc8439ba9c8f7e44c96c8751b68b3abb,
         type: 2}
+      propertyPath: fadeManager
+      value: 
+      objectReference: {fileID: 1723584132}
+    - target: {fileID: 114616366910370784, guid: bc8439ba9c8f7e44c96c8751b68b3abb,
+        type: 2}
       propertyPath: gameManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 640469257}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bc8439ba9c8f7e44c96c8751b68b3abb, type: 2}
   m_IsPrefabParent: 0

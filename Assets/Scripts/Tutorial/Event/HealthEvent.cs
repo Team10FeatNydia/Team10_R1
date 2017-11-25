@@ -40,18 +40,18 @@ public class HealthEvent : MonoBehaviour
 
 	void Heal (int amount, bool isChoiceA)
 	{
-		GameData gameData = GameManagerInstance.instance.gameData; // Load game data from game manager instance
-		if (gameData.playerHP >= gameData.playerMaxHP) // If player has full health
+		PlayerStatSaver playerStatSaver = GameManagerInstance.instance.playerStatSaver; // Load game data from game manager instance
+		if (playerStatSaver.playerHP >= playerStatSaver.playerMaxHP) // If player has full health
 		{
 			Instantiate (healthFull);
 		}
 		else
 		{
-			gameData.playerHP += amount;
+			playerStatSaver.playerHP += amount;
 
-			if (gameData.playerHP > gameData.playerMaxHP)
+			if (playerStatSaver.playerHP > playerStatSaver.playerMaxHP)
 			{
-				gameData.playerHP = gameData.playerMaxHP;
+				playerStatSaver.playerHP = playerStatSaver.playerMaxHP;
 			}
 
 			if (isChoiceA)

@@ -10,6 +10,7 @@ public enum EventName
 	SUB_COMBAT_POINT = 3,
 	AMULET1_POINT = 4,
 	AMULET2_POINT = 5,
+	ENDGAME_POINT = 6,
 }
 
 [System.Serializable]
@@ -41,8 +42,7 @@ public class EventManager : MonoBehaviour
 	{
 		//player = GameObject.Find ("Player");
 		arrow = arrowObject.GetComponent<Arrow> ();
-        SetClearedEventNumber(PlayerStatSaver.mInstance.eventCleared);
-
+		SetClearedEventNumber(PlayerStatSaver.mInstance.playerEventCleared);
     }
 
 	public void StartEvent (EventCollider collider)
@@ -88,7 +88,13 @@ public class EventManager : MonoBehaviour
 		}
 		else
 		{
-			if (index == 0 || (index > 0 && eventInformationList [index - 1].isCleared)) // first event doesnt have to check if previous event is done || if index > 0 then need to check if prev event (index-1) cleared
+			if(index == 6)
+			{
+				path.GetComponent<MovementPath> ().enabled = false;
+				GameManagerInstance.instance.ChangeScene(3);
+				return;
+			}
+			else if (index == 0 || (index > 0 && eventInformationList [index - 1].isCleared)) // first event doesnt have to check if previous event is done || if index > 0 then need to check if prev event (index-1) cleared
 			{
 				// if can start event
 				path.GetComponent<MovementPath> ().enabled = false; // prevent player from moving
@@ -115,7 +121,7 @@ public class EventManager : MonoBehaviour
                 counter++;
             }
         }
-        return PlayerStatSaver.mInstance.eventCleared = counter;
+		return PlayerStatSaver.mInstance.playerEventCleared = counter;
     }
 
     public void SetClearedEventNumber(int n)

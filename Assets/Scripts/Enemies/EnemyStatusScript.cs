@@ -78,7 +78,7 @@ public class EnemyStatusScript : MonoBehaviour
 		player.enemyAttack.Play();
 		SoundManagerScript.Instance.PlaySFX(AudioClipID.SFX_ATTACK7);
         //player.localPlayerData.health -= damage;
-        PlayerStatSaver.mInstance.HP -= damage * 1.0f;
+		PlayerStatSaver.mInstance.playerHP -= damage * 1.0f;
         player.isHit = true;
 
 	}
@@ -88,7 +88,7 @@ public class EnemyStatusScript : MonoBehaviour
 		SoundManagerScript.Instance.PlaySFX(AudioClipID.SFX_ATTACK7);
 		player.enemyHeavyAttack.Play();
 		//player.localPlayerData.health -= damage;
-        PlayerStatSaver.mInstance.HP -= damage * 1.0f;
+		PlayerStatSaver.mInstance.playerHP -= damage * 1.0f;
         player.isHit = true;
     }
 

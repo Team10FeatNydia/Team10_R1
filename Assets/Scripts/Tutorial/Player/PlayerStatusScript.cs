@@ -68,13 +68,13 @@ public class PlayerStatusScript : MonoBehaviour
 
 	public void SaveData()
 	{
-        PlayerStatSaver.mInstance.HP = HP;
+		PlayerStatSaver.mInstance.playerHP = HP;
         //PlayerStatSaver.mInstance.MaxHP = MaxHP;
 	}
 
     public void LoadData()
     {
-        HP = PlayerStatSaver.mInstance.HP;
+		HP = PlayerStatSaver.mInstance.playerHP;
         //MaxHP = PlayerStatSaver.mInstance.MaxHP;
     }
 

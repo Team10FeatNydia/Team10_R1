@@ -33,7 +33,7 @@ public class CombatUI : MonoBehaviour
         //playerManaCount.text = player.localPlayerData.manaPoints.ToString();
 
         //playerHealthText.text = player.localPlayerData.health.ToString();
-        playerHealthText.text = PlayerStatSaver.mInstance.HP.ToString();
+        playerHealthText.text = PlayerStatSaver.mInstance.playerHP.ToString();
 
 
 

@@ -39,13 +39,13 @@ public class TutorialBackgroundScript : MonoBehaviour
 
     public void SaveData()
     {
-        PlayerStatSaver.mInstance.BGposX = posX;
-        PlayerStatSaver.mInstance.BGposY = posY;
+		PlayerStatSaver.mInstance.playerBGposX = posX;
+		PlayerStatSaver.mInstance.playerBGposY = posY;
     }
 
     public void LoadData()
     {
-        posX = PlayerStatSaver.mInstance.BGposX;
-        posY = PlayerStatSaver.mInstance.BGposY;
+		posX = PlayerStatSaver.mInstance.playerBGposX;
+		posY = PlayerStatSaver.mInstance.playerBGposY;
     }
 }

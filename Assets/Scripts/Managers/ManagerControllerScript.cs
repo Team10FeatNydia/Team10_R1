@@ -41,6 +41,7 @@ public class ManagerControllerScript : MonoBehaviour
 	public GameObject battleManagerPrefab;
 	public GameObject cardManagerPrefab;
     public GameObject spellsManagerPrefab;
+	public GameObject fadeManagerPrefab;
 
 	[Header("In-Scene Managers")]
 	public SoundManagerScript soundManager;
@@ -48,4 +49,5 @@ public class ManagerControllerScript : MonoBehaviour
 	public BattleManagerScript battleManager;
 	public CardManagerScript cardManager;
     public SpellsManagerScript spellsManager;
+	public FadeManagerScript fadeManager;
 }

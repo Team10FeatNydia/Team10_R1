@@ -8,7 +8,7 @@ public class GameManagerInstance : MonoBehaviour
 	[HideInInspector]
 	public static GameManagerInstance instance;
 
-	public GameData gameData;
+	public PlayerStatSaver playerStatSaver;
 	public List<GameObject> levelOne;
 	public List<GameObject> arenaScene;
 
@@ -23,8 +23,8 @@ public class GameManagerInstance : MonoBehaviour
 			Destroy(gameObject);
 		}
 
-		gameData = GetComponent<GameData> ();
-		DontDestroyOnLoad (this);
+		playerStatSaver = GetComponent<PlayerStatSaver>();
+		DontDestroyOnLoad(this);
 	}
 
 	void Start ()
@@ -33,11 +33,6 @@ public class GameManagerInstance : MonoBehaviour
 		{
 			DontDestroyOnLoad (levelOne [i].gameObject);
 		}
-	}
-
-	void Update ()
-	{
-
 	}
 
 	public void ChangeScene (int index)
@@ -49,7 +44,6 @@ public class GameManagerInstance : MonoBehaviour
                 levelOne[i].gameObject.SetActive(false);
             }
             SceneManager.LoadScene(0);
-            //Debug.Log(SceneManager.GetActiveScene().buildIndex);
         }
 
         else if (index == 1)
@@ -59,7 +53,6 @@ public class GameManagerInstance : MonoBehaviour
                 levelOne[i].gameObject.SetActive(false);
             }
             SceneManager.LoadScene(1);
-            //Debug.Log(SceneManager.GetActiveScene().buildIndex);
         }
 
         else if (index == 2)
@@ -69,7 +62,6 @@ public class GameManagerInstance : MonoBehaviour
 				levelOne [i].gameObject.SetActive (false);
 			}
 			SceneManager.LoadScene (2);
-			//Debug.Log (SceneManager.GetActiveScene ().buildIndex);
 		}
 
         else if (index == 3)
@@ -79,7 +71,6 @@ public class GameManagerInstance : MonoBehaviour
                 levelOne[i].gameObject.SetActive(false);
             }
             SceneManager.LoadScene(3);
-            //Debug.Log(SceneManager.GetActiveScene().buildIndex);
         }
 
         else if (index == 4)
@@ -89,7 +80,6 @@ public class GameManagerInstance : MonoBehaviour
                 levelOne[i].gameObject.SetActive(false);
             }
             SceneManager.LoadScene(4);
-            //Debug.Log(SceneManager.GetActiveScene().buildIndex);
         }
 
         else if (index == 5)
@@ -99,7 +89,6 @@ public class GameManagerInstance : MonoBehaviour
                 levelOne[i].gameObject.SetActive(false);
             }
             SceneManager.LoadScene(5);
-            //Debug.Log(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
