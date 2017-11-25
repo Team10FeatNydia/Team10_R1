@@ -25,6 +25,9 @@ public enum AudioClipID
     // Battle
     BGM_BATTLE_1 = 9,
 
+	//EndGameBGM
+	BGM_END_GAME = 10,
+
     SFX_BATTLE_TRANSACTION = 100,
 
 	// UI

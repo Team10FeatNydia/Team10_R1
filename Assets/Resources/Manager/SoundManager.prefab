@@ -305,6 +305,8 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 5221b501391962d4b8d79f31bb257c7a, type: 3}
   - audioClipID: 108
     audioClip: {fileID: 8300000, guid: 62d78a79e7458a64b9b2717fbb3e66b8, type: 3}
+  - audioClipID: 10
+    audioClip: {fileID: 8300000, guid: 3e26b51964858e8489837eb4ceb53e1d, type: 3}
   bgmAudioSource: {fileID: 82079899537893518}
   sfxAudioSource: {fileID: 82626725019222596}
   brightnessMask: {fileID: 0}
