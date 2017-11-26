@@ -122,6 +122,8 @@ public class BattleManagerScript : MonoBehaviour
 
 					WinLoseComment.text = "Hurray! You Got A Card! We Done Yet?";
 				}
+
+				FadeManagerScript.Instance.fadeOut();
 			}
             //GameManagerInstance.instance.ChangeScene(0);
         }
@@ -141,6 +143,8 @@ public class BattleManagerScript : MonoBehaviour
 
 				newCardDisplay.enabled = false;
 				newCardText.text = "";
+
+				FadeManagerScript.Instance.fadeOut();
 
 //				bool gotNewCard = false;
 //

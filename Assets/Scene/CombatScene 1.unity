@@ -473,7 +473,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &55904446 stripped
 MonoBehaviour:
@@ -28778,59 +28778,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4142609750491810, guid: d9d823013ef895c439d529a926925b0a,
     type: 2}
   m_PrefabInternal: {fileID: 1901397363}
---- !u!1 &552880384
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1384952098174418, guid: 078771d7946937e41924479645c82df7,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 552880386}
-  - component: {fileID: 552880385}
-  m_Layer: 0
-  m_Name: PlayerStatSaver
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &552880385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114718060861544884, guid: 078771d7946937e41924479645c82df7,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 552880384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf8676472d1983640b53a150d85bb9d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHP: 0
-  playerMaxHP: 0
-  playerPosX: 0
-  playerPosY: 0
-  playerBGposX: 0
-  playerBGposY: 0
-  playerEventCleared: 0
-  playerPoint: 0
-  combatScene: 0
-  cardDeckList: []
---- !u!4 &552880386
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4928971317185480, guid: 078771d7946937e41924479645c82df7,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 552880384}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.273065, y: -14.801834, z: 18.042439}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 19
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &553237855
 GameObject:
   m_ObjectHideFlags: 0

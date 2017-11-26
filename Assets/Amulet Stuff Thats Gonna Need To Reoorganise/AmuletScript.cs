@@ -9,7 +9,7 @@ public class AmuletScript : MonoBehaviour, IPointerClickHandler
     // Use this for initialization
     void Start()
     {
-
+		FadeManagerScript.Instance.fadeIn();
     }
 
     // Update is called once per frame

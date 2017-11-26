@@ -12,6 +12,7 @@ public class HealthEvent : MonoBehaviour
 
 	void Start ()
 	{
+		FadeManagerScript.Instance.fadeIn();
 		transform.GetChild (0).GetComponent<Button> ().onClick.AddListener (HealingCard);
 		transform.GetChild (1).GetComponent<Button> ().onClick.AddListener (WarpWound);
 	}

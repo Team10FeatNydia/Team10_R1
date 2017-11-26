@@ -22,7 +22,7 @@ public class FadeManagerScript : MonoBehaviour
 				}
 				mInstance = temp;
 				ManagerControllerScript.Instance.fadeManager = mInstance;
-				DontDestroyOnLoad(mInstance.gameObject);
+				//DontDestroyOnLoad(mInstance.gameObject);
 			}
 			return mInstance;
 		}
@@ -42,10 +42,13 @@ public class FadeManagerScript : MonoBehaviour
 	}
 
 	public Image fadeImage;
-	public bool isInTransition;
-	public float transition;
-	public bool isShowing;
-	public float duration;
+	private bool isInTransition;
+	private float transition;
+	private bool isShowing;
+	private float duration;
+	public float fadeInDuration;
+	public float fadeOutDuration;
+	Canvas thisCanvas;
 
 	public void Fade(bool showing,float duration)
 	{
@@ -68,12 +71,19 @@ public class FadeManagerScript : MonoBehaviour
 
 	public void fadeOut()
 	{
-		Fade (true, 1.5f);
+		fadeImage.enabled = true;
+		Fade (true, fadeOutDuration);
 	}
 
 	public void fadeIn()
 	{
-		Fade (false, 1.5f);
+		Fade (false, fadeInDuration);
+		Invoke("fadeImageDisable", fadeOutDuration + 0.2f );
+		Debug.Log("uidf");
 	}
 
+	void fadeImageDisable()
+	{
+		fadeImage.enabled = false ;
+	}
 }

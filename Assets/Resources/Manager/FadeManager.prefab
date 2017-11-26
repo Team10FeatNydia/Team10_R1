@@ -123,10 +123,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 114192742612030300}
-  isInTransition: 0
-  transition: 0
-  isShowing: 0
-  duration: 0
+  fadeInDuration: 1.5
+  fadeOutDuration: 1.5
 --- !u!222 &222351696363083934
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -151,7 +149,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &224334998791679284
 RectTransform:
