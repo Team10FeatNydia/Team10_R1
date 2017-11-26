@@ -41,4 +41,9 @@ public class GameManagerScript : MonoBehaviour
 			Destroy(this.gameObject);
 		}
 	}
+
+	void Start()
+	{
+		FadeManagerScript.Instance.fadeIn();
+	}
 }

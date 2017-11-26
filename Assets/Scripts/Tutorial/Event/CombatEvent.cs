@@ -15,7 +15,19 @@ public class CombatEvent : MonoBehaviour
 		//CardManagerScript.Instance.DisplayDeckPanels();
 		transform.parent.parent.parent.GetComponent<Canvas>().enabled = false;
         EventManager.instance.ClearEvent();
-        GameManagerInstance.instance.ChangeScene (2);
+
+		if(PlayerStatSaver.mInstance.combatScene == 0)
+		{
+			PlayerStatSaver.mInstance.combatScene ++;
+			GameManagerInstance.instance.ChangeScene (2);
+		}
+		else if(PlayerStatSaver.mInstance.combatScene == 1)
+		{
+			PlayerStatSaver.mInstance.combatScene ++;
+			GameManagerInstance.instance.ChangeScene (3);
+		}
+			
+
 	}
 
 	//Change Scene function changed to CardManagerScript.ChangeScene()

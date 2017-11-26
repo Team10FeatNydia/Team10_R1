@@ -88,10 +88,10 @@ public class EventManager : MonoBehaviour
 		}
 		else
 		{
-			if(index == 6)
+			if(index == (int)EventName.ENDGAME_POINT)
 			{
 				path.GetComponent<MovementPath> ().enabled = false;
-				GameManagerInstance.instance.ChangeScene(3);
+				GameManagerInstance.instance.ChangeScene(4);
 				Destroy(PlayerStatSaver.mInstance.gameObject);
 				return;
 			}

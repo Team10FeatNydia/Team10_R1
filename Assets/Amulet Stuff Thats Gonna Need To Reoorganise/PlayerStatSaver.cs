@@ -16,6 +16,8 @@ public class PlayerStatSaver : MonoBehaviour
     public int playerPoint;
     GameObject player;
 
+	public int combatScene = 0;
+
 	public List<CardDescription> cardDeckList = new List<CardDescription>();
     //public float MaxHP;
 

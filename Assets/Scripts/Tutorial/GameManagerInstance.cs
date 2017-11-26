@@ -29,6 +29,8 @@ public class GameManagerInstance : MonoBehaviour
 
 	void Start ()
 	{
+		FadeManagerScript.Instance.fadeIn();
+		
 		for (int i = 0; i < levelOne.Count; i++)
 		{
 			DontDestroyOnLoad (levelOne [i].gameObject);

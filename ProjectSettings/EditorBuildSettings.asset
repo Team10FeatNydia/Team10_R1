@@ -12,8 +12,11 @@ EditorBuildSettings:
     path: Assets/Scene/VS_TUTORIAL.unity
     guid: ca484a271c8b6ea4c979aff8003292ee
   - enabled: 1
-    path: Assets/Scene/CombatScene 3.unity
+    path: Assets/Scene/CombatScene 1.unity
     guid: ea5621debe1614e4c8f898578ae0195a
+  - enabled: 1
+    path: Assets/Scene/CombatScene 2.unity
+    guid: 84a450932501374448299202d9653c40
   - enabled: 1
     path: Assets/Scene/EndGame.unity
     guid: a05c621f2f91c10449db6362dd6b4aa6
