@@ -7,5 +7,5 @@ public class PlayerStatistics
 {
 	public int maxHealth = 100;
 	public int health = 100;
-	public int manaPoints = 20;
+	public int manaPoints = 10;
 }

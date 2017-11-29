@@ -920,20 +920,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -2061,28 +2047,28 @@ MonoBehaviour:
   combatScene: 0
   cardDeckList:
   - cardType: 0
-    cardEffect: 4
+    cardEffect: 1
     manaCost: 2
+    description: 
+    cardImage: {fileID: 21300000, guid: e35b14a888a6149488d8173e32f333c5, type: 3}
+    isSpawned: 0
+  - cardType: 0
+    cardEffect: 1
+    manaCost: 3
     description: 
     cardImage: {fileID: 21300000, guid: 58d380ec67c9f794ab560d5ddb4da33a, type: 3}
     isSpawned: 0
   - cardType: 0
     cardEffect: 2
-    manaCost: 1
+    manaCost: 5
     description: 
     cardImage: {fileID: 21300000, guid: e9c9cf5cce0314e4cb163d54e437ea99, type: 3}
     isSpawned: 0
   - cardType: 0
-    cardEffect: 7
-    manaCost: 4
+    cardEffect: 3
+    manaCost: 6
     description: 
     cardImage: {fileID: 21300000, guid: 553a75c1939d700418f29fbf6d575908, type: 3}
-    isSpawned: 0
-  - cardType: 0
-    cardEffect: 2
-    manaCost: 1
-    description: 
-    cardImage: {fileID: 21300000, guid: e35b14a888a6149488d8173e32f333c5, type: 3}
     isSpawned: 0
   - cardType: 1
     cardEffect: 6
@@ -2091,8 +2077,8 @@ MonoBehaviour:
     cardImage: {fileID: 21300000, guid: cfa2deb9d9034ee42a4d58a75c61b278, type: 3}
     isSpawned: 0
   - cardType: 2
-    cardEffect: 2
-    manaCost: 3
+    cardEffect: 1
+    manaCost: 4
     description: 
     cardImage: {fileID: 21300000, guid: 9bf5c62f86d0b2d42a5b26a506702838, type: 3}
     isSpawned: 0
