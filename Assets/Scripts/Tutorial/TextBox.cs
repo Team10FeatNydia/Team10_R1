@@ -14,6 +14,7 @@ public class TextBox : MonoBehaviour
 
 	void ChangeEventCanvas ()
 	{
+		EventManager.instance.ClearEvent();
 		Instantiate (eventCanvas);
 		Destroy (transform.root.gameObject);
 	}

@@ -235,10 +235,15 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 						{
 							if(BattleManagerScript.Instance.enemyList[i] != null)
 							{
-								if(interactable)
+								if(BattleManagerScript.Instance.enemyList[i].interactable)
 								{
 									BattleManagerScript.Instance.enemyList[i].redTarget.Stop();
 									BattleManagerScript.Instance.enemyList[i].blueTarget.Play();
+								}
+								else
+								{
+									BattleManagerScript.Instance.enemyList[i].redTarget.Stop();
+									BattleManagerScript.Instance.enemyList[i].blueTarget.Stop();
 								}
 							}
 						}

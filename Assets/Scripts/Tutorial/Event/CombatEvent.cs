@@ -26,6 +26,11 @@ public class CombatEvent : MonoBehaviour
 			PlayerStatSaver.mInstance.combatScene ++;
 			GameManagerInstance.instance.ChangeScene (3);
 		}
+		else if(PlayerStatSaver.mInstance.combatScene == 2)
+		{
+			PlayerStatSaver.mInstance.combatScene ++;
+			GameManagerInstance.instance.ChangeScene (5);
+		}
 			
 
 	}

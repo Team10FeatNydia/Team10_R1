@@ -85,6 +85,8 @@ public class BattleManagerScript : MonoBehaviour
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         manaregen = player.localPlayerData.manaPoints;
 		manaText.text = player.localPlayerData.manaPoints.ToString();
+		healthText.text = PlayerStatSaver.mInstance.playerHP.ToString();
+		heartBarImage.fillAmount = (float)PlayerStatSaver.mInstance.playerHP/ (float)PlayerStatSaver.mInstance.playerMaxHP;
         currTurn = BattleStates.PLAYER_TURN;
 
 		for(int i = 0; i < enemies.Length; i++)
@@ -121,7 +123,8 @@ public class BattleManagerScript : MonoBehaviour
 				else
 				{
 					newCardDisplay.enabled = true;
-					newCardDes.text = "Obtained A New Card";
+					newCardDisplay.sprite = newCard.cardImage;
+					newCardDes.text = newCard.description;
 
 					WinLoseComment.text = "Hurray! You Got A Card! We Done Yet?";
 
@@ -222,6 +225,11 @@ public class BattleManagerScript : MonoBehaviour
 
 	public void EndCombatScene()
 	{
+		if(!WinCondition)
+		{
+			Destroy(PlayerStatSaver.mInstance.gameObject);
+		}
+
 		GameManagerInstance.instance.ChangeScene(1);
 	}
 

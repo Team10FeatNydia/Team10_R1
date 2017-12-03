@@ -113,6 +113,9 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 				// Attacking Script
 				SoundManagerScript.Instance.PlaySFX(AudioClipID.SFX_ATTACK2);
 				selectedCards[i].target.health -= selectedCards[i].myCard.cardEffect;
+
+				Debug.Log("Target HP : " + selectedCards[i].target.health);
+
 //				battleManager.player.localPlayerData.health += spellsHeal;
 
             }
@@ -641,7 +644,6 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 		}
 		else if (battleManager.currTurn == BattleStates.CHOOSE_CARDS)
 		{
-
 			if(selectedCards.Count > 0 && currState == PouchStates.ACTION_CARDS)
 			{
 				DisplaySelectedCards();
@@ -664,6 +666,8 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 						if(battleManager.enemyList[i].myType == EnemyType.KING || battleManager.enemyList[i].myType == EnemyType.QUEEN)
 						{
 							battleManager.enemyList[i].interactable = false;
+							battleManager.enemyList[i].blueTarget.Stop();
+							battleManager.enemyList[i].redTarget.Stop();
 						}
 						else
 						{
@@ -673,7 +677,6 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 					else
 					{
 						battleManager.enemyList[i].interactable = true;
-
 					}
 				}
 			}

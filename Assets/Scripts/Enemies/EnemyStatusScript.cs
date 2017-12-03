@@ -15,7 +15,7 @@ public class EnemyStatusScript : MonoBehaviour
 {
 	[HideInInspector]
 	public EnemyManager self;
-    bool isDead;
+    public bool isDead;
 
 	[Header("Stats")]
 	public EnemyType myType;
@@ -45,6 +45,9 @@ public class EnemyStatusScript : MonoBehaviour
 	public ParticleSystem getAttacked;
 	//public ParticleSystem gotHitEnemy;
 	public ParticleSystem deathEffect;
+	public ParticleSystem healEffect;
+
+	public bool healCooldown = false;
 
     [Header("Models")]
     public GameObject EnemyModel;
@@ -145,12 +148,16 @@ public class EnemyStatusScript : MonoBehaviour
             enemyModelAnim.Damaged();
         }
 
-        if (myType == EnemyType.KING)
+		//temporarily switching types
+		if (myType == EnemyType.QUEEN)
         {
             enemyModelAnim.Damaged();
         }
+
         if (health <= 0)
 		{
+			Debug.Log("Enemy dead");
+
 			hpGO.SetActive(false);
 
             isDead = true;
@@ -179,7 +186,7 @@ public class EnemyStatusScript : MonoBehaviour
 
 				Attack(rand);
                 enemyModelAnim.Attack();
-				yield return new WaitForSeconds(1f);
+				yield return new WaitForSeconds(0.5f);
 
 				BattleManagerScript.Instance.enemyAction = true;
 			}
@@ -192,7 +199,7 @@ public class EnemyStatusScript : MonoBehaviour
 				{
 					if(BattleManagerScript.Instance.enemyList[i] != null)
 					{
-						if(BattleManagerScript.Instance.enemyList[i].myType == EnemyType.KING)
+						if(BattleManagerScript.Instance.enemyList[i].myType == EnemyType.KING || BattleManagerScript.Instance.enemyList[i].myType == EnemyType.QUEEN)
 						{
 							if(BattleManagerScript.Instance.enemyList[i].health < (20/100*(BattleManagerScript.Instance.enemyList[i].maxHealth)))
 							{
@@ -211,7 +218,7 @@ public class EnemyStatusScript : MonoBehaviour
 					Attack(rand);
 				}
 
-				yield return new WaitForSeconds(1f);
+				yield return new WaitForSeconds(0.5f);
 
 				BattleManagerScript.Instance.enemyAction = true;
 
@@ -219,45 +226,59 @@ public class EnemyStatusScript : MonoBehaviour
 			}
 			else if(myType == EnemyType.QUEEN)
 			{
-				List<EnemyStatusScript> enemy = new List<EnemyStatusScript>();
-
-				for(int i = 0; i < BattleManagerScript.Instance.enemyList.Count; i++)
+				if(!healCooldown)
 				{
-					if(BattleManagerScript.Instance.enemyList[i] != null)
+					List<EnemyStatusScript> enemy = new List<EnemyStatusScript>();
+
+					for(int i = 0; i < BattleManagerScript.Instance.enemyList.Count; i++)
 					{
-						if(BattleManagerScript.Instance.enemyList[i].health < (50 / 100 * (BattleManagerScript.Instance.enemyList[i].maxHealth)))
+						if(BattleManagerScript.Instance.enemyList[i] != null)
 						{
-							enemy.Add(BattleManagerScript.Instance.enemyList[i]);
-						}
-					}
-				}
-
-				bool kingless = true;
-				int heal = Random.Range(attack, (int)(attack * 1.5));
-
-				if(enemy.Count > 2)
-				{
-					HealTeam(heal + 2);
-				}
-				else if(enemy.Count > 0)
-				{
-					for(int i = 0; i < enemy.Count; i++)
-					{
-						if(enemy[i] != null)
-						{
-							if(enemy[i].myType == EnemyType.KING)
+							if(!BattleManagerScript.Instance.enemyList[i].isDead)
 							{
-								kingless = false;
-								Heal(enemy[i], heal);
+								if((float)BattleManagerScript.Instance.enemyList[i].health < (0.5 * (float)(BattleManagerScript.Instance.enemyList[i].maxHealth)))
+								{
+									enemy.Add(BattleManagerScript.Instance.enemyList[i]);
+								}
 							}
 						}
 					}
 
-					if(kingless)
-					{
-						int rand = Random.Range(0, enemy.Count);
+					bool kingless = true;
+					int heal = Random.Range(attack, (int)(attack * 1.5));
 
-						Heal(enemy[rand], heal);
+					if(enemy.Count > 2)
+					{
+						HealTeam(heal);
+						healCooldown = true;
+					}
+					else if(enemy.Count > 0)
+					{
+						for(int i = 0; i < enemy.Count; i++)
+						{
+							if(enemy[i] != null)
+							{
+								if(enemy[i].myType == EnemyType.KING)
+								{
+									kingless = false;
+									Heal(enemy[i], heal);
+								}
+							}
+						}
+
+						if(kingless)
+						{
+							int rand = Random.Range(0, enemy.Count);
+
+							Heal(enemy[rand], heal);
+						}
+						healCooldown = true;
+					}
+					else
+					{
+						int rand = Random.Range(1, attack + 1);
+
+						Attack(rand);
 					}
 				}
 				else
@@ -265,9 +286,12 @@ public class EnemyStatusScript : MonoBehaviour
 					int rand = Random.Range(1, attack + 1);
 
 					Attack(rand);
+
+					healCooldown = false;
 				}
 
-				yield return new WaitForSeconds(1f);
+
+				yield return new WaitForSeconds(0.5f);
 
 				BattleManagerScript.Instance.enemyAction = true;
 
@@ -322,14 +346,14 @@ public class EnemyStatusScript : MonoBehaviour
 					Attack(rand);
 				}
                 enemyModelAnim.Attack();
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.5f);
 
 				BattleManagerScript.Instance.enemyAction = true;
 			}
 		}
 		else
 		{
-			yield return new WaitForSeconds(2f);
+			yield return new WaitForSeconds(0.5f);
 
 			BattleManagerScript.Instance.enemyAction = true;
 		}
@@ -337,13 +361,16 @@ public class EnemyStatusScript : MonoBehaviour
 
 	public void Heal(EnemyStatusScript healee, int regen)
 	{
-		healee.health += regen;
-
-		if(healee.health > healee.maxHealth)
+		if(!healee.isDead)
 		{
-			healee.health = healee.maxHealth;
-		}
+			healee.health += regen;
+			healee.healEffect.Play();
 
+			if(healee.health > healee.maxHealth)
+			{
+				healee.health = healee.maxHealth;
+			}
+		}
 	}
 
 	public void HealTeam(int heal)
@@ -352,13 +379,21 @@ public class EnemyStatusScript : MonoBehaviour
 		{
 			if(BattleManagerScript.Instance.enemyList[i] != null)
 			{
-				BattleManagerScript.Instance.enemyList[i].health += heal;
-
-				if(BattleManagerScript.Instance.enemyList[i].health > BattleManagerScript.Instance.enemyList[i].maxHealth)
+				if(!BattleManagerScript.Instance.enemyList[i].isDead)
 				{
-					BattleManagerScript.Instance.enemyList[i].health = BattleManagerScript.Instance.enemyList[i].maxHealth;
+					BattleManagerScript.Instance.enemyList[i].health += heal;
+					BattleManagerScript.Instance.enemyList[i].healEffect.Play();
+
+					health -= 1;
+
+					if(BattleManagerScript.Instance.enemyList[i].health > BattleManagerScript.Instance.enemyList[i].maxHealth)
+					{
+						BattleManagerScript.Instance.enemyList[i].health = BattleManagerScript.Instance.enemyList[i].maxHealth;
+					}
 				}
 			}
 		}
+
+		CheckHealth();
 	}
 }

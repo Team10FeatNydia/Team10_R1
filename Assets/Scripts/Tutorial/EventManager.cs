@@ -10,7 +10,8 @@ public enum EventName
 	SUB_COMBAT_POINT = 3,
 	AMULET1_POINT = 4,
 	AMULET2_POINT = 5,
-	ENDGAME_POINT = 6,
+	FINAL_COMBAT_POINT = 6,
+	ENDGAME_POINT = 7,
 }
 
 [System.Serializable]
