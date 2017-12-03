@@ -364,14 +364,24 @@ MonoBehaviour:
   health: 10
   maxHealth: 10
   attack: 2
+  stunned: 0
+  interactable: 0
   targeted: 0
   player: {fileID: 0}
   showGUI: 0
+  hpGO: {fileID: 0}
+  hpImage: {fileID: 0}
   hpText: {fileID: 0}
   onTarget: {fileID: 0}
   easeTime: 10
+  deathModel: {fileID: 0}
   blueTarget: {fileID: 198528963689629824}
   redTarget: {fileID: 198877697865705294}
+  swordAttackPlayer: {fileID: 0}
+  deathEffectEnemy: {fileID: 0}
+  EnemyModel: {fileID: 0}
+  enemyModelAnim: {fileID: 0}
+  enemyDeathModelAnim: {fileID: 0}
 --- !u!198 &198157855111316488
 ParticleSystem:
   m_ObjectHideFlags: 1

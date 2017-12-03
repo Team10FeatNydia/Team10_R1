@@ -990,6 +990,8 @@ MonoBehaviour:
   targeted: 0
   player: {fileID: 0}
   showGUI: 0
+  hpGO: {fileID: 0}
+  hpImage: {fileID: 0}
   hpText: {fileID: 0}
   onTarget: {fileID: 0}
   easeTime: 0

@@ -33,6 +33,8 @@ public class EnemyStatusScript : MonoBehaviour
 
 	[Header("UI")]
 	public bool showGUI;
+	public GameObject hpGO;
+	public Image hpImage;
 	public Text hpText;
 	public Text onTarget;
 
@@ -40,9 +42,9 @@ public class EnemyStatusScript : MonoBehaviour
     public GameObject deathModel;
 	public ParticleSystem blueTarget;
 	public ParticleSystem redTarget;
-	public ParticleSystem swordAttackPlayer;
+	public ParticleSystem getAttacked;
 	//public ParticleSystem gotHitEnemy;
-	public ParticleSystem deathEffectEnemy;
+	public ParticleSystem deathEffect;
 
     [Header("Models")]
     public GameObject EnemyModel;
@@ -51,11 +53,15 @@ public class EnemyStatusScript : MonoBehaviour
 
 	void Start()
 	{
+		maxHealth = health;
 		player = BattleManagerScript.Instance.player;
 		targeted = false;
 		posX = this.gameObject.transform.position.x;
 		posY = this.gameObject.transform.position.y;
         CheckAmulet();
+
+		hpText.text = health.ToString();
+		hpImage.fillAmount = (float)health / (float)maxHealth;
     }
 
 	void Update()
@@ -131,6 +137,9 @@ public class EnemyStatusScript : MonoBehaviour
 
 	public void CheckHealth()
 	{
+		hpText.text = health.ToString();
+		hpImage.fillAmount = (float)health / (float)maxHealth;
+
         if (myType == EnemyType.NORMAL)
         {
             enemyModelAnim.Damaged();
@@ -142,10 +151,15 @@ public class EnemyStatusScript : MonoBehaviour
         }
         if (health <= 0)
 		{
+			hpGO.SetActive(false);
+
             isDead = true;
             health = 0;
-            deathEffectEnemy.Play();
+            deathEffect.Play();
 			BattleManagerScript.Instance.enemyList.Remove(this);
+
+			blueTarget.Stop();
+			redTarget.Stop();
 		}
 	}
 
@@ -165,7 +179,7 @@ public class EnemyStatusScript : MonoBehaviour
 
 				Attack(rand);
                 enemyModelAnim.Attack();
-				yield return new WaitForSeconds(2f);
+				yield return new WaitForSeconds(1f);
 
 				BattleManagerScript.Instance.enemyAction = true;
 			}
@@ -197,7 +211,7 @@ public class EnemyStatusScript : MonoBehaviour
 					Attack(rand);
 				}
 
-				yield return new WaitForSeconds(2f);
+				yield return new WaitForSeconds(1f);
 
 				BattleManagerScript.Instance.enemyAction = true;
 
@@ -253,7 +267,7 @@ public class EnemyStatusScript : MonoBehaviour
 					Attack(rand);
 				}
 
-				yield return new WaitForSeconds(2f);
+				yield return new WaitForSeconds(1f);
 
 				BattleManagerScript.Instance.enemyAction = true;
 
@@ -308,7 +322,7 @@ public class EnemyStatusScript : MonoBehaviour
 					Attack(rand);
 				}
                 enemyModelAnim.Attack();
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(1f);
 
 				BattleManagerScript.Instance.enemyAction = true;
 			}

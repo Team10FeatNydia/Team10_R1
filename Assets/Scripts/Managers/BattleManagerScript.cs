@@ -52,6 +52,9 @@ public class BattleManagerScript : MonoBehaviour
 	public int enemyTurn = 0;
 	public bool enemyAction = true;
 	public Text manaText;
+
+	public Image heartBarImage;
+	public Text healthText;
    
 	[Header("WinLoseCanvas")]
 	bool WinCondition = false;
@@ -59,8 +62,10 @@ public class BattleManagerScript : MonoBehaviour
 	public GameObject WinLoseGO;
 	public Text WinLoseText;
 	public Text WinLoseComment;
+	public bool gotNewCard = false;
+	public CardDescription newCard;
 	public Image newCardDisplay;
-	public Text newCardText;
+	public Text newCardDes;
 
 	public string[] winStrings;
 	public string[] loseStrings;
@@ -106,21 +111,22 @@ public class BattleManagerScript : MonoBehaviour
 
 				WinLoseComment.text = winStrings[rand];
 
-				bool gotNewCard = false;
-
 				newCardDisplay.enabled = false;
 
 				if(!gotNewCard)
 				{
 					newCardDisplay.enabled = false;
-					newCardText.text = "";
+					newCardDes.text = "";
 				}
 				else
 				{
 					newCardDisplay.enabled = true;
-					newCardText.text = "Obtained A New Card";
+					newCardDes.text = "Obtained A New Card";
 
 					WinLoseComment.text = "Hurray! You Got A Card! We Done Yet?";
+
+					PlayerStatSaver.mInstance.cardDeckList.Add(newCard);
+					Debug.Log("Added " + newCard.cardType.ToString());
 				}
 
 				FadeManagerScript.Instance.fadeOut();
@@ -142,7 +148,7 @@ public class BattleManagerScript : MonoBehaviour
 				WinLoseComment.text = loseStrings[rand];
 
 				newCardDisplay.enabled = false;
-				newCardText.text = "";
+				newCardDes.text = "";
 
 				FadeManagerScript.Instance.fadeOut();
 
@@ -185,12 +191,20 @@ public class BattleManagerScript : MonoBehaviour
 				{
 					player.localPlayerData.manaPoints = 15;
 				}
+
 				manaText.text = player.localPlayerData.manaPoints.ToString();
 				currTurn = BattleStates.PLAYER_TURN;
+
+				for(int i = 0; i < enemyList.Count; i++)
+				{
+					enemyList[i].stunned = false;
+				}
 
 				Debug.Log("Enemy's Turn End");
 
 			}
+
+			CheckPlayerHealth();
         }
         else if (currTurn == BattleStates.PLAYER_TURN)
         {
@@ -209,5 +223,16 @@ public class BattleManagerScript : MonoBehaviour
 	public void EndCombatScene()
 	{
 		GameManagerInstance.instance.ChangeScene(1);
+	}
+
+	public void CheckPlayerHealth()
+	{
+		if(PlayerStatSaver.mInstance.playerHP < 0)
+		{
+			PlayerStatSaver.mInstance.playerHP = 0;
+		}
+
+		heartBarImage.fillAmount = PlayerStatSaver.mInstance.playerHP / PlayerStatSaver.mInstance.playerMaxHP;
+		healthText.text = PlayerStatSaver.mInstance.playerHP.ToString();
 	}
 }

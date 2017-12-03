@@ -41,6 +41,20 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 	public Image myImage;
 	public EnemyStatusScript target;
 
+	//LerpingCards
+	public bool canMoveLeft;
+	public bool canMoveRight;
+	public Vector3 startPos;
+	public Vector3 endPos;
+	float distance;
+
+	float lerpTime = 0.5f;
+	float currLerpTime = 0f;
+	public Vector3 hopStartPoint;
+	public Vector3 hopEndPoint;
+	public float hopTime;
+	public float hopHeight;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -50,6 +64,36 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 	// Update is called once per frame
 	void Update () 
 	{
+		if(canMoveLeft)
+		{
+			float percentage = currLerpTime / lerpTime;
+
+			transform.position = Vector3.Lerp(startPos, endPos, percentage);
+
+			currLerpTime += Time.deltaTime;
+
+			if(currLerpTime >= lerpTime)
+			{
+				currLerpTime = lerpTime;
+				canMoveLeft = false;
+			}
+		}
+
+		if(canMoveRight)
+		{
+			float percentage = currLerpTime / lerpTime;
+
+			transform.position = Vector3.Lerp(startPos, endPos, percentage);
+
+			currLerpTime += Time.deltaTime;
+
+			if(currLerpTime >= lerpTime)
+			{
+				currLerpTime = lerpTime;
+				canMoveRight = false;
+			}
+		}
+
 		if(interactable)
 		{
 			if(!canShake)
@@ -82,22 +126,53 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 		}
 	}
 
+	public void StartHop(Vector3 endPoint, float time, float hopHeight)
+	{
+		StartCoroutine(Hop(endPoint, time, hopHeight));
+	}
+
+	IEnumerator Hop(Vector3 endPoint, float time, float hopHeight)
+	{
+		Vector3 startPos = transform.position;
+		float timer = 0.0f;
+
+		while(timer <= 1.0f)
+		{
+			float height = Mathf.Sin(Mathf.PI * timer) * hopHeight;
+			transform.position = Vector3.Lerp(startPos, endPoint, timer) + Vector3.up * height;
+
+			timer += Time.deltaTime / time;
+			yield return null;
+		}
+	}
+
+	public void SetLerpPos(Vector3 end, bool moveLeft, bool moveRight)
+	{
+		currLerpTime = 0;
+
+		startPos = transform.position;
+		endPos = end;
+
+		canMoveLeft = moveLeft;
+		canMoveRight = moveRight;
+	}
+
 	public void HideSelf()
 	{
 		myImage.enabled = false;
 		interactable = false;
-//		myDmg.enabled = false;
-//		myManaCost.enabled = false;
+		myDmg.enabled = false;
+		myManaCost.enabled = false;
 //		myDescription.enabled = false;
 	}
 
 	public void UpdateStats()
 	{
-//		myDmg.enabled = true;
-//		myManaCost.enabled = true;
+		myDmg.enabled = true;
+		myManaCost.enabled = true;
 //		myDescription.enabled = true;
-//		myDmg.text = myCard.cardEffect.ToString();
-//		myManaCost.text = myCard.manaCost.ToString();
+		myDmg.text = myCard.cardEffect.ToString();
+		myManaCost.text = myCard.manaCost.ToString();
 //      myDescription.text = myCard.description.ToString();
 		myImage.enabled = true;
 		myImage.sprite = myCard.cardImage;

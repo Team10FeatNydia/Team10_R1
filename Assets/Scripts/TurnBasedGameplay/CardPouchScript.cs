@@ -35,11 +35,11 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 	public Animator UIBorderBar;
 
 	bool cardsLayedout = false;
-	bool spellsLayedout = false;
+//	bool spellsLayedout = false;
 	PouchStates currState;
-    private int spellsAttack = 0;
-    private bool spellsAttackbool = false;
-    private bool spellsHealbool = false;
+//    private int spellsAttack = 0;
+//    private bool spellsAttackbool = false;
+//    private bool spellsHealbool = false;
     private float touch1;
     private Sprite currentEye;
 
@@ -56,34 +56,36 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
     {
 
 
-        Swipe();
+        //Swipe();
 
-        if (BattleManagerScript.Instance.currTurn == BattleStates.ENEMY_TURN)
-        {
-            spellsHealbool = false;
-            spellsAttackbool = false;
-        }
+//        if (BattleManagerScript.Instance.currTurn == BattleStates.ENEMY_TURN)
+//        {
+//            spellsHealbool = false;
+//            spellsAttackbool = false;
+//        }
     }
 
     void Attack()
     {
-		int spellsHeal = 0;
-		int spellsDmg = 0;
-
-		for(int i = 0; i < selectedSpells.Count; i++)
-		{
-			if(selectedSpells[i].mySpells.spellsType == SpellsType.HEAL_SPELL)
-			{
-				spellsHeal += 1;
-			}
-			else if(selectedSpells[i].mySpells.spellsType == SpellsType.HEAL_SPELL)
-			{
-				spellsDmg += 1;
-			}
-		}
+//		int spellsHeal = 0;
+//		int spellsDmg = 0;
+//
+//		for(int i = 0; i < selectedSpells.Count; i++)
+//		{
+//			if(selectedSpells[i].mySpells.spellsType == SpellsType.HEAL_SPELL)
+//			{
+//				spellsHeal += 1;
+//			}
+//			else if(selectedSpells[i].mySpells.spellsType == SpellsType.HEAL_SPELL)
+//			{
+//				spellsDmg += 1;
+//			}
+//		}
 
         for (int i = 0; i < selectedCards.Count; i++)
         {
+			selectedCards[i].StartHop(transform.parent.position - new Vector3(-200f, -100f, 0f), 0.8f, 100f);
+
             if (selectedCards[i].myCard.cardType == CardType.ATTACK)
             {
 				bool kingless = true;
@@ -107,25 +109,25 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 					}
 				}
 					
-				selectedCards[i].target.swordAttackPlayer.Play();
+				selectedCards[i].target.getAttacked.Play();
 				// Attacking Script
 				SoundManagerScript.Instance.PlaySFX(AudioClipID.SFX_ATTACK2);
-				selectedCards[i].target.health -= selectedCards[i].myCard.cardEffect + spellsDmg;
-				battleManager.player.localPlayerData.health += spellsHeal;
+				selectedCards[i].target.health -= selectedCards[i].myCard.cardEffect;
+//				battleManager.player.localPlayerData.health += spellsHeal;
 
             }
             else if (selectedCards[i].myCard.cardType == CardType.HEAL)
             {
 				battleManager.player.healingPlayer.Play();
-				battleManager.player.localPlayerData.health += selectedCards[i].myCard.cardEffect + spellsHeal;
+				battleManager.player.localPlayerData.health += selectedCards[i].myCard.cardEffect;
 				if(battleManager.player.localPlayerData.health > battleManager.player.localPlayerData.maxHealth)
 				{
 					battleManager.player.localPlayerData.health = battleManager.player.localPlayerData.maxHealth;
 				}
-				for(int j = 0; j < battleManager.enemyList.Count; j++)
-				{
-					battleManager.enemyList[j].health -= spellsDmg;
-				}
+//				for(int j = 0; j < battleManager.enemyList.Count; j++)
+//				{
+//					battleManager.enemyList[j].health -= spellsDmg;
+//				}
             }
 			else if(selectedCards[i].myCard.cardType == CardType.STUN)
 			{
@@ -172,6 +174,7 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 			battleManager.enemyList[i].blueTarget.Stop();
 			battleManager.enemyList[i].redTarget.Stop();
 		}
+
         battleManager.currTurn = BattleStates.ENEMY_TURN;
 		battleManager.enemyAction = true;
 		myEye.sprite = defaultEye;
@@ -180,7 +183,7 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 		//GetComponent<Animator>().Play("StartEyeAnimation");
 		arrowButton.SetActive(false);
 
-		DestroyCards();
+		//DestroyCards();
 
 		Debug.Log("Player's Turn End");
     }
@@ -203,235 +206,301 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 			PlayerStatSaver.mInstance.cardDeckList[i] = tempCard;
         }
 
-        for (int i = 0; i < 5; i++)
-        {
-            bool exitLoop = false;
-            CardDescription tempCard;
-
-            int randNum;
-
-            do
-            {
-				randNum = Random.Range(0, PlayerStatSaver.mInstance.cardDeckList.Count);
-
-				if (!PlayerStatSaver.mInstance.cardDeckList[randNum].isSpawned)
-                {
-					tempCard = PlayerStatSaver.mInstance.cardDeckList[randNum];
-                    tempCard.isSpawned = true;
-					PlayerStatSaver.mInstance.cardDeckList[randNum] = tempCard;
-                    exitLoop = true;
-                }
-            } while (!exitLoop);
-
-            GameObject newCard = Instantiate(CardManagerScript.Instance.cardPrefab, this.transform) as GameObject;
-
-            CardScript cardScript = newCard.GetComponent<CardScript>();
-			cardScript.myCard = PlayerStatSaver.mInstance.cardDeckList[randNum];
-            cardScript.cardPouch = this;
-
-            newCard.GetComponent<RectTransform>().localPosition = new Vector3(-180f * i - 220f, 0f, 0f);
-			cardScript.origin = newCard.GetComponent<RectTransform>().localPosition;
-            newCard.transform.SetParent(this.transform.parent, true);
-
-            displayedCards[i] = newCard;
-            displayedCards[i].GetComponent<CardScript>().UpdateStats();
-
-			cardsLayedout = true;
-        }
-    }
-
-    void LayoutSpells()
-    {
-		manaCheck = battleManager.player.localPlayerData.manaPoints;
-        selectedSpells.Clear();
-
-		for(int i = 0; i < displayedCards.Length; i++)
+		if(PlayerStatSaver.mInstance.cardDeckList.Count < 5)
 		{
-			if(displayedCards[i] != null) displayedCards[i].GetComponent<CardScript>().HideSelf();
-		}
-
-        for (int i = 0; i < SpellsManagerScript.Instance.spellsList.Count; i++)
-        {
-            SpellsDescription tempSpells;
-            tempSpells = SpellsManagerScript.Instance.spellsList[i];
-            tempSpells.isSpawned = false;
-            SpellsManagerScript.Instance.spellsList[i] = tempSpells;
-        }
-
-		for(int i = 0; i < 5; i++)
-		{
-			if(i < SpellsManagerScript.Instance.spellsList.Count)
+			for (int i = 0; i < PlayerStatSaver.mInstance.cardDeckList.Count; i++)
 			{
 				bool exitLoop = false;
-				SpellsDescription tempSpells;
+				CardDescription tempCard;
 
 				int randNum;
 
 				do
 				{
-					randNum = Random.Range(0, SpellsManagerScript.Instance.spellsList.Count);
+					randNum = Random.Range(0, PlayerStatSaver.mInstance.cardDeckList.Count);
 
-					if (!SpellsManagerScript.Instance.spellsList[randNum].isSpawned)
+					if (!PlayerStatSaver.mInstance.cardDeckList[randNum].isSpawned)
 					{
-						tempSpells = SpellsManagerScript.Instance.spellsList[randNum];
-						tempSpells.isSpawned = true;
-						SpellsManagerScript.Instance.spellsList[randNum] = tempSpells;
+						tempCard = PlayerStatSaver.mInstance.cardDeckList[randNum];
+						tempCard.isSpawned = true;
+						PlayerStatSaver.mInstance.cardDeckList[randNum] = tempCard;
 						exitLoop = true;
 					}
 				} while (!exitLoop);
 
-				GameObject newSpells = Instantiate(SpellsManagerScript.Instance.spellsPrefab, this.transform) as GameObject;
+				GameObject newCard = Instantiate(CardManagerScript.Instance.cardPrefab, this.transform) as GameObject;
 
-				SpellsScript spellsScript = newSpells.GetComponent<SpellsScript>();
-				spellsScript.mySpells = SpellsManagerScript.Instance.spellsList[randNum];
-				spellsScript.cardPouch = this;
+				CardScript cardScript = newCard.GetComponent<CardScript>();
+				cardScript.myCard = PlayerStatSaver.mInstance.cardDeckList[randNum];
+				cardScript.cardPouch = this;
 
-				newSpells.GetComponent<RectTransform>().localPosition = new Vector3(-180f * i - 220f, 0f, 0f);
-				newSpells.transform.SetParent(this.transform.parent, true);
+				Transform myTransform = newCard.GetComponent<RectTransform>();
+				Vector3 originPos = newCard.GetComponent<RectTransform>().localPosition;
+				Vector3 endPos;
 
-				displayedSpells[i] = newSpells;
-				displayedSpells[i].GetComponent<SpellsScript>().UpdateStats();
+				myTransform.localPosition = new Vector3(-90f * i - 90f, 0f, 0f);
+
+				//myTransform.localPosition = new Vector3(-180f * i - 220f, 0f, 0f);
+				endPos = newCard.GetComponent<RectTransform>().localPosition;
+
+				cardScript.SetLerpPos(myTransform.TransformPoint(endPos), true, false);
+
+
+				cardScript.origin = newCard.GetComponent<RectTransform>().localPosition;
+				newCard.transform.SetParent(this.transform.parent, true);
+
+				displayedCards[i] = newCard;
+				displayedCards[i].GetComponent<CardScript>().UpdateStats();
+
+				cardsLayedout = true;
 			}
 		}
+		else
+		{
+			for (int i = 0; i < 5; i++)
+			{
+				bool exitLoop = false;
+				CardDescription tempCard;
 
-		spellsLayedout = true;
+				int randNum;
 
+				do
+				{
+					randNum = Random.Range(0, PlayerStatSaver.mInstance.cardDeckList.Count);
+
+					if (!PlayerStatSaver.mInstance.cardDeckList[randNum].isSpawned)
+					{
+						tempCard = PlayerStatSaver.mInstance.cardDeckList[randNum];
+						tempCard.isSpawned = true;
+						PlayerStatSaver.mInstance.cardDeckList[randNum] = tempCard;
+						exitLoop = true;
+					}
+				} while (!exitLoop);
+
+				GameObject newCard = Instantiate(CardManagerScript.Instance.cardPrefab, this.transform) as GameObject;
+
+				CardScript cardScript = newCard.GetComponent<CardScript>();
+				cardScript.myCard = PlayerStatSaver.mInstance.cardDeckList[randNum];
+				cardScript.cardPouch = this;
+
+				Transform myTransform = newCard.GetComponent<RectTransform>();
+				Vector3 originPos = newCard.GetComponent<RectTransform>().localPosition;
+				Vector3 endPos;
+
+				myTransform.localPosition = new Vector3(-90f * i - 90f, 0f, 0f);
+
+				//myTransform.localPosition = new Vector3(-180f * i - 220f, 0f, 0f);
+				endPos = newCard.GetComponent<RectTransform>().localPosition;
+
+				cardScript.SetLerpPos(myTransform.TransformPoint(endPos), true, false);
+
+				//newCard.GetComponent<RectTransform>().localPosition = new Vector3(-180f * i - 220f, 0f, 0f);
+				cardScript.origin = newCard.GetComponent<RectTransform>().localPosition;
+				newCard.transform.SetParent(this.transform.parent, true);
+
+				displayedCards[i] = newCard;
+				displayedCards[i].GetComponent<CardScript>().UpdateStats();
+
+				cardsLayedout = true;
+			}
+		}
     }
 
-
-    void Swipe()
-    {
-		
-		
-        if (Input.touchCount > 0)
-        {
-
-            foreach (Touch touch in Input.touches)
-            {
-                switch (touch.phase)
-                {
-                    case TouchPhase.Began:
-                        isSwipe = true;
-                        fingerStartPos = touch.position;
-                        touch1 = touch.position.y;
-                        break;
-
-                    case TouchPhase.Canceled:
-                        isSwipe = false;
-                        break;
-
-                    case TouchPhase.Ended:
-
-                        float swipeDist = (touch.position - fingerStartPos).magnitude;
-                        //Debug.Log("swipedist    " + swipeDist);
-                        //Debug.Log("touch1   " + touch1);
-
-                        if (touch1 < 250)
-                        {
-
-                            if (isSwipe && swipeDist > minSwipeDist)
-                            {
-                                Vector2 direction = touch.position - fingerStartPos;
-                                Vector2 swipeType = Vector2.zero;
-
-
-                                if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
-                                {
-                                    swipeType = Vector2.right * Mathf.Sign(direction.x);
-                                }
-                                else
-                                {
-                                    swipeType = Vector2.up * Mathf.Sign(direction.y);
-                                }
-
-                                if (swipeType.x != 0.0f)
-                                {
-									if(direction.x > 0)
-									{
-//										DestroyCards();
-//										battleManager.currTurn = BattleStates.PLAYER_TURN;
-//										myEye.sprite = defaultEye;
+//    void LayoutSpells()
+//    {
+//		manaCheck = battleManager.player.localPlayerData.manaPoints;
+//        selectedSpells.Clear();
 //
-//										UIBorderBar.Play("BorderSlideOut");
-//										GetComponent<Animator>().Play("StartEyeAnimation");
-//										//transform.GetChild (0).gameObject.SetActive (true);
-										
-										
-									}
-									else
-									{
-//										if(battleManager.currTurn == BattleStates.CHOOSE_CARDS)
-//										{
-//											if(currState == PouchStates.ACTION_CARDS)
-//											{
-//												//Debug.Log("swiped");
-//												myEye.sprite = spellsEye;
+//		for(int i = 0; i < displayedCards.Length; i++)
+//		{
+//			if(displayedCards[i] != null) displayedCards[i].GetComponent<CardScript>().HideSelf();
+//		}
 //
-//												for(int i = 0; i < displayedCards.Length; i++)
-//												{
-//													displayedCards[i].GetComponent<CardScript>().HideSelf();
-//												}	
+//        for (int i = 0; i < SpellsManagerScript.Instance.spellsList.Count; i++)
+//        {
+//            SpellsDescription tempSpells;
+//            tempSpells = SpellsManagerScript.Instance.spellsList[i];
+//            tempSpells.isSpawned = false;
+//            SpellsManagerScript.Instance.spellsList[i] = tempSpells;
+//        }
 //
-//												if(!spellsLayedout) 
-//												{
-//													LayoutSpells();
-//												}
-//												else 
-//												{
-//													for(int i = 0; i < displayedSpells.Length; i++)
-//													{
-//														displayedSpells[i].GetComponent<SpellsScript>().UpdateStats();
-//													}
-//												}
-//												cardAction = false;
-//												spellsAction = true;
-//												currState = PouchStates.SPELL_CARDS;
-//											}
-//											else if(currState == PouchStates.SPELL_CARDS)
-//											{
-//												//Debug.Log("swiped");
-//												myEye.sprite = cardEye;
-//												
-//												for(int i = 0; i < displayedSpells.Length; i++)
-//												{
-//													displayedSpells[i].GetComponent<SpellsScript>().HideSelf();
-//												}	
+//		for(int i = 0; i < 5; i++)
+//		{
+//			if(i < SpellsManagerScript.Instance.spellsList.Count)
+//			{
+//				bool exitLoop = false;
+//				SpellsDescription tempSpells;
 //
-//												if(!cardsLayedout) 
-//												{
-//													LayOutCards();
-//												}
-//												else 
-//												{
-//													for(int i = 0; i < displayedCards.Length; i++)
-//													{
-//														displayedCards[i].GetComponent<CardScript>().UpdateStats();
-//													}
-//												}
-//												cardAction = true;
-//												spellsAction = false;
-//												currState = PouchStates.ACTION_CARDS;
-//											}
-//										}
-									}
-                                }
-                            }
-                        }
+//				int randNum;
+//
+//				do
+//				{
+//					randNum = Random.Range(0, SpellsManagerScript.Instance.spellsList.Count);
+//
+//					if (!SpellsManagerScript.Instance.spellsList[randNum].isSpawned)
+//					{
+//						tempSpells = SpellsManagerScript.Instance.spellsList[randNum];
+//						tempSpells.isSpawned = true;
+//						SpellsManagerScript.Instance.spellsList[randNum] = tempSpells;
+//						exitLoop = true;
+//					}
+//				} while (!exitLoop);
+//
+//				GameObject newSpells = Instantiate(SpellsManagerScript.Instance.spellsPrefab, this.transform) as GameObject;
+//
+//				SpellsScript spellsScript = newSpells.GetComponent<SpellsScript>();
+//				spellsScript.mySpells = SpellsManagerScript.Instance.spellsList[randNum];
+//				spellsScript.cardPouch = this;
+//
+//				newSpells.GetComponent<RectTransform>().localPosition = new Vector3(-180f * i - 220f, 0f, 0f);
+//				newSpells.transform.SetParent(this.transform.parent, true);
+//
+//				displayedSpells[i] = newSpells;
+//				displayedSpells[i].GetComponent<SpellsScript>().UpdateStats();
+//			}
+//		}
+//
+//		spellsLayedout = true;
+//
+//    }
 
-                        break;
-                }
-            }
-        }
 
-    }
+//    void Swipe()
+//    {
+//		
+//		
+//        if (Input.touchCount > 0)
+//        {
+//
+//            foreach (Touch touch in Input.touches)
+//            {
+//                switch (touch.phase)
+//                {
+//                    case TouchPhase.Began:
+//                        isSwipe = true;
+//                        fingerStartPos = touch.position;
+//                        touch1 = touch.position.y;
+//                        break;
+//
+//                    case TouchPhase.Canceled:
+//                        isSwipe = false;
+//                        break;
+//
+//                    case TouchPhase.Ended:
+//
+//                        float swipeDist = (touch.position - fingerStartPos).magnitude;
+//                        //Debug.Log("swipedist    " + swipeDist);
+//                        //Debug.Log("touch1   " + touch1);
+//
+//                        if (touch1 < 250)
+//                        {
+//
+//                            if (isSwipe && swipeDist > minSwipeDist)
+//                            {
+//                                Vector2 direction = touch.position - fingerStartPos;
+//                                Vector2 swipeType = Vector2.zero;
+//
+//
+//                                if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+//                                {
+//                                    swipeType = Vector2.right * Mathf.Sign(direction.x);
+//                                }
+//                                else
+//                                {
+//                                    swipeType = Vector2.up * Mathf.Sign(direction.y);
+//                                }
+//
+//                                if (swipeType.x != 0.0f)
+//                                {
+//									if(direction.x > 0)
+//									{
+////										DestroyCards();
+////										battleManager.currTurn = BattleStates.PLAYER_TURN;
+////										myEye.sprite = defaultEye;
+////
+////										UIBorderBar.Play("BorderSlideOut");
+////										GetComponent<Animator>().Play("StartEyeAnimation");
+////										//transform.GetChild (0).gameObject.SetActive (true);
+//										
+//										
+//									}
+//									else
+//									{
+////										if(battleManager.currTurn == BattleStates.CHOOSE_CARDS)
+////										{
+////											if(currState == PouchStates.ACTION_CARDS)
+////											{
+////												//Debug.Log("swiped");
+////												myEye.sprite = spellsEye;
+////
+////												for(int i = 0; i < displayedCards.Length; i++)
+////												{
+////													displayedCards[i].GetComponent<CardScript>().HideSelf();
+////												}	
+////
+////												if(!spellsLayedout) 
+////												{
+////													LayoutSpells();
+////												}
+////												else 
+////												{
+////													for(int i = 0; i < displayedSpells.Length; i++)
+////													{
+////														displayedSpells[i].GetComponent<SpellsScript>().UpdateStats();
+////													}
+////												}
+////												cardAction = false;
+////												spellsAction = true;
+////												currState = PouchStates.SPELL_CARDS;
+////											}
+////											else if(currState == PouchStates.SPELL_CARDS)
+////											{
+////												//Debug.Log("swiped");
+////												myEye.sprite = cardEye;
+////												
+////												for(int i = 0; i < displayedSpells.Length; i++)
+////												{
+////													displayedSpells[i].GetComponent<SpellsScript>().HideSelf();
+////												}	
+////
+////												if(!cardsLayedout) 
+////												{
+////													LayOutCards();
+////												}
+////												else 
+////												{
+////													for(int i = 0; i < displayedCards.Length; i++)
+////													{
+////														displayedCards[i].GetComponent<CardScript>().UpdateStats();
+////													}
+////												}
+////												cardAction = true;
+////												spellsAction = false;
+////												currState = PouchStates.ACTION_CARDS;
+////											}
+////										}
+//									}
+//                                }
+//                            }
+//                        }
+//
+//                        break;
+//                }
+//            }
+//        }
+//
+//    }
 
 	public void DisplaySelectedCards()
 	{
 		for(int i = 0; i < displayedCards.Length; i++)
 		{
-			if(!displayedCards[i].GetComponent<CardScript>().selected)
+			if(displayedCards[i] != null)
 			{
-				Destroy(displayedCards[i]);
+				if(!displayedCards[i].GetComponent<CardScript>().selected)
+				{
+					Destroy(displayedCards[i]);
+				}
 			}
 		}
 
@@ -524,7 +593,7 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 		selectedSpells.Clear();
 
 		cardsLayedout = false;
-		spellsLayedout = false;
+//		spellsLayedout = false;
 	}
 
 	void manaActive()
@@ -557,6 +626,8 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 
 		if(battleManager.currTurn == BattleStates.PLAYER_TURN)
 		{
+			DestroyCards();
+
 			opened = true;
 			currentEye = cardEye;
 			Invoke("LayOutCards" , delay);
