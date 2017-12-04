@@ -17,6 +17,7 @@ public class MainMenuManager : MonoBehaviour
 	public void toMainMenu()
 	{
 		SceneManager.LoadScene(0);
+		Destroy(PlayerStatSaver.mInstance.gameObject);
 	}
 
 	public void ExitGame()

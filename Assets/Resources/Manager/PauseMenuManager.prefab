@@ -258,7 +258,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1531463647353810
 GameObject:
   m_ObjectHideFlags: 1
@@ -874,8 +874,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paused: 0
-  bgmSlider: {fileID: 0}
-  sfxSlider: {fileID: 0}
+  bgmSlider: {fileID: 1569537037433330, guid: 7405aac67a0d1044d84a23dc150ad828, type: 2}
+  sfxSlider: {fileID: 1577756586478472, guid: 127c107f842151f458b1d167b65b7c6e, type: 2}
   quitGameScene: MainMenu
 --- !u!114 &114454065593717866
 MonoBehaviour:
