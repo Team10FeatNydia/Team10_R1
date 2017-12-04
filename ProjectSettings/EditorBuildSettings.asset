@@ -17,9 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/CombatScene 2.0.unity
     guid: 1a3a9096336982a4c89acfcaef2c0fef
-  - enabled: 0
-    path: Assets/Scene/CombatScene 2.unity
-    guid: 84a450932501374448299202d9653c40
   - enabled: 1
     path: Assets/Scene/EndGame.unity
     guid: a05c621f2f91c10449db6362dd6b4aa6

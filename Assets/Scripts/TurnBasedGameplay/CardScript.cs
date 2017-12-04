@@ -181,6 +181,11 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 
 	public void OnPointerClick(PointerEventData eventData)
 	{
+		if(TutorialManagerScript.mInstance.tutorialOpened)
+		{
+			return;
+		}
+
 		//Debug.Log("Tap");
 
 		if(interactable)

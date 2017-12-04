@@ -627,6 +627,11 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
     {
         //Debug.Log("Click");
 
+		if(TutorialManagerScript.mInstance.tutorialOpened)
+		{
+			return;
+		}
+
 		if(battleManager.currTurn == BattleStates.PLAYER_TURN)
 		{
 			DestroyCards();

@@ -38,6 +38,7 @@ public class BattleManagerScript : MonoBehaviour
 	{
 		return mInstance;
 	}
+
 	#endregion Singleton
 
 	[Header("Battle Settings")]
@@ -126,7 +127,7 @@ public class BattleManagerScript : MonoBehaviour
 					newCardDisplay.sprite = newCard.cardImage;
 					newCardDes.text = newCard.description;
 
-					WinLoseComment.text = "Hurray! You Got A Card! We Done Yet?";
+					//WinLoseComment.text = "Hurray! You Got A Card! We Done Yet?";
 
 					PlayerStatSaver.mInstance.cardDeckList.Add(newCard);
 					Debug.Log("Added " + newCard.cardType.ToString());
@@ -144,14 +145,14 @@ public class BattleManagerScript : MonoBehaviour
 				WinLoseGOSpawned = true;
 				WinLoseGO.SetActive(true);
 
-				WinLoseText.text = "You Lose!";
+				WinLoseText.text = "Game Over!";
 
 				int rand = Random.Range(0, loseStrings.Length);
 
 				WinLoseComment.text = loseStrings[rand];
 
-				newCardDisplay.enabled = false;
-				newCardDes.text = "";
+				newCardDisplay.enabled = true;
+				newCardDes.text = "Exit to Retry";
 
 				FadeManagerScript.Instance.fadeOut();
 
