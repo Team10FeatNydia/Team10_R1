@@ -126,13 +126,96 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 		}
 	}
 
-	public void StartHop(Vector3 endPoint, float time, float hopHeight)
+	public void Attack()
 	{
-		StartCoroutine(Hop(endPoint, time, hopHeight));
+		if (myCard.cardType == CardType.ATTACK)
+		{
+			bool kingless = true;
+
+			if(target.myType == EnemyType.KING)
+			{
+				kingless = false;
+			}
+
+			if(!kingless)
+			{
+				for(int j = 0; j < BattleManagerScript.Instance.enemyList.Count; j++)
+				{
+					if(BattleManagerScript.Instance.enemyList[j] != null)
+					{
+						if(BattleManagerScript.Instance.enemyList[j].myType == EnemyType.KNIGHT)
+						{
+							target = BattleManagerScript.Instance.enemyList[j];
+						}
+					}
+				}
+			}
+
+			target.getAttacked.Play();
+			// Attacking Script
+			SoundManagerScript.Instance.PlaySFX(AudioClipID.SFX_ATTACK2);
+			target.health -= myCard.cardEffect;
+
+			target.CheckHealth();
+
+			Debug.Log("Target HP : " + target.health);
+
+			//				battleManager.player.localPlayerData.health += spellsHeal;
+
+		}
+		else if (myCard.cardType == CardType.HEAL)
+		{
+			BattleManagerScript.Instance.player.healingPlayer.Play();
+			BattleManagerScript.Instance.player.localPlayerData.health += myCard.cardEffect;
+			if(BattleManagerScript.Instance.player.localPlayerData.health > BattleManagerScript.Instance.player.localPlayerData.maxHealth)
+			{
+				BattleManagerScript.Instance.player.localPlayerData.health = BattleManagerScript.Instance.player.localPlayerData.maxHealth;
+			}
+			//				for(int j = 0; j < battleManager.enemyList.Count; j++)
+			//				{
+			//					battleManager.enemyList[j].health -= spellsDmg;
+			//				}
+		}
+		else if(myCard.cardType == CardType.STUN)
+		{
+			bool kingless = true;
+
+			if(target.myType == EnemyType.KING)
+			{
+				kingless = false;
+			}
+
+			if(!kingless)
+			{
+				for(int j = 0; j < BattleManagerScript.Instance.enemyList.Count; j++)
+				{
+					if(BattleManagerScript.Instance.enemyList[j] != null)
+					{
+						if(BattleManagerScript.Instance.enemyList[j].myType == EnemyType.KNIGHT)
+						{
+							target = BattleManagerScript.Instance.enemyList[j];
+						}
+					}
+				}
+			}
+
+			if(!target.stunned) target.stunned = true;
+		}
 	}
 
-	IEnumerator Hop(Vector3 endPoint, float time, float hopHeight)
+	public void StartHop(Vector3 endPoint, float time, float hopHeight, float waitTime)
 	{
+		StartCoroutine(Hop(endPoint, time, hopHeight, waitTime));
+	}
+
+	IEnumerator Hop(Vector3 endPoint, float time, float hopHeight, float waitTime)
+	{
+		yield return new WaitForSeconds(waitTime);
+
+		Attack();
+
+		yield return new WaitForSeconds(0.5f);
+
 		Vector3 startPos = transform.position;
 		float timer = 0.0f;
 

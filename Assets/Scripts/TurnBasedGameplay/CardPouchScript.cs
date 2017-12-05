@@ -52,18 +52,16 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
     }
 
     // Update is called once per frame
-    void Update()
-    {
-
-
-        //Swipe();
-
+//    void Update()
+//    {
+//        Swipe();
+//
 //        if (BattleManagerScript.Instance.currTurn == BattleStates.ENEMY_TURN)
 //        {
 //            spellsHealbool = false;
 //            spellsAttackbool = false;
 //        }
-    }
+//    }
 
     void Attack()
     {
@@ -84,79 +82,9 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 
         for (int i = 0; i < selectedCards.Count; i++)
         {
-			selectedCards[i].StartHop(transform.parent.position - new Vector3(-200f, -100f, 0f), 0.8f, 100f);
+			selectedCards[i].StartHop(transform.parent.position - new Vector3(-200f, -100f, 0f), 0.8f, 100f, 1.0f * i);
 
-            if (selectedCards[i].myCard.cardType == CardType.ATTACK)
-            {
-				bool kingless = true;
-
-				if(selectedCards[i].target.myType == EnemyType.KING)
-				{
-					kingless = false;
-				}
-
-				if(!kingless)
-				{
-					for(int j = 0; j < battleManager.enemyList.Count; j++)
-					{
-						if(battleManager.enemyList[j] != null)
-						{
-							if(battleManager.enemyList[j].myType == EnemyType.KNIGHT)
-							{
-								selectedCards[i].target = battleManager.enemyList[j];
-							}
-						}
-					}
-				}
-					
-				selectedCards[i].target.getAttacked.Play();
-				// Attacking Script
-				SoundManagerScript.Instance.PlaySFX(AudioClipID.SFX_ATTACK2);
-				selectedCards[i].target.health -= selectedCards[i].myCard.cardEffect;
-
-				Debug.Log("Target HP : " + selectedCards[i].target.health);
-
-//				battleManager.player.localPlayerData.health += spellsHeal;
-
-            }
-            else if (selectedCards[i].myCard.cardType == CardType.HEAL)
-            {
-				battleManager.player.healingPlayer.Play();
-				battleManager.player.localPlayerData.health += selectedCards[i].myCard.cardEffect;
-				if(battleManager.player.localPlayerData.health > battleManager.player.localPlayerData.maxHealth)
-				{
-					battleManager.player.localPlayerData.health = battleManager.player.localPlayerData.maxHealth;
-				}
-//				for(int j = 0; j < battleManager.enemyList.Count; j++)
-//				{
-//					battleManager.enemyList[j].health -= spellsDmg;
-//				}
-            }
-			else if(selectedCards[i].myCard.cardType == CardType.STUN)
-			{
-				bool kingless = true;
-
-				if(selectedCards[i].target.myType == EnemyType.KING)
-				{
-					kingless = false;
-				}
-
-				if(!kingless)
-				{
-					for(int j = 0; j < battleManager.enemyList.Count; j++)
-					{
-						if(battleManager.enemyList[j] != null)
-						{
-							if(battleManager.enemyList[j].myType == EnemyType.KNIGHT)
-							{
-								selectedCards[i].target = battleManager.enemyList[j];
-							}
-						}
-					}
-				}
-
-				if(!selectedCards[i].target.stunned) selectedCards[i].target.stunned = true;
-			}
+			//selectedCards[i].Invoke("Attack", 0.8f * i);
 
 			battleManager.player.localPlayerData.manaPoints -= selectedCards[i].myCard.manaCost;
 
