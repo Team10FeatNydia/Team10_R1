@@ -15,8 +15,8 @@ public class BarUIScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        //bar.fillAmount = ( player.localPlayerData.health * 100f / player.localPlayerData.maxHealth ) / 100;
+	void Update () 
+	{
 		bar.fillAmount = PlayerStatSaver.mInstance.playerHP / PlayerStatSaver.mInstance.playerMaxHP ;
 
     }

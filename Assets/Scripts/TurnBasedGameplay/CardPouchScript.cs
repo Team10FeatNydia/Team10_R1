@@ -51,35 +51,8 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
         GetComponent<Image>().sprite = defaultEye;
     }
 
-    // Update is called once per frame
-//    void Update()
-//    {
-//        Swipe();
-//
-//        if (BattleManagerScript.Instance.currTurn == BattleStates.ENEMY_TURN)
-//        {
-//            spellsHealbool = false;
-//            spellsAttackbool = false;
-//        }
-//    }
-
     void Attack()
     {
-//		int spellsHeal = 0;
-//		int spellsDmg = 0;
-//
-//		for(int i = 0; i < selectedSpells.Count; i++)
-//		{
-//			if(selectedSpells[i].mySpells.spellsType == SpellsType.HEAL_SPELL)
-//			{
-//				spellsHeal += 1;
-//			}
-//			else if(selectedSpells[i].mySpells.spellsType == SpellsType.HEAL_SPELL)
-//			{
-//				spellsDmg += 1;
-//			}
-//		}
-
         for (int i = 0; i < selectedCards.Count; i++)
         {
 			selectedCards[i].StartHop(transform.parent.position - new Vector3(-200f, -100f, 0f), 0.8f, 100f, 1.0f * i);
@@ -89,8 +62,6 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 			battleManager.player.localPlayerData.manaPoints -= selectedCards[i].myCard.manaCost;
 
         }
-
-        //Debug.Log("Attack");
 
 		for(int i = 0; i < selectedCards.Count; i++)
 		{
@@ -111,12 +82,7 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 		myEye.sprite = defaultEye;
 
 		UIBorderBar.Play("BorderSlideOut");
-		//GetComponent<Animator>().Play("StartEyeAnimation");
 		arrowButton.SetActive(false);
-
-		//DestroyCards();
-
-		Debug.Log("Player's Turn End");
     }
 
 	void LayOutCards()
@@ -171,7 +137,6 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 
 				myTransform.localPosition = new Vector3(-90f * i - 90f, 0f, 0f);
 
-				//myTransform.localPosition = new Vector3(-180f * i - 220f, 0f, 0f);
 				endPos = newCard.GetComponent<RectTransform>().localPosition;
 
 				cardScript.SetLerpPos(myTransform.TransformPoint(endPos), true, false);
@@ -220,12 +185,10 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 
 				myTransform.localPosition = new Vector3(-90f * i - 90f, 0f, 0f);
 
-				//myTransform.localPosition = new Vector3(-180f * i - 220f, 0f, 0f);
 				endPos = newCard.GetComponent<RectTransform>().localPosition;
 
 				cardScript.SetLerpPos(myTransform.TransformPoint(endPos), true, false);
 
-				//newCard.GetComponent<RectTransform>().localPosition = new Vector3(-180f * i - 220f, 0f, 0f);
 				cardScript.origin = newCard.GetComponent<RectTransform>().localPosition;
 				newCard.transform.SetParent(this.transform.parent, true);
 
@@ -236,191 +199,6 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 			}
 		}
     }
-
-//    void LayoutSpells()
-//    {
-//		manaCheck = battleManager.player.localPlayerData.manaPoints;
-//        selectedSpells.Clear();
-//
-//		for(int i = 0; i < displayedCards.Length; i++)
-//		{
-//			if(displayedCards[i] != null) displayedCards[i].GetComponent<CardScript>().HideSelf();
-//		}
-//
-//        for (int i = 0; i < SpellsManagerScript.Instance.spellsList.Count; i++)
-//        {
-//            SpellsDescription tempSpells;
-//            tempSpells = SpellsManagerScript.Instance.spellsList[i];
-//            tempSpells.isSpawned = false;
-//            SpellsManagerScript.Instance.spellsList[i] = tempSpells;
-//        }
-//
-//		for(int i = 0; i < 5; i++)
-//		{
-//			if(i < SpellsManagerScript.Instance.spellsList.Count)
-//			{
-//				bool exitLoop = false;
-//				SpellsDescription tempSpells;
-//
-//				int randNum;
-//
-//				do
-//				{
-//					randNum = Random.Range(0, SpellsManagerScript.Instance.spellsList.Count);
-//
-//					if (!SpellsManagerScript.Instance.spellsList[randNum].isSpawned)
-//					{
-//						tempSpells = SpellsManagerScript.Instance.spellsList[randNum];
-//						tempSpells.isSpawned = true;
-//						SpellsManagerScript.Instance.spellsList[randNum] = tempSpells;
-//						exitLoop = true;
-//					}
-//				} while (!exitLoop);
-//
-//				GameObject newSpells = Instantiate(SpellsManagerScript.Instance.spellsPrefab, this.transform) as GameObject;
-//
-//				SpellsScript spellsScript = newSpells.GetComponent<SpellsScript>();
-//				spellsScript.mySpells = SpellsManagerScript.Instance.spellsList[randNum];
-//				spellsScript.cardPouch = this;
-//
-//				newSpells.GetComponent<RectTransform>().localPosition = new Vector3(-180f * i - 220f, 0f, 0f);
-//				newSpells.transform.SetParent(this.transform.parent, true);
-//
-//				displayedSpells[i] = newSpells;
-//				displayedSpells[i].GetComponent<SpellsScript>().UpdateStats();
-//			}
-//		}
-//
-//		spellsLayedout = true;
-//
-//    }
-
-
-//    void Swipe()
-//    {
-//		
-//		
-//        if (Input.touchCount > 0)
-//        {
-//
-//            foreach (Touch touch in Input.touches)
-//            {
-//                switch (touch.phase)
-//                {
-//                    case TouchPhase.Began:
-//                        isSwipe = true;
-//                        fingerStartPos = touch.position;
-//                        touch1 = touch.position.y;
-//                        break;
-//
-//                    case TouchPhase.Canceled:
-//                        isSwipe = false;
-//                        break;
-//
-//                    case TouchPhase.Ended:
-//
-//                        float swipeDist = (touch.position - fingerStartPos).magnitude;
-//                        //Debug.Log("swipedist    " + swipeDist);
-//                        //Debug.Log("touch1   " + touch1);
-//
-//                        if (touch1 < 250)
-//                        {
-//
-//                            if (isSwipe && swipeDist > minSwipeDist)
-//                            {
-//                                Vector2 direction = touch.position - fingerStartPos;
-//                                Vector2 swipeType = Vector2.zero;
-//
-//
-//                                if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
-//                                {
-//                                    swipeType = Vector2.right * Mathf.Sign(direction.x);
-//                                }
-//                                else
-//                                {
-//                                    swipeType = Vector2.up * Mathf.Sign(direction.y);
-//                                }
-//
-//                                if (swipeType.x != 0.0f)
-//                                {
-//									if(direction.x > 0)
-//									{
-////										DestroyCards();
-////										battleManager.currTurn = BattleStates.PLAYER_TURN;
-////										myEye.sprite = defaultEye;
-////
-////										UIBorderBar.Play("BorderSlideOut");
-////										GetComponent<Animator>().Play("StartEyeAnimation");
-////										//transform.GetChild (0).gameObject.SetActive (true);
-//										
-//										
-//									}
-//									else
-//									{
-////										if(battleManager.currTurn == BattleStates.CHOOSE_CARDS)
-////										{
-////											if(currState == PouchStates.ACTION_CARDS)
-////											{
-////												//Debug.Log("swiped");
-////												myEye.sprite = spellsEye;
-////
-////												for(int i = 0; i < displayedCards.Length; i++)
-////												{
-////													displayedCards[i].GetComponent<CardScript>().HideSelf();
-////												}	
-////
-////												if(!spellsLayedout) 
-////												{
-////													LayoutSpells();
-////												}
-////												else 
-////												{
-////													for(int i = 0; i < displayedSpells.Length; i++)
-////													{
-////														displayedSpells[i].GetComponent<SpellsScript>().UpdateStats();
-////													}
-////												}
-////												cardAction = false;
-////												spellsAction = true;
-////												currState = PouchStates.SPELL_CARDS;
-////											}
-////											else if(currState == PouchStates.SPELL_CARDS)
-////											{
-////												//Debug.Log("swiped");
-////												myEye.sprite = cardEye;
-////												
-////												for(int i = 0; i < displayedSpells.Length; i++)
-////												{
-////													displayedSpells[i].GetComponent<SpellsScript>().HideSelf();
-////												}	
-////
-////												if(!cardsLayedout) 
-////												{
-////													LayOutCards();
-////												}
-////												else 
-////												{
-////													for(int i = 0; i < displayedCards.Length; i++)
-////													{
-////														displayedCards[i].GetComponent<CardScript>().UpdateStats();
-////													}
-////												}
-////												cardAction = true;
-////												spellsAction = false;
-////												currState = PouchStates.ACTION_CARDS;
-////											}
-////										}
-//									}
-//                                }
-//                            }
-//                        }
-//
-//                        break;
-//                }
-//            }
-//        }
-//
-//    }
 
 	public void DisplaySelectedCards()
 	{
@@ -451,7 +229,7 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 
 			//Needs to be checked
 			selectedCards[i].rectTransform.rotation = Quaternion.identity;
-			//selectedCards[i].UpdateStats();
+
 			selectedCards[i].selected = false;
 		}
 
@@ -468,22 +246,6 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 			nontargetCards[i].rectTransform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
 			nontargetCards[i].GetComponent<RectTransform>().localPosition = new Vector3(-180f * (i+targetCards.Count) - 220f - 104f, 113.75f, 0f);
 		}
-
-//		for(int i = 0; i < selectedCards.Count; i++)
-//		{
-//			if(selectedCards[i].myCard.cardType != CardType.ATTACK && selectedCards[i].myCard.cardType != CardType.STUN)
-//			{
-//				selectedCards[i].interactable = false;
-//				selectedCards[i].GetComponent<Image>().color = Color.white;
-//				selectedCards[i].rectTransform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
-//			}
-//
-//			//Needs to be checked
-//			selectedCards[i].GetComponent<RectTransform>().localPosition = new Vector3(-180f * i - 220f - 104f, 113.75f, 0f);
-//			selectedCards[i].rectTransform.rotation = Quaternion.identity;
-//			//selectedCards[i].UpdateStats();
-//			selectedCards[i].selected = false;
-//		}
 	}
 
 	public void DestroyCards()
@@ -524,12 +286,10 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 		selectedSpells.Clear();
 
 		cardsLayedout = false;
-//		spellsLayedout = false;
 	}
 
 	void manaActive()
 	{
-        //transform.GetChild (0).gameObject.SetActive (true);
         manaIcon.SetActive(true);
 	}
 
@@ -547,14 +307,11 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 		myEye.sprite = defaultEye;
 
 		UIBorderBar.Play("BorderSlideOut");
-		//GetComponent<Animator>().Play("StartEyeAnimation");
 		arrowButton.SetActive(false);
 	}
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        //Debug.Log("Click");
-
 		if(TutorialManagerScript.mInstance.tutorialOpened)
 		{
 			return;
@@ -618,7 +375,7 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
 		{
 			for(int i = 0; i < selectedCards.Count; i++)
 			{
-				if(selectedCards[i].myCard.cardType == CardType.ATTACK)
+				if(selectedCards[i].myCard.cardType == CardType.ATTACK || selectedCards[i].myCard.cardType == CardType.STUN)
 				{
 					if(selectedCards[i].target == null)
 					{

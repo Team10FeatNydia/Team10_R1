@@ -5,7 +5,8 @@ using UnityEngine;
 public class LookAtCameraScript : MonoBehaviour {
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 		transform.LookAt(transform.position + Camera.main.transform.rotation * Vector3.forward,
 			Camera.main.transform.rotation * Vector3.up);
 	}

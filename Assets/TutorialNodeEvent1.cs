@@ -16,7 +16,6 @@ public class TutorialNodeEvent1 : MonoBehaviour {
         transform.parent.GetComponent<Canvas>().enabled = false;
     }
 
-    //Change Scene function changed to CardManagerScript.ChangeScene()
     public void ArenaScene()
     {
 		GameManagerInstance.instance.ChangeScene(3);

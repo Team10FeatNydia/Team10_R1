@@ -17,7 +17,6 @@ public class ManagerControllerScript : MonoBehaviour
 
 				if(tempObject == null)
 				{
-					//Debug.LogError("ManagerController is missing, the game cannot continue to work.");
 					Debug.Break();
 				}
 				else

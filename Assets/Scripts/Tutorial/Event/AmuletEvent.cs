@@ -9,19 +9,15 @@ public class AmuletEvent : MonoBehaviour
 
 	void Start ()
 	{
-		transform.GetChild (0).GetComponent<Button> ().onClick.AddListener (GainAmulet); //Assign gain amulet func in first button
+		transform.GetChild (0).GetComponent<Button> ().onClick.AddListener (GainAmulet);
 	}
 
 	void GainAmulet ()
 	{
-		Debug.Log("Got Amulet");
-
-		// Instantiate (choiceSuccess);
-		// TODO::Gain amulet
 		EventManager.instance.ClearEvent ();
-        // Instantiate (choiceSuccess);
-        // TODO::Gain amulet
+
         AmuletStatSaver.mInstance.combatAmuletActive = true;
+
         EventManager.instance.ClearEvent ();
 		EventManager.instance.path.GetComponent<MovementPath> ().MoveToAmuletPlace ();
 		Destroy (transform.parent.parent.parent.gameObject);

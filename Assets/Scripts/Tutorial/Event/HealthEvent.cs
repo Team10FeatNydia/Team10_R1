@@ -21,11 +21,11 @@ public class HealthEvent : MonoBehaviour
 	{
 		int rand = Random.Range (0, 2);
 
-		if (rand == 0) // If fail
+		if (rand == 0)
 		{
 			Instantiate (choiceAFail);
 		}
-		else // If success
+		else
 		{
 			Heal (10, true);
 		}
@@ -41,8 +41,8 @@ public class HealthEvent : MonoBehaviour
 
 	void Heal (int amount, bool isChoiceA)
 	{
-		PlayerStatSaver playerStatSaver = PlayerStatSaver.mInstance; // Load game data from game manager instance
-		if (playerStatSaver.playerHP >= playerStatSaver.playerMaxHP) // If player has full health
+		PlayerStatSaver playerStatSaver = PlayerStatSaver.mInstance;
+		if (playerStatSaver.playerHP >= playerStatSaver.playerMaxHP)
 		{
 			Instantiate (healthFull);
 		}

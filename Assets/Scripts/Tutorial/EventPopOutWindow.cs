@@ -26,25 +26,14 @@ public class EventPopOutWindow : MonoBehaviour
 	
 	private GameObject player;
 
-    //public GameObject eventCanvasObj;
-	//private Canvas eventCanvas;
-
 	void Start ()
 	{
-		//eventCanvas = eventCanvasObj.GetComponent<Canvas> ();
-		//eventCanvas.enabled = false;
 		player = GameObject.Find ("Player");
 		player.GetComponent<PlayerMovementScript> ().enabled = true;		
 	}
 
 	void OnTriggerEnter (Collider other)
 	{
-		//if (other.gameObject.tag == "Player") 
-		//{
-		//	eventCanvas.enabled = true;
-		//	GameObject.Find ("Player").GetComponent<PlayerMovementScript> ().enabled = false;
-		//}
-
         if (other.gameObject.tag == "Player")
         {
             Invoke("eventPop", 1); // Delay 1s before invoking method
@@ -69,14 +58,11 @@ public class EventPopOutWindow : MonoBehaviour
                 return eventListInfoList[i].eventPrefab;
             }
         }
-
-        //Debug.LogError("Cant find event : " + eventListName);
         return null;
     }
 
     public void eventPop()
     {
-        // GameObject eventObj = FindEventName((EventListName)Random.Range(0, (int)EventListName.TOTAL));
 		GameObject eventObj = FindEventName(EventListName.EVENT_1);
 		Instantiate(eventObj);
         CancelInvoke();

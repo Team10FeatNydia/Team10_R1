@@ -13,13 +13,13 @@ public class EventCollider : MonoBehaviour
 	{
 		if (activeAtStart)
 		{
-			EventManager.instance.StartEvent (this); // spawn starting point canvas at start
+			EventManager.instance.StartEvent (this);
 		}
 	}
 
 	void Update ()
 	{
-		if (timer >= 0.2f) // start event only after player collide with the collider for 1s
+		if (timer >= 0.2f)
 		{
 			EventManager.instance.StartEvent (this); 
 			timer = 0.0f;

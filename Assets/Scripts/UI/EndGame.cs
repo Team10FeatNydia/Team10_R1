@@ -16,6 +16,4 @@ public class EndGame : MonoBehaviour
 	{	
 		SoundManagerScript.Instance.PlaySFX (AudioClipID.SFX_UI_BUTTON);
 	}
-
-
 }

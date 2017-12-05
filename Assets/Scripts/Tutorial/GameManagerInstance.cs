@@ -12,7 +12,7 @@ public class GameManagerInstance : MonoBehaviour
 	public List<GameObject> levelOne;
 	public List<GameObject> arenaScene;
 
-	void Awake ()
+	void Awake()
 	{
 		if (instance == null)
 		{
@@ -39,7 +39,7 @@ public class GameManagerInstance : MonoBehaviour
 
 	public void ChangeScene (int index)
     {
-        if (index == 0)
+        if(index == 0)
         {
             for (int i = 0; i < levelOne.Count; i++)
             {
@@ -48,7 +48,7 @@ public class GameManagerInstance : MonoBehaviour
             SceneManager.LoadScene(0);
         }
 
-        else if (index == 1)
+        else if(index == 1)
         {
             for (int i = 0; i < levelOne.Count; i++)
             {
@@ -57,36 +57,36 @@ public class GameManagerInstance : MonoBehaviour
             SceneManager.LoadScene(1);
         }
 
-        else if (index == 2)
+        else if(index == 2)
 		{
-			for (int i = 0; i < levelOne.Count; i++)
+			for(int i = 0; i < levelOne.Count; i++)
 			{
 				levelOne [i].gameObject.SetActive (false);
 			}
 			SceneManager.LoadScene (2);
 		}
 
-        else if (index == 3)
+        else if(index == 3)
         {
-            for (int i = 0; i < levelOne.Count; i++)
+            for(int i = 0; i < levelOne.Count; i++)
             {
                 levelOne[i].gameObject.SetActive(false);
             }
             SceneManager.LoadScene(3);
         }
 
-        else if (index == 4)
+        else if(index == 4)
         {
-            for (int i = 0; i < levelOne.Count; i++)
+            for(int i = 0; i < levelOne.Count; i++)
             {
                 levelOne[i].gameObject.SetActive(false);
             }
             SceneManager.LoadScene(4);
         }
 
-        else if (index == 5)
+        else if(index == 5)
         {
-            for (int i = 0; i < levelOne.Count; i++)
+            for(int i = 0; i < levelOne.Count; i++)
             {
                 levelOne[i].gameObject.SetActive(false);
             }

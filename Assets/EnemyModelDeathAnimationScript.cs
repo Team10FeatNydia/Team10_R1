@@ -8,7 +8,8 @@ public class EnemyModelDeathAnimationScript : MonoBehaviour {
     bool isDead;
 
 	// Use this for initialization
-	void Start () {
+	void Start() 
+	{
         animator = GetComponent<Animator>();
     }
 	

@@ -20,25 +20,25 @@ public class MovementPath : MonoBehaviour
 	{
 		for (int i = 0; i < transform.childCount; i++)
 		{
-			points.Add (transform.GetChild (i).GetComponent<PathPoint> ()); // assign all the children to the list (according to order)
+			points.Add (transform.GetChild (i).GetComponent<PathPoint> ());
 		}
         SetPoint();
 	}
 
 	void Update ()
 	{
-		if (isMoving) // if moving
+		if (isMoving)
 		{
-			if (isAtPosition) // if at the one of the point
+			if (isAtPosition)
 			{
 				ChangePoint ();
 			}
-			else // if not at current position, move
+			else
 			{
 				MoveToPoint ();
 			}
 		}
-		else // if currently not moving
+		else
 		{
 			if (Input.touchCount == 1)
 			{
@@ -55,16 +55,16 @@ public class MovementPath : MonoBehaviour
 
 	void StartPath (Vector3 position)
 	{
-		for (int i = 0; i < points.Count; i++) // checking all points
+		for (int i = 0; i < points.Count; i++)
 		{
-			if (points[i].isStoppingPoint) // if that point is an allowable stopping point
+			if (points[i].isStoppingPoint)
 			{
-				if (Vector3.Distance (position, points[i].transform.position) < 50.0f) // if the distance of the input and that point is near ( a circle of radius 50units)
+				if (Vector3.Distance (position, points[i].transform.position) < 50.0f)
 				{
-					if (canMoveBack || (!canMoveBack && i > playerPointIndex)) // if can move backwards || cannot move backwards but the point direction is forward
+					if (canMoveBack || (!canMoveBack && i > playerPointIndex))
 					{
-						targetPointIndex = i; // set destination to that index
-						isMoving = true; // start the moving
+						targetPointIndex = i;
+						isMoving = true;
 						break;
 					}
 				}
@@ -72,34 +72,34 @@ public class MovementPath : MonoBehaviour
 		}
 	}
 
-	void MoveToPoint ()
+	void MoveToPoint()
 	{
-		if (Vector3.Distance (player.transform.position, points[currentTargetPointIndex].transform.position) < 5.0f) // if the player is close enough to that point
+		if (Vector3.Distance (player.transform.position, points[currentTargetPointIndex].transform.position) < 5.0f)
 		{
-			player.transform.position = points [currentTargetPointIndex].transform.position; // teleports player to that point
-			playerPointIndex = currentTargetPointIndex; // update player's point index
-			isAtPosition = true; // player is now at one of the point
+			player.transform.position = points [currentTargetPointIndex].transform.position;
+			playerPointIndex = currentTargetPointIndex;
+			isAtPosition = true;
 		}
-		else // if far from the point
+		else
 		{
 			Vector3 direction = points [currentTargetPointIndex].transform.position - player.transform.position;
 			direction = Vector3.Normalize (direction);
-			// Player translating in x-axis only
+
 			player.transform.Translate (Vector3.right * direction.x * movingSpeed * Time.deltaTime / player.transform.localScale.x);
-			// Background translating in y-axis
+
 			transform.parent.Translate (Vector3.down * direction.y * movingSpeed * Time.deltaTime / transform.localScale.y);
 		}
 	}
 
-	void ChangePoint ()
+	void ChangePoint()
 	{
-		if (playerPointIndex == targetPointIndex) // if player is on the destination point
+		if (playerPointIndex == targetPointIndex)
 		{
-			isMoving = false; // stop moving
+			isMoving = false;
 		}
-		else // if not, change to the next target point
+		else
 		{
-			isAtPosition = false; // player is not at the position of any point anymore
+			isAtPosition = false;
 			// Move backward
 			if (playerPointIndex > targetPointIndex)
 			{
@@ -118,7 +118,7 @@ public class MovementPath : MonoBehaviour
         playerPointIndex = PlayerStatSaver.mInstance.playerPoint;
     }
 
-	public void MoveToAmuletPlace () // Special function for the last event
+	public void MoveToAmuletPlace()
 	{
 		targetPointIndex = points.Count - 2;
 		isMoving = true;

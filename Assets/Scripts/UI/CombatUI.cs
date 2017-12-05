@@ -30,14 +30,9 @@ public class CombatUI : MonoBehaviour
 
     void UpdateBattleUI()
     {
-        //playerManaCount.text = player.localPlayerData.manaPoints.ToString();
-
-        //playerHealthText.text = player.localPlayerData.health.ToString();
         playerHealthText.text = PlayerStatSaver.mInstance.playerHP.ToString();
 
-
-
-        if (BattleManagerScript.Instance.target != null) {
+        if(BattleManagerScript.Instance.target != null) {
 
             lockedEnemyHealth.enabled = true;
             lockedEnemyState.text = "Enemy Locked On";

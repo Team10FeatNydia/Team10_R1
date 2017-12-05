@@ -107,7 +107,6 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 				if(shakePos.z > 0.05f) 
 				{
 					rotate = -1f;
-					//Debug.Log("Front");
 				}
 				else if (shakePos.z < -0.05f) 
 				{
@@ -116,12 +115,9 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 					shakeTime = 20.0f;
 					rectTransform.rotation = Quaternion.identity;
 					return;
-					////Debug.Log("Back");
 
 				}
-				//rectTransform.rotation = Quaternion.Euler(0f, 0f, shakePos.z);
 				rectTransform.Rotate(new Vector3 (0, 0, rotate));
-				//Debug.Log(shakePos.z);
 			}
 		}
 	}
@@ -158,10 +154,6 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 
 			target.CheckHealth();
 
-			Debug.Log("Target HP : " + target.health);
-
-			//				battleManager.player.localPlayerData.health += spellsHeal;
-
 		}
 		else if (myCard.cardType == CardType.HEAL)
 		{
@@ -171,10 +163,6 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 			{
 				BattleManagerScript.Instance.player.localPlayerData.health = BattleManagerScript.Instance.player.localPlayerData.maxHealth;
 			}
-			//				for(int j = 0; j < battleManager.enemyList.Count; j++)
-			//				{
-			//					battleManager.enemyList[j].health -= spellsDmg;
-			//				}
 		}
 		else if(myCard.cardType == CardType.STUN)
 		{
@@ -246,17 +234,14 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 		interactable = false;
 		myDmg.enabled = false;
 		myManaCost.enabled = false;
-//		myDescription.enabled = false;
 	}
 
 	public void UpdateStats()
 	{
 		myDmg.enabled = true;
 		myManaCost.enabled = true;
-//		myDescription.enabled = true;
 		myDmg.text = myCard.cardEffect.ToString();
 		myManaCost.text = myCard.manaCost.ToString();
-//      myDescription.text = myCard.description.ToString();
 		myImage.enabled = true;
 		myImage.sprite = myCard.cardImage;
 		interactable = true;
@@ -269,8 +254,6 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 			return;
 		}
 
-		//Debug.Log("Tap");
-
 		if(interactable)
 		{
 			if(BattleManagerScript.Instance.currTurn == BattleStates.CHOOSE_CARDS)
@@ -281,7 +264,6 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 					{
 						cardPouch.manaCheck -= myCard.manaCost;
 						BattleManagerScript.Instance.manaText.text = cardPouch.manaCheck.ToString();
-						//Debug.Log(cardPouch.manaCheck);
 						cardPouch.selectedCards.Add(this);
 						selected = true;
 						GetComponent<Image>().color = Color.blue;
@@ -292,7 +274,6 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 				{
 					cardPouch.manaCheck += myCard.manaCost;
 					BattleManagerScript.Instance.manaText.text = cardPouch.manaCheck.ToString();
-					//Debug.Log(cardPouch.manaCheck);
 					cardPouch.selectedCards.Remove(this);
 					selected = false;
 					GetComponent<Image>().color = Color.white;
@@ -349,22 +330,4 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 			}
 		}
 	}
-
-//	public void SwitchParents()
-//	{
-//		if(transform.parent.name.Contains("Hand"))
-//		{
-//			transform.SetParent(CardManagerScript.Instance.cardDeckPanel);
-//			//transform.parent = CardManagerScript.Instance.cardHandPanel.transform;
-//			CardManagerScript.Instance.cardList.Add(myCard);
-//			CardManagerScript.Instance.handList.Remove(myCard);
-//		}
-//		else if(transform.parent.name.Contains("Deck"))
-//		{
-//			transform.SetParent(CardManagerScript.Instance.cardHandPanel);
-//			//transform.parent = CardManagerScript.Instance.cardDeckPanel.transform;
-//			CardManagerScript.Instance.handList.Add(myCard);
-//			CardManagerScript.Instance.cardList.Remove(myCard);
-//		}
-//	}
 }

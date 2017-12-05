@@ -7,12 +7,12 @@ public class NodeButton : MonoBehaviour
 {
 	void Start ()
 	{
-		GetComponent<Button> ().onClick.AddListener (Clear); // add clear function to the button
+		GetComponent<Button> ().onClick.AddListener (Clear);
 	}
 
 	public void Clear ()
 	{
-		EventManager.instance.ClearEvent (); // clear event
-		Destroy (transform.root.gameObject); // destroy the whole hierarchy
+		EventManager.instance.ClearEvent ();
+		Destroy (transform.root.gameObject);
 	}
 }

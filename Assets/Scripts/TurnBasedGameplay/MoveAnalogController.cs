@@ -11,12 +11,14 @@ public class MoveAnalogController : MonoBehaviour, IDragHandler, IEndDragHandler
 
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
         initPos = this.transform.position;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
         direction =this.transform.position - initPos;
         direction.Normalize();
     }

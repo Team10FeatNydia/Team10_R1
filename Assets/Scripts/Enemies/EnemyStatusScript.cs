@@ -89,22 +89,18 @@ public class EnemyStatusScript : MonoBehaviour
         //player.localPlayerData.health -= damage;
 		PlayerStatSaver.mInstance.playerHP -= damage * 1.0f;
         player.isHit = true;
-
-		Debug.Log("PlayerHP : " + PlayerStatSaver.mInstance.playerHP);
 	}
 
 	public void HeavyAttack(int damage)
 	{
 		SoundManagerScript.Instance.PlaySFX(AudioClipID.SFX_ATTACK7);
 		player.enemyHeavyAttack.Play();
-		//player.localPlayerData.health -= damage;
 		PlayerStatSaver.mInstance.playerHP -= damage * 1.0f;
         player.isHit = true;
     }
 
 	public void OnMouseDown()
 	{
-		//Debug.Log("Click");
 		if(BattleManagerScript.Instance.currTurn == BattleStates.PLAYER_TURN)
 		{
 			BattleManagerScript.Instance.target = this;
@@ -156,8 +152,6 @@ public class EnemyStatusScript : MonoBehaviour
 
         if (health <= 0)
 		{
-			Debug.Log("Enemy dead");
-
 			hpGO.SetActive(false);
 
             isDead = true;

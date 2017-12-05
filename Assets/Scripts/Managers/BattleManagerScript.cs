@@ -99,7 +99,6 @@ public class BattleManagerScript : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-        //if(PauseMenuManagerScript.Instance.paused) return;
         if (enemyList.Count == 0)
         {
 			if(!WinLoseGOSpawned)
@@ -139,7 +138,6 @@ public class BattleManagerScript : MonoBehaviour
 
 			if(enemyAction && enemyTurn >= enemyList.Count)
 			{
-				Debug.Log("Enemies Done Attack");
 				enemyAction = false;
 				enemyTurn = 0;
 				player.localPlayerData.manaPoints += manaregen;
@@ -155,9 +153,6 @@ public class BattleManagerScript : MonoBehaviour
 				{
 					enemyList[i].stunned = false;
 				}
-
-				Debug.Log("Enemy's Turn End");
-
 			}
 
 			CheckPlayerHealth();
@@ -225,7 +220,6 @@ public class BattleManagerScript : MonoBehaviour
 				//WinLoseComment.text = "Hurray! You Got A Card! We Done Yet?";
 
 				PlayerStatSaver.mInstance.cardDeckList.Add(newCard);
-				Debug.Log("Added " + newCard.cardType.ToString());
 			}
 		}
 		else
@@ -243,21 +237,6 @@ public class BattleManagerScript : MonoBehaviour
 			newCardDes.text = "Exit to Retry";
 
 			FadeManagerScript.Instance.fadeOut();
-
-			//				bool gotNewCard = false;
-			//
-			//				newCardDisplay.enabled = false;
-			//
-			//				if(!gotNewCard)
-			//				{
-			//					newCardDisplay.enabled = false;
-			//					newCardText.text = "";
-			//				}
-			//				else
-			//				{
-			//					newCardDisplay.enabled = true;
-			//					newCardText.text = "Obtained A New Card";
-			//				}
 		}
 	}
 }

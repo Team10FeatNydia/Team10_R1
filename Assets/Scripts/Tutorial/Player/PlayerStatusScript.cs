@@ -50,7 +50,6 @@ public class PlayerStatusScript : MonoBehaviour
         }
 
 		LoadData();
-        //SaveData();
 	}
 
 	public void Respawn()

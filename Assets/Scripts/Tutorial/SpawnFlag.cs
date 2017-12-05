@@ -11,7 +11,7 @@ public class SpawnFlag : MonoBehaviour
 	{
 		if (!isSpawned && other.CompareTag ("Player"))
 		{
-			flag.SetActive (true); // show the flag
+			flag.SetActive (true);
 			isSpawned = true;
 		}
 	}

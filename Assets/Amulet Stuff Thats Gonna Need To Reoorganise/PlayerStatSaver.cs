@@ -20,7 +20,6 @@ public class PlayerStatSaver : MonoBehaviour
 	public int combatScene = 2;
 
 	public List<CardDescription> cardDeckList = new List<CardDescription>();
-    //public float MaxHP;
 
     void Awake()
     {

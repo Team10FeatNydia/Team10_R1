@@ -19,14 +19,11 @@ public class PlayerModelAnimationScript : MonoBehaviour {
 
     public void Attack()
     {
-        Debug.Log("hello");
         animator.SetTrigger("attack");
-        //player.isAttacking = false;
     }
 
     public void Damaged()
     {
-        Debug.Log("helldo");
         animator.SetTrigger("damaged");
         player.isHit = false;
     }

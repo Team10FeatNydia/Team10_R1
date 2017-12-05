@@ -22,7 +22,6 @@ public class FadeManagerScript : MonoBehaviour
 				}
 				mInstance = temp;
 				ManagerControllerScript.Instance.fadeManager = mInstance;
-				//DontDestroyOnLoad(mInstance.gameObject);
 			}
 			return mInstance;
 		}
@@ -79,7 +78,6 @@ public class FadeManagerScript : MonoBehaviour
 	{
 		Fade (false, fadeInDuration);
 		Invoke("fadeImageDisable", fadeOutDuration + 0.2f );
-		Debug.Log("uidf");
 	}
 
 	void fadeImageDisable()

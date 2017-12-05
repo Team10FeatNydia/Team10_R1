@@ -11,10 +11,4 @@ public class BGMPlayerScript : MonoBehaviour
 	{
 		SoundManagerScript.Instance.PlayBGM(audioClipID);
 	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-		
-	}
 }

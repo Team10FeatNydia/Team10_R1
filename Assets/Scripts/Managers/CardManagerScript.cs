@@ -32,8 +32,6 @@ public class CardManagerScript : MonoBehaviour
 	}
 	#endregion Singleton
 
-//	public List<CardDescription> handList = new List<CardDescription>();
-//	public List<CardDescription> cardList = new List<CardDescription>();
 	public GameObject cardPrefab;
 	public GameObject cardButton;
 	public Transform cardDeckPanel;
@@ -52,12 +50,6 @@ public class CardManagerScript : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-//		handList.Clear();
-//
-//		for(int i = 0; i < PlayerStatSaver.mInstance.cardHandList.Count; i++)
-//		{
-//			handList.Add(PlayerStatSaver.mInstance.cardHandList[i]);
-//		}
 	}
 	
 	// Update is called once per frame
@@ -81,19 +73,8 @@ public class CardManagerScript : MonoBehaviour
 			}
 		}
 
-
-		//Debug.Log("A");
-
-//		for(int i = 0; i < PlayerStatSaver.mInstance.cardHandList.Count; i++)
-//		{
-//			PlayerStatSaver.mInstance.cardDeckList.Add(PlayerStatSaver.mInstance.cardHandList[i]);
-//			PlayerStatSaver.mInstance.cardHandList.Remove(PlayerStatSaver.mInstance.cardHandList[i]);
-//		}
-//
 		if(cardDeckPanel != null)
 		{
-			//Debug.Log("B");
-
 			if(!cardDeckPanel.gameObject.activeSelf)
 			{
 				cardDeckPanel.gameObject.SetActive(true);
@@ -127,21 +108,4 @@ public class CardManagerScript : MonoBehaviour
 			}
 		}
 	}
-
-//	public void ChangeScene()
-//	{
-//		if(CardManagerScript.Instance.handList.Count > 4 && CardManagerScript.Instance.handList.Count <= 10) 
-//		{
-//			PlayerStatSaver.mInstance.cardHandList.Clear();
-//
-//
-//			for(int i = 0; i < handList.Count; i++)
-//			{
-//				PlayerStatSaver.mInstance.cardHandList.Add(handList[i]);
-//			}
-//
-//            GameManagerInstance.instance.ChangeScene (3);
-//		}
-//			
-//	}
 }

@@ -30,7 +30,6 @@ public class EventManager : MonoBehaviour
 	public GameObject arrowObject;
 	public List<EventInformation> eventInformationList = new List<EventInformation> ();
 
-	//private GameObject player;
 	EventCollider curCollider;
 	Arrow arrow;
 
@@ -41,31 +40,29 @@ public class EventManager : MonoBehaviour
 
 	private void Start ()
 	{
-		//player = GameObject.Find ("Player");
 		arrow = arrowObject.GetComponent<Arrow> ();
 		SetClearedEventNumber(PlayerStatSaver.mInstance.playerEventCleared);
     }
 
 	public void StartEvent (EventCollider collider)
 	{
-		if (IsInvoking ())
+		if (IsInvoking())
 		{
-			ResetTrigger ();
+			ResetTrigger();
 		}
 
 		curCollider = collider;
 		curCollider.SetColliderActive (false);
-		InitEvent ();
+		InitEvent();
 	}
 
-	public void ClearEvent ()
+	public void ClearEvent()
 	{
 		int index = (int)curCollider.eventName;
 		eventInformationList [index].isCleared = true;
         GetClearedEventNumber();
 		Invoke ("ResetTrigger", 3.0f);
 		path.GetComponent<MovementPath> ().enabled = true;
-		Debug.Log ("Event done!");
 
 		if (index <= 2) // amulet2 doesnt have to change the position of the arrow anymore
 		{
@@ -85,7 +82,7 @@ public class EventManager : MonoBehaviour
 		int index = (int)curCollider.eventName;
 		if (eventInformationList [index].isCleared) 
 		{
-			Debug.Log ("This event has already cleared!");
+			Debug.Log("This event has already cleared!");
 		}
 		else
 		{
