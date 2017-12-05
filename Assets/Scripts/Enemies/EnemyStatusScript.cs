@@ -130,7 +130,7 @@ public class EnemyStatusScript : MonoBehaviour
     {
         if (AmuletStatSaver.mInstance.combatAmuletActive)
         {
-            health -= (maxHealth * 15 / 100);
+            health -= (maxHealth * 20 / 100);
         }
     }
 
