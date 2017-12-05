@@ -8,9 +8,13 @@ public class PlayerPosition : MonoBehaviour
     public float posX;
     public float posY;
 
+    GameObject startPoint;
+
     // Use this for initialization
     void Start () 
 	{
+        startPoint = GameObject.FindGameObjectWithTag("StartPoint");
+
 		if(PlayerStatSaver.mInstance.playerPosX != 0)
 		{
 			posX = PlayerStatSaver.mInstance.playerPosX;
@@ -18,9 +22,9 @@ public class PlayerPosition : MonoBehaviour
 		}
 		else
 		{
-			PlayerStatSaver.mInstance.playerPosX = 640;
-			PlayerStatSaver.mInstance.playerPosY = 220;
-		}
+			PlayerStatSaver.mInstance.playerPosX =  startPoint.transform.position.x;
+			PlayerStatSaver.mInstance.playerPosY = startPoint.transform.position.y;
+        }
 
         loadData();
     }
