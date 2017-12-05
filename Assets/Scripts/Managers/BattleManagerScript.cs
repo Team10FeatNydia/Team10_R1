@@ -106,36 +106,12 @@ public class BattleManagerScript : MonoBehaviour
 			{
 				WinCondition = true;
 				WinLoseGOSpawned = true;
-				WinLoseGO.SetActive(true);
 
-				WinLoseText.text = "You Win!";
-
-				int rand = Random.Range(0, winStrings.Length);
-
-				WinLoseComment.text = winStrings[rand];
-
-				newCardDisplay.enabled = false;
-
-				if(!gotNewCard)
-				{
-					newCardDisplay.enabled = false;
-					newCardDes.text = "";
-				}
-				else
-				{
-					newCardDisplay.enabled = true;
-					newCardDisplay.sprite = newCard.cardImage;
-					newCardDes.text = newCard.description;
-
-					//WinLoseComment.text = "Hurray! You Got A Card! We Done Yet?";
-
-					PlayerStatSaver.mInstance.cardDeckList.Add(newCard);
-					Debug.Log("Added " + newCard.cardType.ToString());
-				}
 
 				FadeManagerScript.Instance.fadeOut();
+
+				Invoke("DisplayWinLoseScreen", 1.5f);
 			}
-            //GameManagerInstance.instance.ChangeScene(0);
         }
 		else if(PlayerStatSaver.mInstance.playerHP <= 0)
 		{
@@ -143,35 +119,11 @@ public class BattleManagerScript : MonoBehaviour
 			{
 				WinCondition = false;
 				WinLoseGOSpawned = true;
-				WinLoseGO.SetActive(true);
-
-				WinLoseText.text = "Game Over!";
-
-				int rand = Random.Range(0, loseStrings.Length);
-
-				WinLoseComment.text = loseStrings[rand];
-
-				newCardDisplay.enabled = true;
-				newCardDes.text = "Exit to Retry";
 
 				FadeManagerScript.Instance.fadeOut();
 
-//				bool gotNewCard = false;
-//
-//				newCardDisplay.enabled = false;
-//
-//				if(!gotNewCard)
-//				{
-//					newCardDisplay.enabled = false;
-//					newCardText.text = "";
-//				}
-//				else
-//				{
-//					newCardDisplay.enabled = true;
-//					newCardText.text = "Obtained A New Card";
-//				}
+				Invoke("DisplayWinLoseScreen", 1.5f);
 			}
-			//GameManagerInstance.instance.ChangeScene(0);
 		}
 			
 
@@ -243,5 +195,69 @@ public class BattleManagerScript : MonoBehaviour
 
 		heartBarImage.fillAmount = PlayerStatSaver.mInstance.playerHP / PlayerStatSaver.mInstance.playerMaxHP;
 		healthText.text = PlayerStatSaver.mInstance.playerHP.ToString();
+	}
+
+	void DisplayWinLoseScreen()
+	{
+		if(WinCondition)
+		{
+			WinLoseGO.SetActive(true);
+
+			WinLoseText.text = "You Win!";
+
+			int rand = Random.Range(0, winStrings.Length);
+
+			WinLoseComment.text = winStrings[rand];
+
+			newCardDisplay.enabled = false;
+
+			if(!gotNewCard)
+			{
+				newCardDisplay.enabled = false;
+				newCardDes.text = "";
+			}
+			else
+			{
+				newCardDisplay.enabled = true;
+				newCardDisplay.sprite = newCard.cardImage;
+				newCardDes.text = newCard.description;
+
+				//WinLoseComment.text = "Hurray! You Got A Card! We Done Yet?";
+
+				PlayerStatSaver.mInstance.cardDeckList.Add(newCard);
+				Debug.Log("Added " + newCard.cardType.ToString());
+			}
+		}
+		else
+		{
+			WinLoseGOSpawned = true;
+			WinLoseGO.SetActive(true);
+
+			WinLoseText.text = "Game Over!";
+
+			int rand = Random.Range(0, loseStrings.Length);
+
+			WinLoseComment.text = loseStrings[rand];
+
+			newCardDisplay.enabled = true;
+			newCardDes.text = "Exit to Retry";
+
+			FadeManagerScript.Instance.fadeOut();
+
+			//				bool gotNewCard = false;
+			//
+			//				newCardDisplay.enabled = false;
+			//
+			//				if(!gotNewCard)
+			//				{
+			//					newCardDisplay.enabled = false;
+			//					newCardText.text = "";
+			//				}
+			//				else
+			//				{
+			//					newCardDisplay.enabled = true;
+			//					newCardText.text = "Obtained A New Card";
+			//				}
+		}
 	}
 }
