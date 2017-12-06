@@ -55,7 +55,7 @@ public class CardPouchScript : MonoBehaviour, IPointerClickHandler
     {
         for (int i = 0; i < selectedCards.Count; i++)
         {
-			selectedCards[i].StartHop(transform.parent.position - new Vector3(-200f, -100f, 0f), 0.8f, 100f, 1.0f * i);
+			selectedCards[i].StartHop(transform.parent.position - new Vector3(-200f, -100f, 0f), 0.8f, 100f, 0.5f * i);
 
 			//selectedCards[i].Invoke("Attack", 0.8f * i);
 

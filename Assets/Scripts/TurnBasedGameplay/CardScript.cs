@@ -204,7 +204,7 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 
 		Attack();
 
-		yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(0.1f);
 
 		Vector3 startPos = transform.position;
 		float timer = 0.0f;
