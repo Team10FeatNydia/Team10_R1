@@ -76,4 +76,9 @@ public class TutorialManagerScript : MonoBehaviour {
 		mainTutorialGO.SetActive(false);
 		i = 0;
 	}
+
+	public void PlayButtonSound()
+	{
+		SoundManagerScript.Instance.PlaySFX(AudioClipID.SFX_UI_BUTTON);
+	}
 }
