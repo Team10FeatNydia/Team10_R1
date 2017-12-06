@@ -3755,7 +3755,7 @@ Prefab:
     - target: {fileID: 114329892783054186, guid: e2863c6ab96797f4fb444ec68e66f6da,
         type: 2}
       propertyPath: attack
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e2863c6ab96797f4fb444ec68e66f6da, type: 2}
@@ -4612,20 +4612,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -6944,12 +6930,17 @@ Prefab:
     - target: {fileID: 114329892783054186, guid: e2863c6ab96797f4fb444ec68e66f6da,
         type: 2}
       propertyPath: health
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114329892783054186, guid: e2863c6ab96797f4fb444ec68e66f6da,
         type: 2}
       propertyPath: myType
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114329892783054186, guid: e2863c6ab96797f4fb444ec68e66f6da,
+        type: 2}
+      propertyPath: attack
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e2863c6ab96797f4fb444ec68e66f6da, type: 2}

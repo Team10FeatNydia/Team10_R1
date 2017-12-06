@@ -158,7 +158,9 @@ public class CardScript : MonoBehaviour, IPointerClickHandler
 		else if (myCard.cardType == CardType.HEAL)
 		{
 			BattleManagerScript.Instance.player.healingPlayer.Play();
-			BattleManagerScript.Instance.player.localPlayerData.health += myCard.cardEffect;
+
+            PlayerStatSaver.mInstance.playerHP += myCard.cardEffect;
+			//BattleManagerScript.Instance.player.localPlayerData.health += myCard.cardEffect;
 			if(BattleManagerScript.Instance.player.localPlayerData.health > BattleManagerScript.Instance.player.localPlayerData.maxHealth)
 			{
 				BattleManagerScript.Instance.player.localPlayerData.health = BattleManagerScript.Instance.player.localPlayerData.maxHealth;
