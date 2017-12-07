@@ -590,7 +590,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4923456685996012, guid: 3a26da448057ac84eb43fcbff592cb91, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -11.279
+      value: -10.81
       objectReference: {fileID: 0}
     - target: {fileID: 4923456685996012, guid: 3a26da448057ac84eb43fcbff592cb91, type: 2}
       propertyPath: m_LocalPosition.z
@@ -6855,9 +6855,19 @@ Prefab:
       propertyPath: attack
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114329892783054186, guid: e2863c6ab96797f4fb444ec68e66f6da,
+        type: 2}
+      propertyPath: EnemyModel
+      value: 
+      objectReference: {fileID: 1764851816}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e2863c6ab96797f4fb444ec68e66f6da, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1764851816 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1386883387009812, guid: e2863c6ab96797f4fb444ec68e66f6da,
+    type: 2}
+  m_PrefabInternal: {fileID: 1764851815}
 --- !u!1 &1778650046
 GameObject:
   m_ObjectHideFlags: 0

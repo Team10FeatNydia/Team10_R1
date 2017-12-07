@@ -355,12 +355,13 @@ public class EnemyStatusScript : MonoBehaviour
 
 	public void Heal(EnemyStatusScript healee, int regen)
 	{
-		if(!healee.isDead)
+        enemyModelAnim.Attack();
+        if (!healee.isDead)
 		{
 			healee.health += regen;
 			healee.healEffect.Play();
-
-			if(healee.health > healee.maxHealth)
+           
+            if (healee.health > healee.maxHealth)
 			{
 				healee.health = healee.maxHealth;
 			}
@@ -369,7 +370,8 @@ public class EnemyStatusScript : MonoBehaviour
 
 	public void HealTeam(int heal)
 	{
-		for(int i = 0; i < BattleManagerScript.Instance.enemyList.Count; i++)
+        enemyModelAnim.Attack();
+        for (int i = 0; i < BattleManagerScript.Instance.enemyList.Count; i++)
 		{
 			if(BattleManagerScript.Instance.enemyList[i] != null)
 			{
@@ -377,8 +379,8 @@ public class EnemyStatusScript : MonoBehaviour
 				{
 					BattleManagerScript.Instance.enemyList[i].health += heal;
 					BattleManagerScript.Instance.enemyList[i].healEffect.Play();
-
-					health -= 1;
+                    
+                    health -= 1;
 
 					if(BattleManagerScript.Instance.enemyList[i].health > BattleManagerScript.Instance.enemyList[i].maxHealth)
 					{

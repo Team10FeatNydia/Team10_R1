@@ -18,7 +18,7 @@ public class EnemyModelAnimationScript : MonoBehaviour {
 
     public void Attack()
     {
-        animator.SetTrigger("attack");
+       animator.SetTrigger("attack");
         
     }
 

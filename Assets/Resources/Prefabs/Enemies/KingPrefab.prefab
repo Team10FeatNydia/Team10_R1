@@ -1039,7 +1039,7 @@ GameObject:
   - component: {fileID: 65139539611783134}
   - component: {fileID: 114874325849780556}
   m_Layer: 0
-  m_Name: king damage
+  m_Name: king model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1400,7 +1400,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1371443488991442}
   m_LocalRotation: {x: 0, y: 0.28284374, z: 0, w: 0.959166}
-  m_LocalPosition: {x: 1.87, y: -13.5, z: -6.8}
+  m_LocalPosition: {x: 3.3600004, y: -13.5, z: -5.5099993}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4290063206187400}
@@ -2326,9 +2326,9 @@ MonoBehaviour:
   self: {fileID: 0}
   isDead: 0
   myType: 2
-  health: 5
+  health: 10
   maxHealth: 25
-  attack: 4
+  attack: 3
   stunned: 0
   interactable: 0
   targeted: 0
